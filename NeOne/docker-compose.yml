@@ -51,26 +51,29 @@ services:
             - --hostname=localhost
 
     graph-db:
-        image: ontotext/graphdb:10.4.1
-        ports:
-            - "7200:7200"        
-        healthcheck:
-            test: "curl -f http://localhost:7200/rest/repositories || exit 1"
-            interval: 10s
-            timeout: 5s
-            retries: 10
+      image: ontotext/graphdb:10.4.0
+      ports:
+        - "7200:7200"
+      volumes:
+        - "../resources/IATA-1R-DM-Ontology.ttl:/root/graphdb-import/IATA-1R-DM-Ontology.ttl"
+      healthcheck:
+        test: "curl -f http://localhost:7200/rest/repositories || exit 1"
+        interval: 10s
+        timeout: 5s
+        retries: 10
 
     graph-db-setup:
-        image: ontotext/graphdb:10.4.1
-        entrypoint: [ "/bin/bash", "-c" ]
-        restart: "no"
-        depends_on:
-            graph-db:
-                condition: service_healthy
-        command:
-            - /opt/neone/graphdb/init.sh
-        environment:
-            - NEONE_REPO_ID=neone
-        volumes:
-            - "./graphdb/init.sh:/opt/neone/graphdb/init.sh"
-            - "./graphdb/neone-repository.ttl:/opt/neone/graphdb/neone-repository.ttl"        
+      image: ontotext/graphdb:10.4.0
+      entrypoint: [ "/bin/bash", "-c" ]
+      restart: "no"
+      depends_on:
+        graph-db:
+          condition: service_healthy
+      command:
+        - /opt/neone/graphdb/init.sh
+      environment:
+        - NEONE_REPO_ID=neone
+      volumes:
+        - "./graphdb/init.sh:/opt/neone/graphdb/init.sh"
+        - "./graphdb/neone-repository.ttl:/opt/neone/graphdb/neone-repository.ttl"
+        - "../resources/IATA-1R-DM-Ontology.ttl:/opt/neone/graphdb/IATA-1R-DM-Ontology.ttl"
