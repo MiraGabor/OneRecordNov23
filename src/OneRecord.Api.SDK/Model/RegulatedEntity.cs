@@ -27,65 +27,65 @@ namespace OneRecord.Api.SDK.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RegulatedEntity" /> class.
         /// </summary>
-        /// <param name="httpsId">id.</param>
-        /// <param name="httpsType">type.</param>
-        /// <param name="httpsCargoentity">Cargoentity.</param>
-        /// <param name="httpsCargoidentifier">Cargoidentifier.</param>
-        /// <param name="httpsCargoowningOrganization">CargoowningOrganization.</param>
-        /// <param name="httpsCargocategory">Cargocategory.</param>
-        /// <param name="httpsCargoregulatedEntityExpiryDate">CargoregulatedEntityExpiryDate.</param>
-        public RegulatedEntity(string httpsId = default(string), List<string> httpsType = default(List<string>), CompanyBranch httpsCargoentity = default(CompanyBranch), Company httpsCargoidentifier = default(Company), Organization httpsCargoowningOrganization = default(Organization), string httpsCargocategory = default(string), DateTime httpsCargoregulatedEntityExpiryDate = default(DateTime))
+        /// <param name="id">id.</param>
+        /// <param name="type">type.</param>
+        /// <param name="entity">Cargoentity.</param>
+        /// <param name="identifier">Cargoidentifier.</param>
+        /// <param name="owningOrganization">CargoowningOrganization.</param>
+        /// <param name="category">Cargocategory.</param>
+        /// <param name="regulatedEntityExpiryDate">CargoregulatedEntityExpiryDate.</param>
+        public RegulatedEntity(string id = default(string), List<string> type = default(List<string>), CompanyBranch entity = default(CompanyBranch), Company identifier = default(Company), Organization owningOrganization = default(Organization), string category = default(string), DateTime regulatedEntityExpiryDate = default(DateTime))
         {
-            this.HttpsId = httpsId;
-            this.HttpsType = httpsType;
-            this.HttpsCargoentity = httpsCargoentity;
-            this.HttpsCargoidentifier = httpsCargoidentifier;
-            this.HttpsCargoowningOrganization = httpsCargoowningOrganization;
-            this.HttpsCargocategory = httpsCargocategory;
-            this.HttpsCargoregulatedEntityExpiryDate = httpsCargoregulatedEntityExpiryDate;
+            this.Id = id;
+            this.Type = type;
+            this.Entity = entity;
+            this.Identifier = identifier;
+            this.OwningOrganization = owningOrganization;
+            this.Category = category;
+            this.RegulatedEntityExpiryDate = regulatedEntityExpiryDate;
         }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string HttpsId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> HttpsType { get; set; }
+        public List<string> Type { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cargoentity
+        /// Gets or Sets Entity
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#entity", EmitDefaultValue = false)]
-        public CompanyBranch HttpsCargoentity { get; set; }
+        public CompanyBranch Entity { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cargoidentifier
+        /// Gets or Sets Identifier
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#identifier", EmitDefaultValue = false)]
-        public Company HttpsCargoidentifier { get; set; }
+        public Company Identifier { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoowningOrganization
+        /// Gets or Sets OwningOrganization
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#owningOrganization", EmitDefaultValue = false)]
-        public Organization HttpsCargoowningOrganization { get; set; }
+        public Organization OwningOrganization { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cargocategory
+        /// Gets or Sets Category
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#category", EmitDefaultValue = false)]
-        public string HttpsCargocategory { get; set; }
+        public string Category { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoregulatedEntityExpiryDate
+        /// Gets or Sets RegulatedEntityExpiryDate
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#regulatedEntityExpiryDate", EmitDefaultValue = false)]
-        public DateTime HttpsCargoregulatedEntityExpiryDate { get; set; }
+        public DateTime RegulatedEntityExpiryDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,13 +95,13 @@ namespace OneRecord.Api.SDK.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class RegulatedEntity {\n");
-            sb.Append("  Id: ").Append(HttpsId).Append("\n");
-            sb.Append("  Type: ").Append(HttpsType).Append("\n");
-            sb.Append("  Cargoentity: ").Append(HttpsCargoentity).Append("\n");
-            sb.Append("  Cargoidentifier: ").Append(HttpsCargoidentifier).Append("\n");
-            sb.Append("  CargoowningOrganization: ").Append(HttpsCargoowningOrganization).Append("\n");
-            sb.Append("  Cargocategory: ").Append(HttpsCargocategory).Append("\n");
-            sb.Append("  CargoregulatedEntityExpiryDate: ").Append(HttpsCargoregulatedEntityExpiryDate).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  entity: ").Append(Entity).Append("\n");
+            sb.Append("  identifier: ").Append(Identifier).Append("\n");
+            sb.Append("  owningOrganization: ").Append(OwningOrganization).Append("\n");
+            sb.Append("  category: ").Append(Category).Append("\n");
+            sb.Append("  regulatedEntityExpiryDate: ").Append(RegulatedEntityExpiryDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -138,40 +138,40 @@ namespace OneRecord.Api.SDK.Model
             }
             return 
                 (
-                    this.HttpsId == httpsInput.HttpsId ||
-                    (this.HttpsId != null &&
-                    this.HttpsId.Equals(httpsInput.HttpsId))
+                    this.Id == httpsInput.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(httpsInput.Id))
                 ) && 
                 (
-                    this.HttpsType == httpsInput.HttpsType ||
-                    this.HttpsType != null &&
-                    httpsInput.HttpsType != null &&
-                    this.HttpsType.SequenceEqual(httpsInput.HttpsType)
+                    this.Type == httpsInput.Type ||
+                    this.Type != null &&
+                    httpsInput.Type != null &&
+                    this.Type.SequenceEqual(httpsInput.Type)
                 ) && 
                 (
-                    this.HttpsCargoentity == httpsInput.HttpsCargoentity ||
-                    (this.HttpsCargoentity != null &&
-                    this.HttpsCargoentity.Equals(httpsInput.HttpsCargoentity))
+                    this.Entity == httpsInput.Entity ||
+                    (this.Entity != null &&
+                    this.Entity.Equals(httpsInput.Entity))
                 ) && 
                 (
-                    this.HttpsCargoidentifier == httpsInput.HttpsCargoidentifier ||
-                    (this.HttpsCargoidentifier != null &&
-                    this.HttpsCargoidentifier.Equals(httpsInput.HttpsCargoidentifier))
+                    this.Identifier == httpsInput.Identifier ||
+                    (this.Identifier != null &&
+                    this.Identifier.Equals(httpsInput.Identifier))
                 ) && 
                 (
-                    this.HttpsCargoowningOrganization == httpsInput.HttpsCargoowningOrganization ||
-                    (this.HttpsCargoowningOrganization != null &&
-                    this.HttpsCargoowningOrganization.Equals(httpsInput.HttpsCargoowningOrganization))
+                    this.OwningOrganization == httpsInput.OwningOrganization ||
+                    (this.OwningOrganization != null &&
+                    this.OwningOrganization.Equals(httpsInput.OwningOrganization))
                 ) && 
                 (
-                    this.HttpsCargocategory == httpsInput.HttpsCargocategory ||
-                    (this.HttpsCargocategory != null &&
-                    this.HttpsCargocategory.Equals(httpsInput.HttpsCargocategory))
+                    this.Category == httpsInput.Category ||
+                    (this.Category != null &&
+                    this.Category.Equals(httpsInput.Category))
                 ) && 
                 (
-                    this.HttpsCargoregulatedEntityExpiryDate == httpsInput.HttpsCargoregulatedEntityExpiryDate ||
-                    (this.HttpsCargoregulatedEntityExpiryDate != null &&
-                    this.HttpsCargoregulatedEntityExpiryDate.Equals(httpsInput.HttpsCargoregulatedEntityExpiryDate))
+                    this.RegulatedEntityExpiryDate == httpsInput.RegulatedEntityExpiryDate ||
+                    (this.RegulatedEntityExpiryDate != null &&
+                    this.RegulatedEntityExpiryDate.Equals(httpsInput.RegulatedEntityExpiryDate))
                 );
         }
 
@@ -184,33 +184,33 @@ namespace OneRecord.Api.SDK.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HttpsId != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.HttpsType != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
-                if (this.HttpsCargoentity != null)
+                if (this.Entity != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoentity.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Entity.GetHashCode();
                 }
-                if (this.HttpsCargoidentifier != null)
+                if (this.Identifier != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoidentifier.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Identifier.GetHashCode();
                 }
-                if (this.HttpsCargoowningOrganization != null)
+                if (this.OwningOrganization != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoowningOrganization.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OwningOrganization.GetHashCode();
                 }
-                if (this.HttpsCargocategory != null)
+                if (this.Category != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocategory.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Category.GetHashCode();
                 }
-                if (this.HttpsCargoregulatedEntityExpiryDate != null)
+                if (this.RegulatedEntityExpiryDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoregulatedEntityExpiryDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.RegulatedEntityExpiryDate.GetHashCode();
                 }
                 return hashCode;
             }

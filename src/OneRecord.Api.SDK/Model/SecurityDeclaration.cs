@@ -27,153 +27,153 @@ namespace OneRecord.Api.SDK.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SecurityDeclaration" /> class.
         /// </summary>
-        /// <param name="httpsId">id.</param>
-        /// <param name="httpsType">type.</param>
-        /// <param name="httpsCargochecks">Cargochecks.</param>
-        /// <param name="httpsCargoevents">Cargoevents.</param>
-        /// <param name="httpsCargoexternalReferences">CargoexternalReferences.</param>
-        /// <param name="httpsCargocompanyIdentifier">CargocompanyIdentifier.</param>
-        /// <param name="httpsCargoskeletonIndicator">CargoskeletonIndicator.</param>
-        /// <param name="httpsCargoissuedBy">CargoissuedBy.</param>
-        /// <param name="httpsCargoissuedForPiece">CargoissuedForPiece.</param>
-        /// <param name="httpsCargootherRegulatedEntities">CargootherRegulatedEntities.</param>
-        /// <param name="httpsCargoreceivedFrom">CargoreceivedFrom.</param>
-        /// <param name="httpsCargoregulatedEntityIssuer">CargoregulatedEntityIssuer.</param>
-        /// <param name="httpsCargoadditionalSecurityInformation">CargoadditionalSecurityInformation.</param>
-        /// <param name="httpsCargogroundsForExemption">CargogroundsForExemption.</param>
-        /// <param name="httpsCargoissuedOn">CargoissuedOn.</param>
-        /// <param name="httpsCargootherScreeningMethods">CargootherScreeningMethods.</param>
-        /// <param name="httpsCargoscreeningMethods">CargoscreeningMethods.</param>
-        /// <param name="httpsCargosecurityStatus">CargosecurityStatus.</param>
-        public SecurityDeclaration(string httpsId = default(string), List<string> httpsType = default(List<string>), List<Check> httpsCargochecks = default(List<Check>), List<LogisticsEvent> httpsCargoevents = default(List<LogisticsEvent>), List<ExternalReference> httpsCargoexternalReferences = default(List<ExternalReference>), string httpsCargocompanyIdentifier = default(string), bool httpsCargoskeletonIndicator = default(bool), Person httpsCargoissuedBy = default(Person), Piece httpsCargoissuedForPiece = default(Piece), List<RegulatedEntity> httpsCargootherRegulatedEntities = default(List<RegulatedEntity>), RegulatedEntity httpsCargoreceivedFrom = default(RegulatedEntity), RegulatedEntity httpsCargoregulatedEntityIssuer = default(RegulatedEntity), string httpsCargoadditionalSecurityInformation = default(string), List<string> httpsCargogroundsForExemption = default(List<string>), DateTime httpsCargoissuedOn = default(DateTime), List<string> httpsCargootherScreeningMethods = default(List<string>), List<string> httpsCargoscreeningMethods = default(List<string>), string httpsCargosecurityStatus = default(string))
+        /// <param name="id">id.</param>
+        /// <param name="type">type.</param>
+        /// <param name="checks">Cargochecks.</param>
+        /// <param name="events">Cargoevents.</param>
+        /// <param name="externalReferences">CargoexternalReferences.</param>
+        /// <param name="companyIdentifier">CargocompanyIdentifier.</param>
+        /// <param name="skeletonIndicator">CargoskeletonIndicator.</param>
+        /// <param name="issuedBy">CargoissuedBy.</param>
+        /// <param name="issuedForPiece">CargoissuedForPiece.</param>
+        /// <param name="otherRegulatedEntities">CargootherRegulatedEntities.</param>
+        /// <param name="receivedFrom">CargoreceivedFrom.</param>
+        /// <param name="regulatedEntityIssuer">CargoregulatedEntityIssuer.</param>
+        /// <param name="additionalSecurityInformation">CargoadditionalSecurityInformation.</param>
+        /// <param name="groundsForExemption">CargogroundsForExemption.</param>
+        /// <param name="issuedOn">CargoissuedOn.</param>
+        /// <param name="otherScreeningMethods">CargootherScreeningMethods.</param>
+        /// <param name="screeningMethods">CargoscreeningMethods.</param>
+        /// <param name="securityStatus">CargosecurityStatus.</param>
+        public SecurityDeclaration(string id = default(string), List<string> type = default(List<string>), List<Check> checks = default(List<Check>), List<LogisticsEvent> events = default(List<LogisticsEvent>), List<ExternalReference> externalReferences = default(List<ExternalReference>), string companyIdentifier = default(string), bool skeletonIndicator = default(bool), Person issuedBy = default(Person), Piece issuedForPiece = default(Piece), List<RegulatedEntity> otherRegulatedEntities = default(List<RegulatedEntity>), RegulatedEntity receivedFrom = default(RegulatedEntity), RegulatedEntity regulatedEntityIssuer = default(RegulatedEntity), string additionalSecurityInformation = default(string), List<string> groundsForExemption = default(List<string>), DateTime issuedOn = default(DateTime), List<string> otherScreeningMethods = default(List<string>), List<string> screeningMethods = default(List<string>), string securityStatus = default(string))
         {
-            this.HttpsId = httpsId;
-            this.HttpsType = httpsType;
-            this.HttpsCargochecks = httpsCargochecks;
-            this.HttpsCargoevents = httpsCargoevents;
-            this.HttpsCargoexternalReferences = httpsCargoexternalReferences;
-            this.HttpsCargocompanyIdentifier = httpsCargocompanyIdentifier;
-            this.HttpsCargoskeletonIndicator = httpsCargoskeletonIndicator;
-            this.HttpsCargoissuedBy = httpsCargoissuedBy;
-            this.HttpsCargoissuedForPiece = httpsCargoissuedForPiece;
-            this.HttpsCargootherRegulatedEntities = httpsCargootherRegulatedEntities;
-            this.HttpsCargoreceivedFrom = httpsCargoreceivedFrom;
-            this.HttpsCargoregulatedEntityIssuer = httpsCargoregulatedEntityIssuer;
-            this.HttpsCargoadditionalSecurityInformation = httpsCargoadditionalSecurityInformation;
-            this.HttpsCargogroundsForExemption = httpsCargogroundsForExemption;
-            this.HttpsCargoissuedOn = httpsCargoissuedOn;
-            this.HttpsCargootherScreeningMethods = httpsCargootherScreeningMethods;
-            this.HttpsCargoscreeningMethods = httpsCargoscreeningMethods;
-            this.HttpsCargosecurityStatus = httpsCargosecurityStatus;
+            this.Id = id;
+            this.Type = type;
+            this.Checks = checks;
+            this.Events = events;
+            this.ExternalReferences = externalReferences;
+            this.CompanyIdentifier = companyIdentifier;
+            this.SkeletonIndicator = skeletonIndicator;
+            this.IssuedBy = issuedBy;
+            this.IssuedForPiece = issuedForPiece;
+            this.OtherRegulatedEntities = otherRegulatedEntities;
+            this.ReceivedFrom = receivedFrom;
+            this.RegulatedEntityIssuer = regulatedEntityIssuer;
+            this.AdditionalSecurityInformation = additionalSecurityInformation;
+            this.GroundsForExemption = groundsForExemption;
+            this.IssuedOn = issuedOn;
+            this.OtherScreeningMethods = otherScreeningMethods;
+            this.ScreeningMethods = screeningMethods;
+            this.SecurityStatus = securityStatus;
         }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string HttpsId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> HttpsType { get; set; }
+        public List<string> Type { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cargochecks
+        /// Gets or Sets Checks
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checks", EmitDefaultValue = false)]
-        public List<Check> HttpsCargochecks { get; set; }
+        public List<Check> Checks { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cargoevents
+        /// Gets or Sets Events
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#events", EmitDefaultValue = false)]
-        public List<LogisticsEvent> HttpsCargoevents { get; set; }
+        public List<LogisticsEvent> Events { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoexternalReferences
+        /// Gets or Sets ExternalReferences
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#externalReferences", EmitDefaultValue = false)]
-        public List<ExternalReference> HttpsCargoexternalReferences { get; set; }
+        public List<ExternalReference> ExternalReferences { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargocompanyIdentifier
+        /// Gets or Sets CompanyIdentifier
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#companyIdentifier", EmitDefaultValue = false)]
-        public string HttpsCargocompanyIdentifier { get; set; }
+        public string CompanyIdentifier { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoskeletonIndicator
+        /// Gets or Sets SkeletonIndicator
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#skeletonIndicator", EmitDefaultValue = true)]
-        public bool HttpsCargoskeletonIndicator { get; set; }
+        public bool SkeletonIndicator { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoissuedBy
+        /// Gets or Sets IssuedBy
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#issuedBy", EmitDefaultValue = false)]
-        public Person HttpsCargoissuedBy { get; set; }
+        public Person IssuedBy { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoissuedForPiece
+        /// Gets or Sets IssuedForPiece
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#issuedForPiece", EmitDefaultValue = false)]
-        public Piece HttpsCargoissuedForPiece { get; set; }
+        public Piece IssuedForPiece { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargootherRegulatedEntities
+        /// Gets or Sets OtherRegulatedEntities
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#otherRegulatedEntities", EmitDefaultValue = false)]
-        public List<RegulatedEntity> HttpsCargootherRegulatedEntities { get; set; }
+        public List<RegulatedEntity> OtherRegulatedEntities { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoreceivedFrom
+        /// Gets or Sets ReceivedFrom
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#receivedFrom", EmitDefaultValue = false)]
-        public RegulatedEntity HttpsCargoreceivedFrom { get; set; }
+        public RegulatedEntity ReceivedFrom { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoregulatedEntityIssuer
+        /// Gets or Sets RegulatedEntityIssuer
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#regulatedEntityIssuer", EmitDefaultValue = false)]
-        public RegulatedEntity HttpsCargoregulatedEntityIssuer { get; set; }
+        public RegulatedEntity RegulatedEntityIssuer { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoadditionalSecurityInformation
+        /// Gets or Sets AdditionalSecurityInformation
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#additionalSecurityInformation", EmitDefaultValue = false)]
-        public string HttpsCargoadditionalSecurityInformation { get; set; }
+        public string AdditionalSecurityInformation { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargogroundsForExemption
+        /// Gets or Sets GroundsForExemption
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#groundsForExemption", EmitDefaultValue = false)]
-        public List<string> HttpsCargogroundsForExemption { get; set; }
+        public List<string> GroundsForExemption { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoissuedOn
+        /// Gets or Sets IssuedOn
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#issuedOn", EmitDefaultValue = false)]
-        public DateTime HttpsCargoissuedOn { get; set; }
+        public DateTime IssuedOn { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargootherScreeningMethods
+        /// Gets or Sets OtherScreeningMethods
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#otherScreeningMethods", EmitDefaultValue = false)]
-        public List<string> HttpsCargootherScreeningMethods { get; set; }
+        public List<string> OtherScreeningMethods { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargoscreeningMethods
+        /// Gets or Sets ScreeningMethods
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#screeningMethods", EmitDefaultValue = false)]
-        public List<string> HttpsCargoscreeningMethods { get; set; }
+        public List<string> ScreeningMethods { get; set; }
 
         /// <summary>
-        /// Gets or Sets CargosecurityStatus
+        /// Gets or Sets SecurityStatus
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#securityStatus", EmitDefaultValue = false)]
-        public string HttpsCargosecurityStatus { get; set; }
+        public string SecurityStatus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -183,24 +183,24 @@ namespace OneRecord.Api.SDK.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SecurityDeclaration {\n");
-            sb.Append("  Id: ").Append(HttpsId).Append("\n");
-            sb.Append("  Type: ").Append(HttpsType).Append("\n");
-            sb.Append("  Cargochecks: ").Append(HttpsCargochecks).Append("\n");
-            sb.Append("  Cargoevents: ").Append(HttpsCargoevents).Append("\n");
-            sb.Append("  CargoexternalReferences: ").Append(HttpsCargoexternalReferences).Append("\n");
-            sb.Append("  CargocompanyIdentifier: ").Append(HttpsCargocompanyIdentifier).Append("\n");
-            sb.Append("  CargoskeletonIndicator: ").Append(HttpsCargoskeletonIndicator).Append("\n");
-            sb.Append("  CargoissuedBy: ").Append(HttpsCargoissuedBy).Append("\n");
-            sb.Append("  CargoissuedForPiece: ").Append(HttpsCargoissuedForPiece).Append("\n");
-            sb.Append("  CargootherRegulatedEntities: ").Append(HttpsCargootherRegulatedEntities).Append("\n");
-            sb.Append("  CargoreceivedFrom: ").Append(HttpsCargoreceivedFrom).Append("\n");
-            sb.Append("  CargoregulatedEntityIssuer: ").Append(HttpsCargoregulatedEntityIssuer).Append("\n");
-            sb.Append("  CargoadditionalSecurityInformation: ").Append(HttpsCargoadditionalSecurityInformation).Append("\n");
-            sb.Append("  CargogroundsForExemption: ").Append(HttpsCargogroundsForExemption).Append("\n");
-            sb.Append("  CargoissuedOn: ").Append(HttpsCargoissuedOn).Append("\n");
-            sb.Append("  CargootherScreeningMethods: ").Append(HttpsCargootherScreeningMethods).Append("\n");
-            sb.Append("  CargoscreeningMethods: ").Append(HttpsCargoscreeningMethods).Append("\n");
-            sb.Append("  CargosecurityStatus: ").Append(HttpsCargosecurityStatus).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  checks: ").Append(Checks).Append("\n");
+            sb.Append("  events: ").Append(Events).Append("\n");
+            sb.Append("  externalReferences: ").Append(ExternalReferences).Append("\n");
+            sb.Append("  companyIdentifier: ").Append(CompanyIdentifier).Append("\n");
+            sb.Append("  skeletonIndicator: ").Append(SkeletonIndicator).Append("\n");
+            sb.Append("  issuedBy: ").Append(IssuedBy).Append("\n");
+            sb.Append("  issuedForPiece: ").Append(IssuedForPiece).Append("\n");
+            sb.Append("  otherRegulatedEntities: ").Append(OtherRegulatedEntities).Append("\n");
+            sb.Append("  receivedFrom: ").Append(ReceivedFrom).Append("\n");
+            sb.Append("  regulatedEntityIssuer: ").Append(RegulatedEntityIssuer).Append("\n");
+            sb.Append("  additionalSecurityInformation: ").Append(AdditionalSecurityInformation).Append("\n");
+            sb.Append("  groundsForExemption: ").Append(GroundsForExemption).Append("\n");
+            sb.Append("  issuedOn: ").Append(IssuedOn).Append("\n");
+            sb.Append("  otherScreeningMethods: ").Append(OtherScreeningMethods).Append("\n");
+            sb.Append("  screeningMethods: ").Append(ScreeningMethods).Append("\n");
+            sb.Append("  securityStatus: ").Append(SecurityStatus).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -237,101 +237,101 @@ namespace OneRecord.Api.SDK.Model
             }
             return 
                 (
-                    this.HttpsId == httpsInput.HttpsId ||
-                    (this.HttpsId != null &&
-                    this.HttpsId.Equals(httpsInput.HttpsId))
+                    this.Id == httpsInput.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(httpsInput.Id))
                 ) && 
                 (
-                    this.HttpsType == httpsInput.HttpsType ||
-                    this.HttpsType != null &&
-                    httpsInput.HttpsType != null &&
-                    this.HttpsType.SequenceEqual(httpsInput.HttpsType)
+                    this.Type == httpsInput.Type ||
+                    this.Type != null &&
+                    httpsInput.Type != null &&
+                    this.Type.SequenceEqual(httpsInput.Type)
                 ) && 
                 (
-                    this.HttpsCargochecks == httpsInput.HttpsCargochecks ||
-                    this.HttpsCargochecks != null &&
-                    httpsInput.HttpsCargochecks != null &&
-                    this.HttpsCargochecks.SequenceEqual(httpsInput.HttpsCargochecks)
+                    this.Checks == httpsInput.Checks ||
+                    this.Checks != null &&
+                    httpsInput.Checks != null &&
+                    this.Checks.SequenceEqual(httpsInput.Checks)
                 ) && 
                 (
-                    this.HttpsCargoevents == httpsInput.HttpsCargoevents ||
-                    this.HttpsCargoevents != null &&
-                    httpsInput.HttpsCargoevents != null &&
-                    this.HttpsCargoevents.SequenceEqual(httpsInput.HttpsCargoevents)
+                    this.Events == httpsInput.Events ||
+                    this.Events != null &&
+                    httpsInput.Events != null &&
+                    this.Events.SequenceEqual(httpsInput.Events)
                 ) && 
                 (
-                    this.HttpsCargoexternalReferences == httpsInput.HttpsCargoexternalReferences ||
-                    this.HttpsCargoexternalReferences != null &&
-                    httpsInput.HttpsCargoexternalReferences != null &&
-                    this.HttpsCargoexternalReferences.SequenceEqual(httpsInput.HttpsCargoexternalReferences)
+                    this.ExternalReferences == httpsInput.ExternalReferences ||
+                    this.ExternalReferences != null &&
+                    httpsInput.ExternalReferences != null &&
+                    this.ExternalReferences.SequenceEqual(httpsInput.ExternalReferences)
                 ) && 
                 (
-                    this.HttpsCargocompanyIdentifier == httpsInput.HttpsCargocompanyIdentifier ||
-                    (this.HttpsCargocompanyIdentifier != null &&
-                    this.HttpsCargocompanyIdentifier.Equals(httpsInput.HttpsCargocompanyIdentifier))
+                    this.CompanyIdentifier == httpsInput.CompanyIdentifier ||
+                    (this.CompanyIdentifier != null &&
+                    this.CompanyIdentifier.Equals(httpsInput.CompanyIdentifier))
                 ) && 
                 (
-                    this.HttpsCargoskeletonIndicator == httpsInput.HttpsCargoskeletonIndicator ||
-                    this.HttpsCargoskeletonIndicator.Equals(httpsInput.HttpsCargoskeletonIndicator)
+                    this.SkeletonIndicator == httpsInput.SkeletonIndicator ||
+                    this.SkeletonIndicator.Equals(httpsInput.SkeletonIndicator)
                 ) && 
                 (
-                    this.HttpsCargoissuedBy == httpsInput.HttpsCargoissuedBy ||
-                    (this.HttpsCargoissuedBy != null &&
-                    this.HttpsCargoissuedBy.Equals(httpsInput.HttpsCargoissuedBy))
+                    this.IssuedBy == httpsInput.IssuedBy ||
+                    (this.IssuedBy != null &&
+                    this.IssuedBy.Equals(httpsInput.IssuedBy))
                 ) && 
                 (
-                    this.HttpsCargoissuedForPiece == httpsInput.HttpsCargoissuedForPiece ||
-                    (this.HttpsCargoissuedForPiece != null &&
-                    this.HttpsCargoissuedForPiece.Equals(httpsInput.HttpsCargoissuedForPiece))
+                    this.IssuedForPiece == httpsInput.IssuedForPiece ||
+                    (this.IssuedForPiece != null &&
+                    this.IssuedForPiece.Equals(httpsInput.IssuedForPiece))
                 ) && 
                 (
-                    this.HttpsCargootherRegulatedEntities == httpsInput.HttpsCargootherRegulatedEntities ||
-                    this.HttpsCargootherRegulatedEntities != null &&
-                    httpsInput.HttpsCargootherRegulatedEntities != null &&
-                    this.HttpsCargootherRegulatedEntities.SequenceEqual(httpsInput.HttpsCargootherRegulatedEntities)
+                    this.OtherRegulatedEntities == httpsInput.OtherRegulatedEntities ||
+                    this.OtherRegulatedEntities != null &&
+                    httpsInput.OtherRegulatedEntities != null &&
+                    this.OtherRegulatedEntities.SequenceEqual(httpsInput.OtherRegulatedEntities)
                 ) && 
                 (
-                    this.HttpsCargoreceivedFrom == httpsInput.HttpsCargoreceivedFrom ||
-                    (this.HttpsCargoreceivedFrom != null &&
-                    this.HttpsCargoreceivedFrom.Equals(httpsInput.HttpsCargoreceivedFrom))
+                    this.ReceivedFrom == httpsInput.ReceivedFrom ||
+                    (this.ReceivedFrom != null &&
+                    this.ReceivedFrom.Equals(httpsInput.ReceivedFrom))
                 ) && 
                 (
-                    this.HttpsCargoregulatedEntityIssuer == httpsInput.HttpsCargoregulatedEntityIssuer ||
-                    (this.HttpsCargoregulatedEntityIssuer != null &&
-                    this.HttpsCargoregulatedEntityIssuer.Equals(httpsInput.HttpsCargoregulatedEntityIssuer))
+                    this.RegulatedEntityIssuer == httpsInput.RegulatedEntityIssuer ||
+                    (this.RegulatedEntityIssuer != null &&
+                    this.RegulatedEntityIssuer.Equals(httpsInput.RegulatedEntityIssuer))
                 ) && 
                 (
-                    this.HttpsCargoadditionalSecurityInformation == httpsInput.HttpsCargoadditionalSecurityInformation ||
-                    (this.HttpsCargoadditionalSecurityInformation != null &&
-                    this.HttpsCargoadditionalSecurityInformation.Equals(httpsInput.HttpsCargoadditionalSecurityInformation))
+                    this.AdditionalSecurityInformation == httpsInput.AdditionalSecurityInformation ||
+                    (this.AdditionalSecurityInformation != null &&
+                    this.AdditionalSecurityInformation.Equals(httpsInput.AdditionalSecurityInformation))
                 ) && 
                 (
-                    this.HttpsCargogroundsForExemption == httpsInput.HttpsCargogroundsForExemption ||
-                    this.HttpsCargogroundsForExemption != null &&
-                    httpsInput.HttpsCargogroundsForExemption != null &&
-                    this.HttpsCargogroundsForExemption.SequenceEqual(httpsInput.HttpsCargogroundsForExemption)
+                    this.GroundsForExemption == httpsInput.GroundsForExemption ||
+                    this.GroundsForExemption != null &&
+                    httpsInput.GroundsForExemption != null &&
+                    this.GroundsForExemption.SequenceEqual(httpsInput.GroundsForExemption)
                 ) && 
                 (
-                    this.HttpsCargoissuedOn == httpsInput.HttpsCargoissuedOn ||
-                    (this.HttpsCargoissuedOn != null &&
-                    this.HttpsCargoissuedOn.Equals(httpsInput.HttpsCargoissuedOn))
+                    this.IssuedOn == httpsInput.IssuedOn ||
+                    (this.IssuedOn != null &&
+                    this.IssuedOn.Equals(httpsInput.IssuedOn))
                 ) && 
                 (
-                    this.HttpsCargootherScreeningMethods == httpsInput.HttpsCargootherScreeningMethods ||
-                    this.HttpsCargootherScreeningMethods != null &&
-                    httpsInput.HttpsCargootherScreeningMethods != null &&
-                    this.HttpsCargootherScreeningMethods.SequenceEqual(httpsInput.HttpsCargootherScreeningMethods)
+                    this.OtherScreeningMethods == httpsInput.OtherScreeningMethods ||
+                    this.OtherScreeningMethods != null &&
+                    httpsInput.OtherScreeningMethods != null &&
+                    this.OtherScreeningMethods.SequenceEqual(httpsInput.OtherScreeningMethods)
                 ) && 
                 (
-                    this.HttpsCargoscreeningMethods == httpsInput.HttpsCargoscreeningMethods ||
-                    this.HttpsCargoscreeningMethods != null &&
-                    httpsInput.HttpsCargoscreeningMethods != null &&
-                    this.HttpsCargoscreeningMethods.SequenceEqual(httpsInput.HttpsCargoscreeningMethods)
+                    this.ScreeningMethods == httpsInput.ScreeningMethods ||
+                    this.ScreeningMethods != null &&
+                    httpsInput.ScreeningMethods != null &&
+                    this.ScreeningMethods.SequenceEqual(httpsInput.ScreeningMethods)
                 ) && 
                 (
-                    this.HttpsCargosecurityStatus == httpsInput.HttpsCargosecurityStatus ||
-                    (this.HttpsCargosecurityStatus != null &&
-                    this.HttpsCargosecurityStatus.Equals(httpsInput.HttpsCargosecurityStatus))
+                    this.SecurityStatus == httpsInput.SecurityStatus ||
+                    (this.SecurityStatus != null &&
+                    this.SecurityStatus.Equals(httpsInput.SecurityStatus))
                 );
         }
 
@@ -344,74 +344,74 @@ namespace OneRecord.Api.SDK.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HttpsId != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.HttpsType != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
-                if (this.HttpsCargochecks != null)
+                if (this.Checks != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargochecks.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Checks.GetHashCode();
                 }
-                if (this.HttpsCargoevents != null)
+                if (this.Events != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoevents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Events.GetHashCode();
                 }
-                if (this.HttpsCargoexternalReferences != null)
+                if (this.ExternalReferences != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoexternalReferences.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ExternalReferences.GetHashCode();
                 }
-                if (this.HttpsCargocompanyIdentifier != null)
+                if (this.CompanyIdentifier != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocompanyIdentifier.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CompanyIdentifier.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.HttpsCargoskeletonIndicator.GetHashCode();
-                if (this.HttpsCargoissuedBy != null)
+                hashCode = (hashCode * 59) + this.SkeletonIndicator.GetHashCode();
+                if (this.IssuedBy != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoissuedBy.GetHashCode();
+                    hashCode = (hashCode * 59) + this.IssuedBy.GetHashCode();
                 }
-                if (this.HttpsCargoissuedForPiece != null)
+                if (this.IssuedForPiece != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoissuedForPiece.GetHashCode();
+                    hashCode = (hashCode * 59) + this.IssuedForPiece.GetHashCode();
                 }
-                if (this.HttpsCargootherRegulatedEntities != null)
+                if (this.OtherRegulatedEntities != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargootherRegulatedEntities.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OtherRegulatedEntities.GetHashCode();
                 }
-                if (this.HttpsCargoreceivedFrom != null)
+                if (this.ReceivedFrom != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoreceivedFrom.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ReceivedFrom.GetHashCode();
                 }
-                if (this.HttpsCargoregulatedEntityIssuer != null)
+                if (this.RegulatedEntityIssuer != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoregulatedEntityIssuer.GetHashCode();
+                    hashCode = (hashCode * 59) + this.RegulatedEntityIssuer.GetHashCode();
                 }
-                if (this.HttpsCargoadditionalSecurityInformation != null)
+                if (this.AdditionalSecurityInformation != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoadditionalSecurityInformation.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AdditionalSecurityInformation.GetHashCode();
                 }
-                if (this.HttpsCargogroundsForExemption != null)
+                if (this.GroundsForExemption != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargogroundsForExemption.GetHashCode();
+                    hashCode = (hashCode * 59) + this.GroundsForExemption.GetHashCode();
                 }
-                if (this.HttpsCargoissuedOn != null)
+                if (this.IssuedOn != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoissuedOn.GetHashCode();
+                    hashCode = (hashCode * 59) + this.IssuedOn.GetHashCode();
                 }
-                if (this.HttpsCargootherScreeningMethods != null)
+                if (this.OtherScreeningMethods != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargootherScreeningMethods.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OtherScreeningMethods.GetHashCode();
                 }
-                if (this.HttpsCargoscreeningMethods != null)
+                if (this.ScreeningMethods != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoscreeningMethods.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ScreeningMethods.GetHashCode();
                 }
-                if (this.HttpsCargosecurityStatus != null)
+                if (this.SecurityStatus != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargosecurityStatus.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SecurityStatus.GetHashCode();
                 }
                 return hashCode;
             }

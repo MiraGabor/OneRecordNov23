@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jozsa\\source\\repos\\OneRecordNov23\\src\\OneCheck.Domain\\OneCheck.Domain.csproj": {}
+    "C:\\Users\\jozr\\Documents\\GitHub\\OneRecordNov23\\src\\OneCheck.Domain\\OneCheck.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jozsa\\source\\repos\\OneRecordNov23\\src\\OneCheck.Domain\\OneCheck.Domain.csproj": {
+    "C:\\Users\\jozr\\Documents\\GitHub\\OneRecordNov23\\src\\OneCheck.Domain\\OneCheck.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jozsa\\source\\repos\\OneRecordNov23\\src\\OneCheck.Domain\\OneCheck.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\jozr\\Documents\\GitHub\\OneRecordNov23\\src\\OneCheck.Domain\\OneCheck.Domain.csproj",
         "projectName": "OneCheck.Domain",
-        "projectPath": "C:\\Users\\jozsa\\source\\repos\\OneRecordNov23\\src\\OneCheck.Domain\\OneCheck.Domain.csproj",
-        "packagesPath": "C:\\Users\\jozsa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jozsa\\source\\repos\\OneRecordNov23\\src\\OneCheck.Domain\\obj\\",
+        "projectPath": "C:\\Users\\jozr\\Documents\\GitHub\\OneRecordNov23\\src\\OneCheck.Domain\\OneCheck.Domain.csproj",
+        "packagesPath": "C:\\Users\\jozr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jozr\\Documents\\GitHub\\OneRecordNov23\\src\\OneCheck.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jozsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jozr\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,8 +25,10 @@
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/lhg-ddl/CRM/_packaging/CustisNugetPackages/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {

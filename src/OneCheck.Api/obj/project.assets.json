@@ -551,23 +551,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jozsa\\.nuget\\packages\\": {},
+    "C:\\Users\\jozr\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jozsa\\source\\repos\\OneRecordNov23\\src\\OneCheck.Api\\OneCheck.Api.csproj",
+      "projectUniqueName": "C:\\Users\\jozr\\Documents\\GitHub\\OneRecordNov23\\src\\OneCheck.Api\\OneCheck.Api.csproj",
       "projectName": "OneCheck.Api",
-      "projectPath": "C:\\Users\\jozsa\\source\\repos\\OneRecordNov23\\src\\OneCheck.Api\\OneCheck.Api.csproj",
-      "packagesPath": "C:\\Users\\jozsa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jozsa\\source\\repos\\OneRecordNov23\\src\\OneCheck.Api\\obj\\",
+      "projectPath": "C:\\Users\\jozr\\Documents\\GitHub\\OneRecordNov23\\src\\OneCheck.Api\\OneCheck.Api.csproj",
+      "packagesPath": "C:\\Users\\jozr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jozr\\Documents\\GitHub\\OneRecordNov23\\src\\OneCheck.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\jozsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jozr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -575,15 +575,17 @@
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/lhg-ddl/CRM/_packaging/CustisNugetPackages/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\jozsa\\source\\repos\\OneRecordNov23\\src\\OneCheck.Application\\OneCheck.Application.csproj": {
-              "projectPath": "C:\\Users\\jozsa\\source\\repos\\OneRecordNov23\\src\\OneCheck.Application\\OneCheck.Application.csproj"
+            "C:\\Users\\jozr\\Documents\\GitHub\\OneRecordNov23\\src\\OneCheck.Application\\OneCheck.Application.csproj": {
+              "projectPath": "C:\\Users\\jozr\\Documents\\GitHub\\OneRecordNov23\\src\\OneCheck.Application\\OneCheck.Application.csproj"
             }
           }
         }

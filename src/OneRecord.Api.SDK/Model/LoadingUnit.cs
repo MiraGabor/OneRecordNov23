@@ -29,103 +29,103 @@ namespace OneRecord.Api.SDK.Model
         /// </summary>
         /// <param name="httpsId">id.</param>
         /// <param name="httpsType">type.</param>
-        /// <param name="httpsCargochecks">Cargochecks.</param>
-        /// <param name="httpsCargoevents">Cargoevents.</param>
-        /// <param name="httpsCargoexternalReferences">CargoexternalReferences.</param>
-        /// <param name="httpsCargocompanyIdentifier">CargocompanyIdentifier.</param>
-        /// <param name="httpsCargoskeletonIndicator">CargoskeletonIndicator.</param>
-        /// <param name="httpsCargoattachedIotDevices">CargoattachedIotDevices.</param>
-        /// <param name="httpsCargoinvolvedInActions">CargoinvolvedInActions.</param>
-        /// <param name="httpsCargoloadedPiecesOnLoadingUnit">CargoloadedPiecesOnLoadingUnit.</param>
-        /// <param name="httpsCargotareWeight">CargotareWeight.</param>
-        /// <param name="httpsCargoremarks">Cargoremarks.</param>
-        public LoadingUnit(string httpsId = default(string), List<string> httpsType = default(List<string>), List<Check> httpsCargochecks = default(List<Check>), List<LogisticsEvent> httpsCargoevents = default(List<LogisticsEvent>), List<ExternalReference> httpsCargoexternalReferences = default(List<ExternalReference>), string httpsCargocompanyIdentifier = default(string), bool httpsCargoskeletonIndicator = default(bool), List<IotDevice> httpsCargoattachedIotDevices = default(List<IotDevice>), List<LogisticsAction> httpsCargoinvolvedInActions = default(List<LogisticsAction>), List<Piece> httpsCargoloadedPiecesOnLoadingUnit = default(List<Piece>), Value httpsCargotareWeight = default(Value), string httpsCargoremarks = default(string))
+        /// <param name="checks">Cargochecks.</param>
+        /// <param name="events">Cargoevents.</param>
+        /// <param name="externalReferences">CargoexternalReferences.</param>
+        /// <param name="companyIdentifier">CargocompanyIdentifier.</param>
+        /// <param name="skeletonIndicator">CargoskeletonIndicator.</param>
+        /// <param name="attachedIotDevices">CargoattachedIotDevices.</param>
+        /// <param name="involvedInActions">CargoinvolvedInActions.</param>
+        /// <param name="loadedPiecesOnLoadingUnit">CargoloadedPiecesOnLoadingUnit.</param>
+        /// <param name="tareWeight">CargotareWeight.</param>
+        /// <param name="remarks">Cargoremarks.</param>
+        public LoadingUnit(string httpsId = default(string), List<string> httpsType = default(List<string>), List<Check> checks = default(List<Check>), List<LogisticsEvent> events = default(List<LogisticsEvent>), List<ExternalReference> externalReferences = default(List<ExternalReference>), string companyIdentifier = default(string), bool skeletonIndicator = default(bool), List<IotDevice> attachedIotDevices = default(List<IotDevice>), List<LogisticsAction> involvedInActions = default(List<LogisticsAction>), List<Piece> loadedPiecesOnLoadingUnit = default(List<Piece>), Value tareWeight = default(Value), string remarks = default(string))
         {
-            this.HttpsId = httpsId;
-            this.HttpsType = httpsType;
-            this.HttpsCargochecks = httpsCargochecks;
-            this.HttpsCargoevents = httpsCargoevents;
-            this.HttpsCargoexternalReferences = httpsCargoexternalReferences;
-            this.HttpsCargocompanyIdentifier = httpsCargocompanyIdentifier;
-            this.HttpsCargoskeletonIndicator = httpsCargoskeletonIndicator;
-            this.HttpsCargoattachedIotDevices = httpsCargoattachedIotDevices;
-            this.HttpsCargoinvolvedInActions = httpsCargoinvolvedInActions;
-            this.HttpsCargoloadedPiecesOnLoadingUnit = httpsCargoloadedPiecesOnLoadingUnit;
-            this.HttpsCargotareWeight = httpsCargotareWeight;
-            this.HttpsCargoremarks = httpsCargoremarks;
+            this.Id = httpsId;
+            this.Type = httpsType;
+            this.checks = checks;
+            this.events = events;
+            this.externalReferences = externalReferences;
+            this.companyIdentifier = companyIdentifier;
+            this.skeletonIndicator = skeletonIndicator;
+            this.attachedIotDevices = attachedIotDevices;
+            this.involvedInActions = involvedInActions;
+            this.loadedPiecesOnLoadingUnit = loadedPiecesOnLoadingUnit;
+            this.tareWeight = tareWeight;
+            this.remarks = remarks;
         }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string HttpsId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> HttpsType { get; set; }
+        public List<string> Type { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargochecks
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checks", EmitDefaultValue = false)]
-        public List<Check> HttpsCargochecks { get; set; }
+        public List<Check> checks { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargoevents
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#events", EmitDefaultValue = false)]
-        public List<LogisticsEvent> HttpsCargoevents { get; set; }
+        public List<LogisticsEvent> events { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoexternalReferences
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#externalReferences", EmitDefaultValue = false)]
-        public List<ExternalReference> HttpsCargoexternalReferences { get; set; }
+        public List<ExternalReference> externalReferences { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocompanyIdentifier
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#companyIdentifier", EmitDefaultValue = false)]
-        public string HttpsCargocompanyIdentifier { get; set; }
+        public string companyIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoskeletonIndicator
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#skeletonIndicator", EmitDefaultValue = true)]
-        public bool HttpsCargoskeletonIndicator { get; set; }
+        public bool skeletonIndicator { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoattachedIotDevices
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#attachedIotDevices", EmitDefaultValue = false)]
-        public List<IotDevice> HttpsCargoattachedIotDevices { get; set; }
+        public List<IotDevice> attachedIotDevices { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoinvolvedInActions
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#involvedInActions", EmitDefaultValue = false)]
-        public List<LogisticsAction> HttpsCargoinvolvedInActions { get; set; }
+        public List<LogisticsAction> involvedInActions { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoloadedPiecesOnLoadingUnit
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#loadedPiecesOnLoadingUnit", EmitDefaultValue = false)]
-        public List<Piece> HttpsCargoloadedPiecesOnLoadingUnit { get; set; }
+        public List<Piece> loadedPiecesOnLoadingUnit { get; set; }
 
         /// <summary>
         /// Gets or Sets CargotareWeight
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#tareWeight", EmitDefaultValue = false)]
-        public Value HttpsCargotareWeight { get; set; }
+        public Value tareWeight { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargoremarks
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#remarks", EmitDefaultValue = false)]
-        public string HttpsCargoremarks { get; set; }
+        public string remarks { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,18 +135,18 @@ namespace OneRecord.Api.SDK.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class LoadingUnit {\n");
-            sb.Append("  Id: ").Append(HttpsId).Append("\n");
-            sb.Append("  Type: ").Append(HttpsType).Append("\n");
-            sb.Append("  Cargochecks: ").Append(HttpsCargochecks).Append("\n");
-            sb.Append("  Cargoevents: ").Append(HttpsCargoevents).Append("\n");
-            sb.Append("  CargoexternalReferences: ").Append(HttpsCargoexternalReferences).Append("\n");
-            sb.Append("  CargocompanyIdentifier: ").Append(HttpsCargocompanyIdentifier).Append("\n");
-            sb.Append("  CargoskeletonIndicator: ").Append(HttpsCargoskeletonIndicator).Append("\n");
-            sb.Append("  CargoattachedIotDevices: ").Append(HttpsCargoattachedIotDevices).Append("\n");
-            sb.Append("  CargoinvolvedInActions: ").Append(HttpsCargoinvolvedInActions).Append("\n");
-            sb.Append("  CargoloadedPiecesOnLoadingUnit: ").Append(HttpsCargoloadedPiecesOnLoadingUnit).Append("\n");
-            sb.Append("  CargotareWeight: ").Append(HttpsCargotareWeight).Append("\n");
-            sb.Append("  Cargoremarks: ").Append(HttpsCargoremarks).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Cargochecks: ").Append(checks).Append("\n");
+            sb.Append("  Cargoevents: ").Append(events).Append("\n");
+            sb.Append("  CargoexternalReferences: ").Append(externalReferences).Append("\n");
+            sb.Append("  CargocompanyIdentifier: ").Append(companyIdentifier).Append("\n");
+            sb.Append("  CargoskeletonIndicator: ").Append(skeletonIndicator).Append("\n");
+            sb.Append("  CargoattachedIotDevices: ").Append(attachedIotDevices).Append("\n");
+            sb.Append("  CargoinvolvedInActions: ").Append(involvedInActions).Append("\n");
+            sb.Append("  CargoloadedPiecesOnLoadingUnit: ").Append(loadedPiecesOnLoadingUnit).Append("\n");
+            sb.Append("  CargotareWeight: ").Append(tareWeight).Append("\n");
+            sb.Append("  Cargoremarks: ").Append(remarks).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -183,70 +183,70 @@ namespace OneRecord.Api.SDK.Model
             }
             return 
                 (
-                    this.HttpsId == httpsInput.HttpsId ||
-                    (this.HttpsId != null &&
-                    this.HttpsId.Equals(httpsInput.HttpsId))
+                    this.Id == httpsInput.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(httpsInput.Id))
                 ) && 
                 (
-                    this.HttpsType == httpsInput.HttpsType ||
-                    this.HttpsType != null &&
-                    httpsInput.HttpsType != null &&
-                    this.HttpsType.SequenceEqual(httpsInput.HttpsType)
+                    this.Type == httpsInput.Type ||
+                    this.Type != null &&
+                    httpsInput.Type != null &&
+                    this.Type.SequenceEqual(httpsInput.Type)
                 ) && 
                 (
-                    this.HttpsCargochecks == httpsInput.HttpsCargochecks ||
-                    this.HttpsCargochecks != null &&
-                    httpsInput.HttpsCargochecks != null &&
-                    this.HttpsCargochecks.SequenceEqual(httpsInput.HttpsCargochecks)
+                    this.checks == httpsInput.checks ||
+                    this.checks != null &&
+                    httpsInput.checks != null &&
+                    this.checks.SequenceEqual(httpsInput.checks)
                 ) && 
                 (
-                    this.HttpsCargoevents == httpsInput.HttpsCargoevents ||
-                    this.HttpsCargoevents != null &&
-                    httpsInput.HttpsCargoevents != null &&
-                    this.HttpsCargoevents.SequenceEqual(httpsInput.HttpsCargoevents)
+                    this.events == httpsInput.events ||
+                    this.events != null &&
+                    httpsInput.events != null &&
+                    this.events.SequenceEqual(httpsInput.events)
                 ) && 
                 (
-                    this.HttpsCargoexternalReferences == httpsInput.HttpsCargoexternalReferences ||
-                    this.HttpsCargoexternalReferences != null &&
-                    httpsInput.HttpsCargoexternalReferences != null &&
-                    this.HttpsCargoexternalReferences.SequenceEqual(httpsInput.HttpsCargoexternalReferences)
+                    this.externalReferences == httpsInput.externalReferences ||
+                    this.externalReferences != null &&
+                    httpsInput.externalReferences != null &&
+                    this.externalReferences.SequenceEqual(httpsInput.externalReferences)
                 ) && 
                 (
-                    this.HttpsCargocompanyIdentifier == httpsInput.HttpsCargocompanyIdentifier ||
-                    (this.HttpsCargocompanyIdentifier != null &&
-                    this.HttpsCargocompanyIdentifier.Equals(httpsInput.HttpsCargocompanyIdentifier))
+                    this.companyIdentifier == httpsInput.companyIdentifier ||
+                    (this.companyIdentifier != null &&
+                    this.companyIdentifier.Equals(httpsInput.companyIdentifier))
                 ) && 
                 (
-                    this.HttpsCargoskeletonIndicator == httpsInput.HttpsCargoskeletonIndicator ||
-                    this.HttpsCargoskeletonIndicator.Equals(httpsInput.HttpsCargoskeletonIndicator)
+                    this.skeletonIndicator == httpsInput.skeletonIndicator ||
+                    this.skeletonIndicator.Equals(httpsInput.skeletonIndicator)
                 ) && 
                 (
-                    this.HttpsCargoattachedIotDevices == httpsInput.HttpsCargoattachedIotDevices ||
-                    this.HttpsCargoattachedIotDevices != null &&
-                    httpsInput.HttpsCargoattachedIotDevices != null &&
-                    this.HttpsCargoattachedIotDevices.SequenceEqual(httpsInput.HttpsCargoattachedIotDevices)
+                    this.attachedIotDevices == httpsInput.attachedIotDevices ||
+                    this.attachedIotDevices != null &&
+                    httpsInput.attachedIotDevices != null &&
+                    this.attachedIotDevices.SequenceEqual(httpsInput.attachedIotDevices)
                 ) && 
                 (
-                    this.HttpsCargoinvolvedInActions == httpsInput.HttpsCargoinvolvedInActions ||
-                    this.HttpsCargoinvolvedInActions != null &&
-                    httpsInput.HttpsCargoinvolvedInActions != null &&
-                    this.HttpsCargoinvolvedInActions.SequenceEqual(httpsInput.HttpsCargoinvolvedInActions)
+                    this.involvedInActions == httpsInput.involvedInActions ||
+                    this.involvedInActions != null &&
+                    httpsInput.involvedInActions != null &&
+                    this.involvedInActions.SequenceEqual(httpsInput.involvedInActions)
                 ) && 
                 (
-                    this.HttpsCargoloadedPiecesOnLoadingUnit == httpsInput.HttpsCargoloadedPiecesOnLoadingUnit ||
-                    this.HttpsCargoloadedPiecesOnLoadingUnit != null &&
-                    httpsInput.HttpsCargoloadedPiecesOnLoadingUnit != null &&
-                    this.HttpsCargoloadedPiecesOnLoadingUnit.SequenceEqual(httpsInput.HttpsCargoloadedPiecesOnLoadingUnit)
+                    this.loadedPiecesOnLoadingUnit == httpsInput.loadedPiecesOnLoadingUnit ||
+                    this.loadedPiecesOnLoadingUnit != null &&
+                    httpsInput.loadedPiecesOnLoadingUnit != null &&
+                    this.loadedPiecesOnLoadingUnit.SequenceEqual(httpsInput.loadedPiecesOnLoadingUnit)
                 ) && 
                 (
-                    this.HttpsCargotareWeight == httpsInput.HttpsCargotareWeight ||
-                    (this.HttpsCargotareWeight != null &&
-                    this.HttpsCargotareWeight.Equals(httpsInput.HttpsCargotareWeight))
+                    this.tareWeight == httpsInput.tareWeight ||
+                    (this.tareWeight != null &&
+                    this.tareWeight.Equals(httpsInput.tareWeight))
                 ) && 
                 (
-                    this.HttpsCargoremarks == httpsInput.HttpsCargoremarks ||
-                    (this.HttpsCargoremarks != null &&
-                    this.HttpsCargoremarks.Equals(httpsInput.HttpsCargoremarks))
+                    this.remarks == httpsInput.remarks ||
+                    (this.remarks != null &&
+                    this.remarks.Equals(httpsInput.remarks))
                 );
         }
 
@@ -259,50 +259,50 @@ namespace OneRecord.Api.SDK.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HttpsId != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.HttpsType != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
-                if (this.HttpsCargochecks != null)
+                if (this.checks != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargochecks.GetHashCode();
+                    hashCode = (hashCode * 59) + this.checks.GetHashCode();
                 }
-                if (this.HttpsCargoevents != null)
+                if (this.events != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoevents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.events.GetHashCode();
                 }
-                if (this.HttpsCargoexternalReferences != null)
+                if (this.externalReferences != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoexternalReferences.GetHashCode();
+                    hashCode = (hashCode * 59) + this.externalReferences.GetHashCode();
                 }
-                if (this.HttpsCargocompanyIdentifier != null)
+                if (this.companyIdentifier != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocompanyIdentifier.GetHashCode();
+                    hashCode = (hashCode * 59) + this.companyIdentifier.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.HttpsCargoskeletonIndicator.GetHashCode();
-                if (this.HttpsCargoattachedIotDevices != null)
+                hashCode = (hashCode * 59) + this.skeletonIndicator.GetHashCode();
+                if (this.attachedIotDevices != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoattachedIotDevices.GetHashCode();
+                    hashCode = (hashCode * 59) + this.attachedIotDevices.GetHashCode();
                 }
-                if (this.HttpsCargoinvolvedInActions != null)
+                if (this.involvedInActions != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoinvolvedInActions.GetHashCode();
+                    hashCode = (hashCode * 59) + this.involvedInActions.GetHashCode();
                 }
-                if (this.HttpsCargoloadedPiecesOnLoadingUnit != null)
+                if (this.loadedPiecesOnLoadingUnit != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoloadedPiecesOnLoadingUnit.GetHashCode();
+                    hashCode = (hashCode * 59) + this.loadedPiecesOnLoadingUnit.GetHashCode();
                 }
-                if (this.HttpsCargotareWeight != null)
+                if (this.tareWeight != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargotareWeight.GetHashCode();
+                    hashCode = (hashCode * 59) + this.tareWeight.GetHashCode();
                 }
-                if (this.HttpsCargoremarks != null)
+                if (this.remarks != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoremarks.GetHashCode();
+                    hashCode = (hashCode * 59) + this.remarks.GetHashCode();
                 }
                 return hashCode;
             }
