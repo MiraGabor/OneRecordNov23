@@ -22,7 +22,7 @@ namespace OneRecord.Api.SDK.Model
     /// Waybill
     /// </summary>
     [DataContract(Name = "Waybill")]
-    public partial class Waybill : IEquatable<Waybill>, IValidatableObject
+    public partial class Waybill : LogisticsObject, IEquatable<Waybill>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Waybill" /> class.
@@ -87,197 +87,206 @@ namespace OneRecord.Api.SDK.Model
             this.ModularCheckNumber = httpsCargomodularCheckNumber;
             this.OriginCurrency = httpsCargooriginCurrency;
             this.ShippingInfo = httpsCargoshippingInfo;
-            this.HttpsCargoshippingRefNo = httpsCargoshippingRefNo;
-            this.HttpsCargowaybillNumber = httpsCargowaybillNumber;
-            this.HttpsCargowaybillPrefix = httpsCargowaybillPrefix;
-            this.HttpsCargowaybillType = httpsCargowaybillType;
+            this.ShippingRefNo = httpsCargoshippingRefNo;
+            this.WaybillNumber = httpsCargowaybillNumber;
+            this.WaybillPrefix = httpsCargowaybillPrefix;
+            this.WaybillType = httpsCargowaybillType;
         }
 
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Id
+        ///// </summary>
+        //[DataMember(Name = "@id", EmitDefaultValue = false)]
+        //public string Id { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> Type { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Type
+        ///// </summary>
+        //[DataMember(Name = "@type", EmitDefaultValue = false)]
+        //public List<string> Type { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Cargochecks
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checks", EmitDefaultValue = false)]
-        public List<Check> Checks { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Cargochecks
+        ///// </summary>
+        //[DataMember(Name = "cargo:checks", EmitDefaultValue = false)]
+        //public List<Check> Checks { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Cargoevents
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#events", EmitDefaultValue = false)]
-        public List<LogisticsEvent> Events { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Cargoevents
+        ///// </summary>
+        //[DataMember(Name = "cargo:events", EmitDefaultValue = false)]
+        //public List<LogisticsEvent> Events { get; set; }
 
-        /// <summary>
-        /// Gets or Sets CargoexternalReferences
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#externalReferences", EmitDefaultValue = false)]
-        public List<ExternalReference> ExternalReferences { get; set; }
+        ///// <summary>
+        ///// Gets or Sets CargoexternalReferences
+        ///// </summary>
+        //[DataMember(Name = "cargo:externalReferences", EmitDefaultValue = false)]
+        //public List<ExternalReference> ExternalReferences { get; set; }
 
-        /// <summary>
-        /// Gets or Sets CargocompanyIdentifier
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#companyIdentifier", EmitDefaultValue = false)]
-        public string CompanyIdentifier { get; set; }
+        ///// <summary>
+        ///// Gets or Sets CargocompanyIdentifier
+        ///// </summary>
+        //[DataMember(Name = "cargo:companyIdentifier", EmitDefaultValue = false)]
+        //public string CompanyIdentifier { get; set; }
 
+        ///// <summary>
+        ///// Gets or Sets CargoskeletonIndicator
+        ///// </summary>
+        //[DataMember(Name = "cargo:skeletonIndicator", EmitDefaultValue = true)]
+        //public bool SkeletonIndicator { get; set; }
+        
         /// <summary>
-        /// Gets or Sets CargoskeletonIndicator
+        /// Gets or Sets Context
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#skeletonIndicator", EmitDefaultValue = true)]
-        public bool SkeletonIndicator { get; set; }
+        [DataMember(Name = "@context", EmitDefaultValue = true)]
+        public Context Context = new Context
+        {
+            Cargo = "https://onerecord.iata.org/ns/cargo#"
+        };
 
         /// <summary>
         /// Gets or Sets CargoarrivalLocation
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#arrivalLocation", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:arrivalLocation", EmitDefaultValue = false)]
         public Location ArrivalLocation { get; set; }
 
         /// <summary>
         /// Gets or Sets CargobillingDetails
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#billingDetails", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:billingDetails", EmitDefaultValue = false)]
         public BillingDetails BillingDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocarrierDeclarationPlace
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#carrierDeclarationPlace", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:carrierDeclarationPlace", EmitDefaultValue = false)]
         public Location CarrierDeclarationPlace { get; set; }
 
         /// <summary>
         /// Gets or Sets CargodepartureLocation
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#departureLocation", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:departureLocation", EmitDefaultValue = false)]
         public Location DepartureLocation { get; set; }
 
         /// <summary>
         /// Gets or Sets CargohouseWaybills
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#houseWaybills", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:houseWaybills", EmitDefaultValue = false)]
         public List<Waybill> HouseWaybills { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoinvolvedParties
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#involvedParties", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:involvedParties", EmitDefaultValue = false)]
         public List<Party> InvolvedParties { get; set; }
 
         /// <summary>
         /// Gets or Sets CargomasterWaybill
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#masterWaybill", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:masterWaybill", EmitDefaultValue = false)]
         public Waybill MasterWaybill { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoreferredBookingOption
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#referredBookingOption", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:referredBookingOption", EmitDefaultValue = false)]
         public Booking ReferredBookingOption { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargoshipment
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#shipment", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:shipment", EmitDefaultValue = false)]
         public Shipment Shipment { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoaccountingInformation
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#accountingInformation", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:accountingInformation", EmitDefaultValue = false)]
         public string AccountingInformation { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocarrierDeclarationDate
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#carrierDeclarationDate", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:carrierDeclarationDate", EmitDefaultValue = false)]
         public DateTime CarrierDeclarationDate { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocarrierDeclarationSignature
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#carrierDeclarationSignature", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:carrierDeclarationSignature", EmitDefaultValue = false)]
         public string CarrierDeclarationSignature { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoconsignorDeclarationSignature
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#consignorDeclarationSignature", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:consignorDeclarationSignature", EmitDefaultValue = false)]
         public string ConsignorDeclarationSignature { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocustomsOriginCode
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#customsOriginCode", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:customsOriginCode", EmitDefaultValue = false)]
         public string CustomsOriginCode { get; set; }
 
         /// <summary>
         /// Gets or Sets CargodestinationCharges
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#destinationCharges", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:destinationCharges", EmitDefaultValue = false)]
         public List<double> DestinationCharges { get; set; }
 
         /// <summary>
         /// Gets or Sets CargodestinationCurrencyCode
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#destinationCurrencyCode", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:destinationCurrencyCode", EmitDefaultValue = false)]
         public string DestinationCurrencyCode { get; set; }
 
         /// <summary>
         /// Gets or Sets CargodestinationCurrencyRate
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#destinationCurrencyRate", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:destinationCurrencyRate", EmitDefaultValue = false)]
         public double DestinationCurrencyRate { get; set; }
 
         /// <summary>
         /// Gets or Sets CargomodularCheckNumber
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#modularCheckNumber", EmitDefaultValue = true)]
+        [DataMember(Name = "cargo:modularCheckNumber", EmitDefaultValue = true)]
         public bool ModularCheckNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets CargooriginCurrency
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#originCurrency", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:originCurrency", EmitDefaultValue = false)]
         public string OriginCurrency { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoshippingInfo
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#shippingInfo", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:shippingInfo", EmitDefaultValue = false)]
         public string ShippingInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoshippingRefNo
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#shippingRefNo", EmitDefaultValue = false)]
-        public string HttpsCargoshippingRefNo { get; set; }
+        [DataMember(Name = "cargo:shippingRefNo", EmitDefaultValue = false)]
+        public string ShippingRefNo { get; set; }
 
         /// <summary>
         /// Gets or Sets CargowaybillNumber
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#waybillNumber", EmitDefaultValue = false)]
-        public string HttpsCargowaybillNumber { get; set; }
+        [DataMember(Name = "cargo:waybillNumber", EmitDefaultValue = false)]
+        public string WaybillNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets CargowaybillPrefix
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#waybillPrefix", EmitDefaultValue = false)]
-        public string HttpsCargowaybillPrefix { get; set; }
+        [DataMember(Name = "cargo:waybillPrefix", EmitDefaultValue = false)]
+        public string WaybillPrefix { get; set; }
 
         /// <summary>
         /// Gets or Sets CargowaybillType
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#waybillType", EmitDefaultValue = false)]
-        public string HttpsCargowaybillType { get; set; }
+        [DataMember(Name = "cargo:waybillType", EmitDefaultValue = false)]
+        public string WaybillType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -314,10 +323,10 @@ namespace OneRecord.Api.SDK.Model
             sb.Append("  CargomodularCheckNumber: ").Append(ModularCheckNumber).Append("\n");
             sb.Append("  CargooriginCurrency: ").Append(OriginCurrency).Append("\n");
             sb.Append("  CargoshippingInfo: ").Append(ShippingInfo).Append("\n");
-            sb.Append("  CargoshippingRefNo: ").Append(HttpsCargoshippingRefNo).Append("\n");
-            sb.Append("  CargowaybillNumber: ").Append(HttpsCargowaybillNumber).Append("\n");
-            sb.Append("  CargowaybillPrefix: ").Append(HttpsCargowaybillPrefix).Append("\n");
-            sb.Append("  CargowaybillType: ").Append(HttpsCargowaybillType).Append("\n");
+            sb.Append("  CargoshippingRefNo: ").Append(ShippingRefNo).Append("\n");
+            sb.Append("  CargowaybillNumber: ").Append(WaybillNumber).Append("\n");
+            sb.Append("  CargowaybillPrefix: ").Append(WaybillPrefix).Append("\n");
+            sb.Append("  CargowaybillType: ").Append(WaybillType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -493,24 +502,24 @@ namespace OneRecord.Api.SDK.Model
                     this.ShippingInfo.Equals(httpsInput.ShippingInfo))
                 ) && 
                 (
-                    this.HttpsCargoshippingRefNo == httpsInput.HttpsCargoshippingRefNo ||
-                    (this.HttpsCargoshippingRefNo != null &&
-                    this.HttpsCargoshippingRefNo.Equals(httpsInput.HttpsCargoshippingRefNo))
+                    this.ShippingRefNo == httpsInput.ShippingRefNo ||
+                    (this.ShippingRefNo != null &&
+                    this.ShippingRefNo.Equals(httpsInput.ShippingRefNo))
                 ) && 
                 (
-                    this.HttpsCargowaybillNumber == httpsInput.HttpsCargowaybillNumber ||
-                    (this.HttpsCargowaybillNumber != null &&
-                    this.HttpsCargowaybillNumber.Equals(httpsInput.HttpsCargowaybillNumber))
+                    this.WaybillNumber == httpsInput.WaybillNumber ||
+                    (this.WaybillNumber != null &&
+                    this.WaybillNumber.Equals(httpsInput.WaybillNumber))
                 ) && 
                 (
-                    this.HttpsCargowaybillPrefix == httpsInput.HttpsCargowaybillPrefix ||
-                    (this.HttpsCargowaybillPrefix != null &&
-                    this.HttpsCargowaybillPrefix.Equals(httpsInput.HttpsCargowaybillPrefix))
+                    this.WaybillPrefix == httpsInput.WaybillPrefix ||
+                    (this.WaybillPrefix != null &&
+                    this.WaybillPrefix.Equals(httpsInput.WaybillPrefix))
                 ) && 
                 (
-                    this.HttpsCargowaybillType == httpsInput.HttpsCargowaybillType ||
-                    (this.HttpsCargowaybillType != null &&
-                    this.HttpsCargowaybillType.Equals(httpsInput.HttpsCargowaybillType))
+                    this.WaybillType == httpsInput.WaybillType ||
+                    (this.WaybillType != null &&
+                    this.WaybillType.Equals(httpsInput.WaybillType))
                 );
         }
 
@@ -622,21 +631,21 @@ namespace OneRecord.Api.SDK.Model
                 {
                     hashCode = (hashCode * 59) + this.ShippingInfo.GetHashCode();
                 }
-                if (this.HttpsCargoshippingRefNo != null)
+                if (this.ShippingRefNo != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoshippingRefNo.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ShippingRefNo.GetHashCode();
                 }
-                if (this.HttpsCargowaybillNumber != null)
+                if (this.WaybillNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargowaybillNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.WaybillNumber.GetHashCode();
                 }
-                if (this.HttpsCargowaybillPrefix != null)
+                if (this.WaybillPrefix != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargowaybillPrefix.GetHashCode();
+                    hashCode = (hashCode * 59) + this.WaybillPrefix.GetHashCode();
                 }
-                if (this.HttpsCargowaybillType != null)
+                if (this.WaybillType != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargowaybillType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.WaybillType.GetHashCode();
                 }
                 return hashCode;
             }

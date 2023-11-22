@@ -22,7 +22,7 @@ namespace OneRecord.Api.SDK.Model
     /// Piece
     /// </summary>
     [DataContract(Name = "Piece")]
-    public partial class Piece : IEquatable<Piece>, IValidatableObject
+    public partial class Piece : LogisticsObject, IEquatable<Piece>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Piece" /> class.
@@ -67,10 +67,34 @@ namespace OneRecord.Api.SDK.Model
         /// <param name="stackable">stackable.</param>
         /// <param name="turnable">turnable.</param>
         /// <param name="upid">upid.</param>
-        public Piece(string httpsId = default(string), List<string> httpsType = default(List<string>), List<Check> checks = default(List<Check>), List<LogisticsEvent> events = default(List<LogisticsEvent>), List<ExternalReference> externalReferences = default(List<ExternalReference>), string companyIdentifier = default(string), bool skeletonIndicator = default(bool), List<IotDevice> attachedIotDevices = default(List<IotDevice>), List<LogisticsAction> involvedInActions = default(List<LogisticsAction>), List<Item> containedItems = default(List<Item>), Piece containedPieceInPiece = default(Piece), List<Piece> containedPieces = default(List<Piece>), List<Product> contentDescribedByProducts = default(List<Product>), Country contentProductionCountry = default(Country), List<CustomsInformation> customsInformation = default(List<CustomsInformation>), Dimensions dimensions = default(Dimensions), Value grossWeight = default(Value), List<HandlingInstructions> handlingInstructions = default(List<HandlingInstructions>), List<Party> involvedParties = default(List<Party>), List<OtherIdentifier> otherIdentifiers = default(List<OtherIdentifier>), PackagingType packagingType = default(PackagingType), Shipment partOfShipment = default(Shipment), SecurityDeclaration securityDeclaration = default(SecurityDeclaration), LoadingUnit uldReference = default(LoadingUnit), VolumetricWeight volumetricWeight = default(VolumetricWeight), bool coload = default(bool), string declaredValueForCarriage = default(string), string declaredValueForCustoms = default(string), string fulfillsUldTypeCode = default(string), string goodsDescription = default(string), string loadType = default(string), bool nvdForCarriage = default(bool), bool nvdForCustoms = default(bool), string packageMarkCoded = default(string), string packagedeIdentifier = default(string), List<string> shippingMarks = default(List<string>), int slac = default(int), bool stackable = default(bool), bool turnable = default(bool), string upid = default(string))
+        public Piece(string id = default(string), List<string> type = default(List<string>),
+            List<Check> checks = default(List<Check>), List<LogisticsEvent> events = default(List<LogisticsEvent>),
+            List<ExternalReference> externalReferences = default(List<ExternalReference>),
+            string companyIdentifier = default(string), bool skeletonIndicator = default(bool),
+            List<IotDevice> attachedIotDevices = default(List<IotDevice>),
+            List<LogisticsAction> involvedInActions = default(List<LogisticsAction>),
+            List<Item> containedItems = default(List<Item>), Piece containedPieceInPiece = default(Piece),
+            List<Piece> containedPieces = default(List<Piece>),
+            List<Product> contentDescribedByProducts = default(List<Product>),
+            Country contentProductionCountry = default(Country),
+            List<CustomsInformation> customsInformation = default(List<CustomsInformation>),
+            Dimensions dimensions = default(Dimensions), Value grossWeight = default(Value),
+            List<HandlingInstructions> handlingInstructions = default(List<HandlingInstructions>),
+            List<Party> involvedParties = default(List<Party>),
+            List<OtherIdentifier> otherIdentifiers = default(List<OtherIdentifier>),
+            PackagingType packagingType = default(PackagingType), Shipment partOfShipment = default(Shipment),
+            SecurityDeclaration securityDeclaration = default(SecurityDeclaration),
+            LoadingUnit uldReference = default(LoadingUnit),
+            VolumetricWeight volumetricWeight = default(VolumetricWeight), bool coload = default(bool),
+            string declaredValueForCarriage = default(string), string declaredValueForCustoms = default(string),
+            string fulfillsUldTypeCode = default(string), string goodsDescription = default(string),
+            string loadType = default(string), bool nvdForCarriage = default(bool), bool nvdForCustoms = default(bool),
+            string packageMarkCoded = default(string), string packagedeIdentifier = default(string),
+            List<string> shippingMarks = default(List<string>), int slac = default(int), bool stackable = default(bool),
+            bool turnable = default(bool), string upid = default(string))
         {
-            this.Id = httpsId;
-            this.Type = httpsType;
+            this.Id = id;
+            this.Type = type;
             this.Checks = checks;
             this.Events = events;
             this.ExternalReferences = externalReferences;
@@ -111,244 +135,256 @@ namespace OneRecord.Api.SDK.Model
             this.Upid = upid;
         }
 
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Id
+        ///// </summary>
+        //[DataMember(Name = "@id", EmitDefaultValue = false)]
+        //public string Id { get; set; }
+
 
         /// <summary>
-        /// Gets or Sets Type
+        /// Gets or Sets Context
         /// </summary>
-        [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> Type { get; set; }
+        [DataMember(Name = "@context", EmitDefaultValue = true)]
+        public Context Context = new Context
+        {
+            Cargo = "https://onerecord.iata.org/ns/cargo#"
+        };
+    
 
-        /// <summary>
-        /// Gets or Sets Checks
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checks", EmitDefaultValue = false)]
-        public List<Check> Checks { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Events
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#events", EmitDefaultValue = false)]
-        public List<LogisticsEvent> Events { get; set; }
+    ///// <summary>
+        ///// Gets or Sets Type
+        ///// </summary>
+        //[DataMember(Name = "@type", EmitDefaultValue = false)]
+        //public List<string> Type { get; set; }
 
-        /// <summary>
-        /// Gets or Sets ExternalReferences
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#externalReferences", EmitDefaultValue = false)]
-        public List<ExternalReference> ExternalReferences { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Checks
+        ///// </summary>
+        //[DataMember(Name = "cargo:checks", EmitDefaultValue = false)]
+        //public List<Check> Checks { get; set; }
 
-        /// <summary>
-        /// Gets or Sets CompanyIdentifier
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#companyIdentifier", EmitDefaultValue = false)]
-        public string CompanyIdentifier { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Events
+        ///// </summary>
+        //[DataMember(Name = "cargo:events", EmitDefaultValue = false)]
+        //public List<LogisticsEvent> Events { get; set; }
 
-        /// <summary>
-        /// Gets or Sets SkeletonIndicator
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#skeletonIndicator", EmitDefaultValue = true)]
-        public bool SkeletonIndicator { get; set; }
+        ///// <summary>
+        ///// Gets or Sets ExternalReferences
+        ///// </summary>
+        //[DataMember(Name = "cargo:externalReferences", EmitDefaultValue = false)]
+        //public List<ExternalReference> ExternalReferences { get; set; }
+
+        ///// <summary>
+        ///// Gets or Sets CompanyIdentifier
+        ///// </summary>
+        //[DataMember(Name = "cargo:companyIdentifier", EmitDefaultValue = false)]
+        //public string CompanyIdentifier { get; set; }
+
+        ///// <summary>
+        ///// Gets or Sets SkeletonIndicator
+        ///// </summary>
+        //[DataMember(Name = "cargo:skeletonIndicator", EmitDefaultValue = true)]
+        //public bool SkeletonIndicator { get; set; }
 
         /// <summary>
         /// Gets or Sets AttachedIotDevices
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#attachedIotDevices", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:attachedIotDevices", EmitDefaultValue = false)]
         public List<IotDevice> AttachedIotDevices { get; set; }
 
         /// <summary>
         /// Gets or Sets InvolvedInActions
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#involvedInActions", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:involvedInActions", EmitDefaultValue = false)]
         public List<LogisticsAction> InvolvedInActions { get; set; }
 
         /// <summary>
         /// Gets or Sets ContainedItems
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#containedItems", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:containedItems", EmitDefaultValue = false)]
         public List<Item> ContainedItems { get; set; }
 
         /// <summary>
         /// Gets or Sets ContainedPieceInPiece
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#containedPieceInPiece", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:containedPieceInPiece", EmitDefaultValue = false)]
         public Piece ContainedPieceInPiece { get; set; }
 
         /// <summary>
         /// Gets or Sets ContainedPieces
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#containedPieces", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:containedPieces", EmitDefaultValue = false)]
         public List<Piece> ContainedPieces { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocontentDescribedByProducts
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#contentDescribedByProducts", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:contentDescribedByProducts", EmitDefaultValue = false)]
         public List<Product> ContentDescribedByProducts { get; set; }
 
         /// <summary>
         /// Gets or Sets ContentProductionCountry
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#contentProductionCountry", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:contentProductionCountry", EmitDefaultValue = false)]
         public Country ContentProductionCountry { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomsInformation
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#customsInformation", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:customsInformation", EmitDefaultValue = false)]
         public List<CustomsInformation> CustomsInformation { get; set; }
 
         /// <summary>
         /// Gets or Sets Dimensions
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#dimensions", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:dimensions", EmitDefaultValue = false)]
         public Dimensions Dimensions { get; set; }
 
         /// <summary>
         /// Gets or Sets GrossWeight
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#grossWeight", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:grossWeight", EmitDefaultValue = false)]
         public Value GrossWeight { get; set; }
 
         /// <summary>
         /// Gets or Sets HandlingInstructions
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#handlingInstructions", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:handlingInstructions", EmitDefaultValue = false)]
         public List<HandlingInstructions> HandlingInstructions { get; set; }
 
         /// <summary>
         /// Gets or Sets InvolvedParties
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#involvedParties", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:involvedParties", EmitDefaultValue = false)]
         public List<Party> InvolvedParties { get; set; }
 
         /// <summary>
         /// Gets or Sets OtherIdentifiers
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#otherIdentifiers", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:otherIdentifiers", EmitDefaultValue = false)]
         public List<OtherIdentifier> OtherIdentifiers { get; set; }
 
         /// <summary>
         /// Gets or Sets PackagingType
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#packagingType", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:packagingType", EmitDefaultValue = false)]
         public PackagingType PackagingType { get; set; }
 
         /// <summary>
         /// Gets or Sets PartOfShipment
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#partOfShipment", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:partOfShipment", EmitDefaultValue = false)]
         public Shipment PartOfShipment { get; set; }
 
         /// <summary>
         /// Gets or Sets SecurityDeclaration
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#securityDeclaration", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:securityDeclaration", EmitDefaultValue = false)]
         public SecurityDeclaration SecurityDeclaration { get; set; }
 
         /// <summary>
         /// Gets or Sets UldReference
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#uldReference", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:uldReference", EmitDefaultValue = false)]
         public LoadingUnit UldReference { get; set; }
 
         /// <summary>
         /// Gets or Sets VolumetricWeight
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#volumetricWeight", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:volumetricWeight", EmitDefaultValue = false)]
         public VolumetricWeight VolumetricWeight { get; set; }
 
         /// <summary>
         /// Gets or Sets Coload
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#coload", EmitDefaultValue = true)]
+        [DataMember(Name = "cargo:coload", EmitDefaultValue = true)]
         public bool Coload { get; set; }
 
         /// <summary>
         /// Gets or Sets DeclaredValueForCarriage
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#declaredValueForCarriage", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:declaredValueForCarriage", EmitDefaultValue = false)]
         public string DeclaredValueForCarriage { get; set; }
 
         /// <summary>
         /// Gets or Sets DeclaredValueForCustoms
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#declaredValueForCustoms", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:declaredValueForCustoms", EmitDefaultValue = false)]
         public string DeclaredValueForCustoms { get; set; }
 
         /// <summary>
         /// Gets or Sets FulfillsUldTypeCode
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#fulfillsUldTypeCode", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:fulfillsUldTypeCode", EmitDefaultValue = false)]
         public string FulfillsUldTypeCode { get; set; }
 
         /// <summary>
         /// Gets or Sets GoodsDescription
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#goodsDescription", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:goodsDescription", EmitDefaultValue = false)]
         public string GoodsDescription { get; set; }
 
         /// <summary>
         /// Gets or Sets LoadType
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#loadType", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:loadType", EmitDefaultValue = false)]
         public string LoadType { get; set; }
 
         /// <summary>
         /// Gets or Sets NvdForCarriage
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#nvdForCarriage", EmitDefaultValue = true)]
+        [DataMember(Name = "cargo:nvdForCarriage", EmitDefaultValue = true)]
         public bool NvdForCarriage { get; set; }
 
         /// <summary>
         /// Gets or Sets NvdForCustoms
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#nvdForCustoms", EmitDefaultValue = true)]
+        [DataMember(Name = "cargo:nvdForCustoms", EmitDefaultValue = true)]
         public bool NvdForCustoms { get; set; }
 
         /// <summary>
         /// Gets or Sets PackageMarkCoded
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#packageMarkCoded", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:packageMarkCoded", EmitDefaultValue = false)]
         public string PackageMarkCoded { get; set; }
 
         /// <summary>
         /// Gets or Sets PackagedeIdentifier
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#packagedeIdentifier", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:packagedeIdentifier", EmitDefaultValue = false)]
         public string PackagedeIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingMarks
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#shippingMarks", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:shippingMarks", EmitDefaultValue = false)]
         public List<string> ShippingMarks { get; set; }
 
         /// <summary>
         /// Gets or Sets Slac
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#slac", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:slac", EmitDefaultValue = false)]
         public int Slac { get; set; }
 
         /// <summary>
         /// Gets or Sets Stackable
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#stackable", EmitDefaultValue = true)]
+        [DataMember(Name = "cargo:stackable", EmitDefaultValue = true)]
         public bool Stackable { get; set; }
 
         /// <summary>
         /// Gets or Sets Turnable
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#turnable", EmitDefaultValue = true)]
+        [DataMember(Name = "cargo:turnable", EmitDefaultValue = true)]
         public bool Turnable { get; set; }
 
         /// <summary>
         /// Gets or Sets Upid
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#upid", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:upid", EmitDefaultValue = false)]
         public string Upid { get; set; }
 
         /// <summary>
@@ -805,5 +841,4 @@ namespace OneRecord.Api.SDK.Model
             yield break;
         }
     }
-
 }

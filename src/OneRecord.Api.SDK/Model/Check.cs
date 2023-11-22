@@ -22,158 +22,158 @@ namespace OneRecord.Api.SDK.Model
     /// Check
     /// </summary>
     [DataContract(Name = "Check")]
-    public partial class Check : IEquatable<Check>, IValidatableObject
+    public partial class Check : LogisticsObject, IEquatable<Check>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Check" /> class.
         /// </summary>
         /// <param name="httpsId">id.</param>
         /// <param name="httpsType">type.</param>
-        /// <param name="httpsCargochecks">Cargochecks.</param>
-        /// <param name="httpsCargoevents">Cargoevents.</param>
-        /// <param name="httpsCargoexternalReferences">CargoexternalReferences.</param>
-        /// <param name="httpsCargocompanyIdentifier">CargocompanyIdentifier.</param>
-        /// <param name="httpsCargoskeletonIndicator">CargoskeletonIndicator.</param>
-        /// <param name="httpsCargocontactDetails">CargocontactDetails.</param>
-        /// <param name="httpsCargocontactPersons">CargocontactPersons.</param>
-        /// <param name="httpsCargolocationOfPerformance">CargolocationOfPerformance.</param>
-        /// <param name="httpsCargoservedActivity">CargoservedActivity.</param>
-        /// <param name="httpsCargoactionEndTime">CargoactionEndTime.</param>
-        /// <param name="httpsCargoactionStartTime">CargoactionStartTime.</param>
-        /// <param name="httpsCargoactionTimeType">CargoactionTimeType.</param>
-        /// <param name="httpsCargocheckTotalResult">CargocheckTotalResult.</param>
-        /// <param name="httpsCargocheckedObject">CargocheckedObject.</param>
-        /// <param name="httpsCargochecker">Cargochecker.</param>
-        /// <param name="httpsCargousedTemplate">CargousedTemplate.</param>
-        public Check(string httpsId = default(string), List<string> httpsType = default(List<string>), List<Check> httpsCargochecks = default(List<Check>), List<LogisticsEvent> httpsCargoevents = default(List<LogisticsEvent>), List<ExternalReference> httpsCargoexternalReferences = default(List<ExternalReference>), string httpsCargocompanyIdentifier = default(string), bool httpsCargoskeletonIndicator = default(bool), List<ContactDetail> httpsCargocontactDetails = default(List<ContactDetail>), List<Person> httpsCargocontactPersons = default(List<Person>), Location httpsCargolocationOfPerformance = default(Location), LogisticsActivity httpsCargoservedActivity = default(LogisticsActivity), DateTime httpsCargoactionEndTime = default(DateTime), DateTime httpsCargoactionStartTime = default(DateTime), string httpsCargoactionTimeType = default(string), CheckTotalResult httpsCargocheckTotalResult = default(CheckTotalResult), LogisticsObject httpsCargocheckedObject = default(LogisticsObject), Actor httpsCargochecker = default(Actor), CheckTemplate httpsCargousedTemplate = default(CheckTemplate))
+        /// <param name="checks">Cargochecks.</param>
+        /// <param name="events">Cargoevents.</param>
+        /// <param name="externalReferences">CargoexternalReferences.</param>
+        /// <param name="companyIdentifier">CargocompanyIdentifier.</param>
+        /// <param name="skeletonIndicator">CargoskeletonIndicator.</param>
+        /// <param name="contactDetails">CargocontactDetails.</param>
+        /// <param name="contactPersons">CargocontactPersons.</param>
+        /// <param name="locationOfPerformance">CargolocationOfPerformance.</param>
+        /// <param name="servedActivity">CargoservedActivity.</param>
+        /// <param name="actionEndTime">CargoactionEndTime.</param>
+        /// <param name="actionStartTime">CargoactionStartTime.</param>
+        /// <param name="actionTimeType">CargoactionTimeType.</param>
+        /// <param name="checkTotalResult">CargocheckTotalResult.</param>
+        /// <param name="checkedObject">CargocheckedObject.</param>
+        /// <param name="checker">Cargochecker.</param>
+        /// <param name="usedTemplate">CargousedTemplate.</param>
+        public Check(string httpsId = default(string), List<string> httpsType = default(List<string>), List<Check> checks = default(List<Check>), List<LogisticsEvent> events = default(List<LogisticsEvent>), List<ExternalReference> externalReferences = default(List<ExternalReference>), string companyIdentifier = default(string), bool skeletonIndicator = default(bool), List<ContactDetail> contactDetails = default(List<ContactDetail>), List<Person> contactPersons = default(List<Person>), Location locationOfPerformance = default(Location), LogisticsActivity servedActivity = default(LogisticsActivity), DateTime actionEndTime = default(DateTime), DateTime actionStartTime = default(DateTime), string actionTimeType = default(string), CheckTotalResult checkTotalResult = default(CheckTotalResult), LogisticsObject checkedObject = default(LogisticsObject), Actor checker = default(Actor), CheckTemplate usedTemplate = default(CheckTemplate))
         {
-            this.HttpsId = httpsId;
-            this.HttpsType = httpsType;
-            this.HttpsCargochecks = httpsCargochecks;
-            this.HttpsCargoevents = httpsCargoevents;
-            this.HttpsCargoexternalReferences = httpsCargoexternalReferences;
-            this.HttpsCargocompanyIdentifier = httpsCargocompanyIdentifier;
-            this.HttpsCargoskeletonIndicator = httpsCargoskeletonIndicator;
-            this.HttpsCargocontactDetails = httpsCargocontactDetails;
-            this.HttpsCargocontactPersons = httpsCargocontactPersons;
-            this.HttpsCargolocationOfPerformance = httpsCargolocationOfPerformance;
-            this.HttpsCargoservedActivity = httpsCargoservedActivity;
-            this.HttpsCargoactionEndTime = httpsCargoactionEndTime;
-            this.HttpsCargoactionStartTime = httpsCargoactionStartTime;
-            this.HttpsCargoactionTimeType = httpsCargoactionTimeType;
-            this.HttpsCargocheckTotalResult = httpsCargocheckTotalResult;
-            this.HttpsCargocheckedObject = httpsCargocheckedObject;
-            this.HttpsCargochecker = httpsCargochecker;
-            this.HttpsCargousedTemplate = httpsCargousedTemplate;
+            this.Id = httpsId;
+            this.Type = httpsType;
+            this.Checks = checks;
+            this.Events = events;
+            this.ExternalReferences = externalReferences;
+            this.CompanyIdentifier = companyIdentifier;
+            this.SkeletonIndicator = skeletonIndicator;
+            this.ContactDetails = contactDetails;
+            this.ContactPersons = contactPersons;
+            this.LocationOfPerformance = locationOfPerformance;
+            this.ServedActivity = servedActivity;
+            this.ActionEndTime = actionEndTime;
+            this.ActionStartTime = actionStartTime;
+            this.ActionTimeType = actionTimeType;
+            this.CheckTotalResult = checkTotalResult;
+            this.CheckedObject = checkedObject;
+            this.Checker = checker;
+            this.UsedTemplate = usedTemplate;
         }
 
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string HttpsId { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Id
+        ///// </summary>
+        //[DataMember(Name = "@id", EmitDefaultValue = false)]
+        //public string HttpsId { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> HttpsType { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Type
+        ///// </summary>
+        //[DataMember(Name = "@type", EmitDefaultValue = false)]
+        //public List<string> HttpsType { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Cargochecks
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checks", EmitDefaultValue = false)]
-        public List<Check> HttpsCargochecks { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Cargochecks
+        ///// </summary>
+        //[DataMember(Name = "cargo:checks", EmitDefaultValue = false)]
+        //public List<Check> checks { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Cargoevents
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#events", EmitDefaultValue = false)]
-        public List<LogisticsEvent> HttpsCargoevents { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Cargoevents
+        ///// </summary>
+        //[DataMember(Name = "cargo:events", EmitDefaultValue = false)]
+        //public List<LogisticsEvent> events { get; set; }
 
-        /// <summary>
-        /// Gets or Sets CargoexternalReferences
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#externalReferences", EmitDefaultValue = false)]
-        public List<ExternalReference> HttpsCargoexternalReferences { get; set; }
+        ///// <summary>
+        ///// Gets or Sets CargoexternalReferences
+        ///// </summary>
+        //[DataMember(Name = "cargo:externalReferences", EmitDefaultValue = false)]
+        //public List<ExternalReference> externalReferences { get; set; }
 
-        /// <summary>
-        /// Gets or Sets CargocompanyIdentifier
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#companyIdentifier", EmitDefaultValue = false)]
-        public string HttpsCargocompanyIdentifier { get; set; }
+        ///// <summary>
+        ///// Gets or Sets CargocompanyIdentifier
+        ///// </summary>
+        //[DataMember(Name = "cargo:companyIdentifier", EmitDefaultValue = false)]
+        //public string companyIdentifier { get; set; }
 
-        /// <summary>
-        /// Gets or Sets CargoskeletonIndicator
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#skeletonIndicator", EmitDefaultValue = true)]
-        public bool HttpsCargoskeletonIndicator { get; set; }
+        ///// <summary>
+        ///// Gets or Sets CargoskeletonIndicator
+        ///// </summary>
+        //[DataMember(Name = "cargo:skeletonIndicator", EmitDefaultValue = true)]
+        //public bool skeletonIndicator { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocontactDetails
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#contactDetails", EmitDefaultValue = false)]
-        public List<ContactDetail> HttpsCargocontactDetails { get; set; }
+        [DataMember(Name = "cargo:contactDetails", EmitDefaultValue = false)]
+        public List<ContactDetail> ContactDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocontactPersons
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#contactPersons", EmitDefaultValue = false)]
-        public List<Person> HttpsCargocontactPersons { get; set; }
+        [DataMember(Name = "cargo:contactPersons", EmitDefaultValue = false)]
+        public List<Person> ContactPersons { get; set; }
 
         /// <summary>
         /// Gets or Sets CargolocationOfPerformance
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#locationOfPerformance", EmitDefaultValue = false)]
-        public Location HttpsCargolocationOfPerformance { get; set; }
+        [DataMember(Name = "cargo:locationOfPerformance", EmitDefaultValue = false)]
+        public Location LocationOfPerformance { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoservedActivity
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#servedActivity", EmitDefaultValue = false)]
-        public LogisticsActivity HttpsCargoservedActivity { get; set; }
+        [DataMember(Name = "cargo:servedActivity", EmitDefaultValue = false)]
+        public LogisticsActivity ServedActivity { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoactionEndTime
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#actionEndTime", EmitDefaultValue = false)]
-        public DateTime HttpsCargoactionEndTime { get; set; }
+        [DataMember(Name = "cargo:actionEndTime", EmitDefaultValue = false)]
+        public DateTime ActionEndTime { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoactionStartTime
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#actionStartTime", EmitDefaultValue = false)]
-        public DateTime HttpsCargoactionStartTime { get; set; }
+        [DataMember(Name = "cargo:actionStartTime", EmitDefaultValue = false)]
+        public DateTime ActionStartTime { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoactionTimeType
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#actionTimeType", EmitDefaultValue = false)]
-        public string HttpsCargoactionTimeType { get; set; }
+        [DataMember(Name = "cargo:actionTimeType", EmitDefaultValue = false)]
+        public string ActionTimeType { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocheckTotalResult
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checkTotalResult", EmitDefaultValue = false)]
-        public CheckTotalResult HttpsCargocheckTotalResult { get; set; }
+        [DataMember(Name = "cargo:checkTotalResult", EmitDefaultValue = false)]
+        public CheckTotalResult CheckTotalResult { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocheckedObject
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checkedObject", EmitDefaultValue = false)]
-        public LogisticsObject HttpsCargocheckedObject { get; set; }
+        [DataMember(Name = "cargo:checkedObject", EmitDefaultValue = false)]
+        public LogisticsObject CheckedObject { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargochecker
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checker", EmitDefaultValue = false)]
-        public Actor HttpsCargochecker { get; set; }
+        [DataMember(Name = "cargo:checker", EmitDefaultValue = false)]
+        public Actor Checker { get; set; }
 
         /// <summary>
         /// Gets or Sets CargousedTemplate
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#usedTemplate", EmitDefaultValue = false)]
-        public CheckTemplate HttpsCargousedTemplate { get; set; }
+        [DataMember(Name = "cargo:usedTemplate", EmitDefaultValue = false)]
+        public CheckTemplate UsedTemplate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -183,24 +183,24 @@ namespace OneRecord.Api.SDK.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Check {\n");
-            sb.Append("  Id: ").Append(HttpsId).Append("\n");
-            sb.Append("  Type: ").Append(HttpsType).Append("\n");
-            sb.Append("  Cargochecks: ").Append(HttpsCargochecks).Append("\n");
-            sb.Append("  Cargoevents: ").Append(HttpsCargoevents).Append("\n");
-            sb.Append("  CargoexternalReferences: ").Append(HttpsCargoexternalReferences).Append("\n");
-            sb.Append("  CargocompanyIdentifier: ").Append(HttpsCargocompanyIdentifier).Append("\n");
-            sb.Append("  CargoskeletonIndicator: ").Append(HttpsCargoskeletonIndicator).Append("\n");
-            sb.Append("  CargocontactDetails: ").Append(HttpsCargocontactDetails).Append("\n");
-            sb.Append("  CargocontactPersons: ").Append(HttpsCargocontactPersons).Append("\n");
-            sb.Append("  CargolocationOfPerformance: ").Append(HttpsCargolocationOfPerformance).Append("\n");
-            sb.Append("  CargoservedActivity: ").Append(HttpsCargoservedActivity).Append("\n");
-            sb.Append("  CargoactionEndTime: ").Append(HttpsCargoactionEndTime).Append("\n");
-            sb.Append("  CargoactionStartTime: ").Append(HttpsCargoactionStartTime).Append("\n");
-            sb.Append("  CargoactionTimeType: ").Append(HttpsCargoactionTimeType).Append("\n");
-            sb.Append("  CargocheckTotalResult: ").Append(HttpsCargocheckTotalResult).Append("\n");
-            sb.Append("  CargocheckedObject: ").Append(HttpsCargocheckedObject).Append("\n");
-            sb.Append("  Cargochecker: ").Append(HttpsCargochecker).Append("\n");
-            sb.Append("  CargousedTemplate: ").Append(HttpsCargousedTemplate).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Cargochecks: ").Append(Checks).Append("\n");
+            sb.Append("  Cargoevents: ").Append(Events).Append("\n");
+            sb.Append("  CargoexternalReferences: ").Append(ExternalReferences).Append("\n");
+            sb.Append("  CargocompanyIdentifier: ").Append(CompanyIdentifier).Append("\n");
+            sb.Append("  CargoskeletonIndicator: ").Append(SkeletonIndicator).Append("\n");
+            sb.Append("  CargocontactDetails: ").Append(ContactDetails).Append("\n");
+            sb.Append("  CargocontactPersons: ").Append(ContactPersons).Append("\n");
+            sb.Append("  CargolocationOfPerformance: ").Append(LocationOfPerformance).Append("\n");
+            sb.Append("  CargoservedActivity: ").Append(ServedActivity).Append("\n");
+            sb.Append("  CargoactionEndTime: ").Append(ActionEndTime).Append("\n");
+            sb.Append("  CargoactionStartTime: ").Append(ActionStartTime).Append("\n");
+            sb.Append("  CargoactionTimeType: ").Append(ActionTimeType).Append("\n");
+            sb.Append("  CargocheckTotalResult: ").Append(CheckTotalResult).Append("\n");
+            sb.Append("  CargocheckedObject: ").Append(CheckedObject).Append("\n");
+            sb.Append("  Cargochecker: ").Append(Checker).Append("\n");
+            sb.Append("  CargousedTemplate: ").Append(UsedTemplate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -237,99 +237,99 @@ namespace OneRecord.Api.SDK.Model
             }
             return 
                 (
-                    this.HttpsId == httpsInput.HttpsId ||
-                    (this.HttpsId != null &&
-                    this.HttpsId.Equals(httpsInput.HttpsId))
+                    this.Id == httpsInput.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(httpsInput.Id))
                 ) && 
                 (
-                    this.HttpsType == httpsInput.HttpsType ||
-                    this.HttpsType != null &&
-                    httpsInput.HttpsType != null &&
-                    this.HttpsType.SequenceEqual(httpsInput.HttpsType)
+                    this.Type == httpsInput.Type ||
+                    this.Type != null &&
+                    httpsInput.Type != null &&
+                    this.Type.SequenceEqual(httpsInput.Type)
                 ) && 
                 (
-                    this.HttpsCargochecks == httpsInput.HttpsCargochecks ||
-                    this.HttpsCargochecks != null &&
-                    httpsInput.HttpsCargochecks != null &&
-                    this.HttpsCargochecks.SequenceEqual(httpsInput.HttpsCargochecks)
+                    this.Checks == httpsInput.Checks ||
+                    this.Checks != null &&
+                    httpsInput.Checks != null &&
+                    this.Checks.SequenceEqual(httpsInput.Checks)
                 ) && 
                 (
-                    this.HttpsCargoevents == httpsInput.HttpsCargoevents ||
-                    this.HttpsCargoevents != null &&
-                    httpsInput.HttpsCargoevents != null &&
-                    this.HttpsCargoevents.SequenceEqual(httpsInput.HttpsCargoevents)
+                    this.Events == httpsInput.Events ||
+                    this.Events != null &&
+                    httpsInput.Events != null &&
+                    this.Events.SequenceEqual(httpsInput.Events)
                 ) && 
                 (
-                    this.HttpsCargoexternalReferences == httpsInput.HttpsCargoexternalReferences ||
-                    this.HttpsCargoexternalReferences != null &&
-                    httpsInput.HttpsCargoexternalReferences != null &&
-                    this.HttpsCargoexternalReferences.SequenceEqual(httpsInput.HttpsCargoexternalReferences)
+                    this.ExternalReferences == httpsInput.ExternalReferences ||
+                    this.ExternalReferences != null &&
+                    httpsInput.ExternalReferences != null &&
+                    this.ExternalReferences.SequenceEqual(httpsInput.ExternalReferences)
                 ) && 
                 (
-                    this.HttpsCargocompanyIdentifier == httpsInput.HttpsCargocompanyIdentifier ||
-                    (this.HttpsCargocompanyIdentifier != null &&
-                    this.HttpsCargocompanyIdentifier.Equals(httpsInput.HttpsCargocompanyIdentifier))
+                    this.CompanyIdentifier == httpsInput.CompanyIdentifier ||
+                    (this.CompanyIdentifier != null &&
+                    this.CompanyIdentifier.Equals(httpsInput.CompanyIdentifier))
                 ) && 
                 (
-                    this.HttpsCargoskeletonIndicator == httpsInput.HttpsCargoskeletonIndicator ||
-                    this.HttpsCargoskeletonIndicator.Equals(httpsInput.HttpsCargoskeletonIndicator)
+                    this.SkeletonIndicator == httpsInput.SkeletonIndicator ||
+                    this.SkeletonIndicator.Equals(httpsInput.SkeletonIndicator)
                 ) && 
                 (
-                    this.HttpsCargocontactDetails == httpsInput.HttpsCargocontactDetails ||
-                    this.HttpsCargocontactDetails != null &&
-                    httpsInput.HttpsCargocontactDetails != null &&
-                    this.HttpsCargocontactDetails.SequenceEqual(httpsInput.HttpsCargocontactDetails)
+                    this.ContactDetails == httpsInput.ContactDetails ||
+                    this.ContactDetails != null &&
+                    httpsInput.ContactDetails != null &&
+                    this.ContactDetails.SequenceEqual(httpsInput.ContactDetails)
                 ) && 
                 (
-                    this.HttpsCargocontactPersons == httpsInput.HttpsCargocontactPersons ||
-                    this.HttpsCargocontactPersons != null &&
-                    httpsInput.HttpsCargocontactPersons != null &&
-                    this.HttpsCargocontactPersons.SequenceEqual(httpsInput.HttpsCargocontactPersons)
+                    this.ContactPersons == httpsInput.ContactPersons ||
+                    this.ContactPersons != null &&
+                    httpsInput.ContactPersons != null &&
+                    this.ContactPersons.SequenceEqual(httpsInput.ContactPersons)
                 ) && 
                 (
-                    this.HttpsCargolocationOfPerformance == httpsInput.HttpsCargolocationOfPerformance ||
-                    (this.HttpsCargolocationOfPerformance != null &&
-                    this.HttpsCargolocationOfPerformance.Equals(httpsInput.HttpsCargolocationOfPerformance))
+                    this.LocationOfPerformance == httpsInput.LocationOfPerformance ||
+                    (this.LocationOfPerformance != null &&
+                    this.LocationOfPerformance.Equals(httpsInput.LocationOfPerformance))
                 ) && 
                 (
-                    this.HttpsCargoservedActivity == httpsInput.HttpsCargoservedActivity ||
-                    (this.HttpsCargoservedActivity != null &&
-                    this.HttpsCargoservedActivity.Equals(httpsInput.HttpsCargoservedActivity))
+                    this.ServedActivity == httpsInput.ServedActivity ||
+                    (this.ServedActivity != null &&
+                    this.ServedActivity.Equals(httpsInput.ServedActivity))
                 ) && 
                 (
-                    this.HttpsCargoactionEndTime == httpsInput.HttpsCargoactionEndTime ||
-                    (this.HttpsCargoactionEndTime != null &&
-                    this.HttpsCargoactionEndTime.Equals(httpsInput.HttpsCargoactionEndTime))
+                    this.ActionEndTime == httpsInput.ActionEndTime ||
+                    (this.ActionEndTime != null &&
+                    this.ActionEndTime.Equals(httpsInput.ActionEndTime))
                 ) && 
                 (
-                    this.HttpsCargoactionStartTime == httpsInput.HttpsCargoactionStartTime ||
-                    (this.HttpsCargoactionStartTime != null &&
-                    this.HttpsCargoactionStartTime.Equals(httpsInput.HttpsCargoactionStartTime))
+                    this.ActionStartTime == httpsInput.ActionStartTime ||
+                    (this.ActionStartTime != null &&
+                    this.ActionStartTime.Equals(httpsInput.ActionStartTime))
                 ) && 
                 (
-                    this.HttpsCargoactionTimeType == httpsInput.HttpsCargoactionTimeType ||
-                    (this.HttpsCargoactionTimeType != null &&
-                    this.HttpsCargoactionTimeType.Equals(httpsInput.HttpsCargoactionTimeType))
+                    this.ActionTimeType == httpsInput.ActionTimeType ||
+                    (this.ActionTimeType != null &&
+                    this.ActionTimeType.Equals(httpsInput.ActionTimeType))
                 ) && 
                 (
-                    this.HttpsCargocheckTotalResult == httpsInput.HttpsCargocheckTotalResult ||
-                    (this.HttpsCargocheckTotalResult != null &&
-                    this.HttpsCargocheckTotalResult.Equals(httpsInput.HttpsCargocheckTotalResult))
+                    this.CheckTotalResult == httpsInput.CheckTotalResult ||
+                    (this.CheckTotalResult != null &&
+                    this.CheckTotalResult.Equals(httpsInput.CheckTotalResult))
                 ) && 
                 (
-                    this.HttpsCargocheckedObject == httpsInput.HttpsCargocheckedObject ||
-                    (this.HttpsCargocheckedObject != null &&
-                    this.HttpsCargocheckedObject.Equals(httpsInput.HttpsCargocheckedObject))
+                    this.CheckedObject == httpsInput.CheckedObject ||
+                    (this.CheckedObject != null &&
+                    this.CheckedObject.Equals(httpsInput.CheckedObject))
                 ) && 
                 (
-                    this.HttpsCargochecker == httpsInput.HttpsCargochecker ||
-                    (this.HttpsCargochecker != null &&
-                    this.HttpsCargochecker.Equals(httpsInput.HttpsCargochecker))
+                    this.Checker == httpsInput.Checker ||
+                    (this.Checker != null &&
+                    this.Checker.Equals(httpsInput.Checker))
                 ) && 
                 (
-                    this.HttpsCargousedTemplate == httpsInput.HttpsCargousedTemplate ||
-                    (this.HttpsCargousedTemplate != null &&
-                    this.HttpsCargousedTemplate.Equals(httpsInput.HttpsCargousedTemplate))
+                    this.UsedTemplate == httpsInput.UsedTemplate ||
+                    (this.UsedTemplate != null &&
+                    this.UsedTemplate.Equals(httpsInput.UsedTemplate))
                 );
         }
 
@@ -342,74 +342,74 @@ namespace OneRecord.Api.SDK.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HttpsId != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.HttpsType != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
-                if (this.HttpsCargochecks != null)
+                if (this.Checks != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargochecks.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Checks.GetHashCode();
                 }
-                if (this.HttpsCargoevents != null)
+                if (this.Events != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoevents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Events.GetHashCode();
                 }
-                if (this.HttpsCargoexternalReferences != null)
+                if (this.ExternalReferences != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoexternalReferences.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ExternalReferences.GetHashCode();
                 }
-                if (this.HttpsCargocompanyIdentifier != null)
+                if (this.CompanyIdentifier != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocompanyIdentifier.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CompanyIdentifier.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.HttpsCargoskeletonIndicator.GetHashCode();
-                if (this.HttpsCargocontactDetails != null)
+                hashCode = (hashCode * 59) + this.SkeletonIndicator.GetHashCode();
+                if (this.ContactDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocontactDetails.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ContactDetails.GetHashCode();
                 }
-                if (this.HttpsCargocontactPersons != null)
+                if (this.ContactPersons != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocontactPersons.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ContactPersons.GetHashCode();
                 }
-                if (this.HttpsCargolocationOfPerformance != null)
+                if (this.LocationOfPerformance != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargolocationOfPerformance.GetHashCode();
+                    hashCode = (hashCode * 59) + this.LocationOfPerformance.GetHashCode();
                 }
-                if (this.HttpsCargoservedActivity != null)
+                if (this.ServedActivity != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoservedActivity.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ServedActivity.GetHashCode();
                 }
-                if (this.HttpsCargoactionEndTime != null)
+                if (this.ActionEndTime != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoactionEndTime.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ActionEndTime.GetHashCode();
                 }
-                if (this.HttpsCargoactionStartTime != null)
+                if (this.ActionStartTime != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoactionStartTime.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ActionStartTime.GetHashCode();
                 }
-                if (this.HttpsCargoactionTimeType != null)
+                if (this.ActionTimeType != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoactionTimeType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ActionTimeType.GetHashCode();
                 }
-                if (this.HttpsCargocheckTotalResult != null)
+                if (this.CheckTotalResult != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocheckTotalResult.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CheckTotalResult.GetHashCode();
                 }
-                if (this.HttpsCargocheckedObject != null)
+                if (this.CheckedObject != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocheckedObject.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CheckedObject.GetHashCode();
                 }
-                if (this.HttpsCargochecker != null)
+                if (this.Checker != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargochecker.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Checker.GetHashCode();
                 }
-                if (this.HttpsCargousedTemplate != null)
+                if (this.UsedTemplate != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargousedTemplate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.UsedTemplate.GetHashCode();
                 }
                 return hashCode;
             }

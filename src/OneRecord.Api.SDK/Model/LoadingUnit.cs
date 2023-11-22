@@ -22,7 +22,7 @@ namespace OneRecord.Api.SDK.Model
     /// LoadingUnit
     /// </summary>
     [DataContract(Name = "LoadingUnit")]
-    public partial class LoadingUnit : IEquatable<LoadingUnit>, IValidatableObject
+    public partial class LoadingUnit : LogisticsObject, IEquatable<LoadingUnit>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LoadingUnit" /> class.
@@ -43,89 +43,89 @@ namespace OneRecord.Api.SDK.Model
         {
             this.Id = httpsId;
             this.Type = httpsType;
-            this.checks = checks;
-            this.events = events;
-            this.externalReferences = externalReferences;
-            this.companyIdentifier = companyIdentifier;
-            this.skeletonIndicator = skeletonIndicator;
-            this.attachedIotDevices = attachedIotDevices;
-            this.involvedInActions = involvedInActions;
-            this.loadedPiecesOnLoadingUnit = loadedPiecesOnLoadingUnit;
-            this.tareWeight = tareWeight;
-            this.remarks = remarks;
+            this.Checks = checks;
+            this.Events = events;
+            this.ExternalReferences = externalReferences;
+            this.CompanyIdentifier = companyIdentifier;
+            this.SkeletonIndicator = skeletonIndicator;
+            this.AttachedIotDevices = attachedIotDevices;
+            this.InvolvedInActions = involvedInActions;
+            this.LoadedPiecesOnLoadingUnit = loadedPiecesOnLoadingUnit;
+            this.TareWeight = tareWeight;
+            this.Remarks = remarks;
         }
 
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Id
+        ///// </summary>
+        //[DataMember(Name = "@id", EmitDefaultValue = false)]
+        //public string Id { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> Type { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Type
+        ///// </summary>
+        //[DataMember(Name = "@type", EmitDefaultValue = false)]
+        //public List<string> Type { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Cargochecks
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checks", EmitDefaultValue = false)]
-        public List<Check> checks { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Cargochecks
+        ///// </summary>
+        //[DataMember(Name = "https://onerecord.iata.org/ns/cargo#checks", EmitDefaultValue = false)]
+        //public List<Check> Checks { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Cargoevents
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#events", EmitDefaultValue = false)]
-        public List<LogisticsEvent> events { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Cargoevents
+        ///// </summary>
+        //[DataMember(Name = "https://onerecord.iata.org/ns/cargo#events", EmitDefaultValue = false)]
+        //public List<LogisticsEvent> events { get; set; }
 
-        /// <summary>
-        /// Gets or Sets CargoexternalReferences
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#externalReferences", EmitDefaultValue = false)]
-        public List<ExternalReference> externalReferences { get; set; }
+        ///// <summary>
+        ///// Gets or Sets CargoexternalReferences
+        ///// </summary>
+        //[DataMember(Name = "https://onerecord.iata.org/ns/cargo#externalReferences", EmitDefaultValue = false)]
+        //public List<ExternalReference> externalReferences { get; set; }
 
-        /// <summary>
-        /// Gets or Sets CargocompanyIdentifier
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#companyIdentifier", EmitDefaultValue = false)]
-        public string companyIdentifier { get; set; }
+        ///// <summary>
+        ///// Gets or Sets CargocompanyIdentifier
+        ///// </summary>
+        //[DataMember(Name = "https://onerecord.iata.org/ns/cargo#companyIdentifier", EmitDefaultValue = false)]
+        //public string companyIdentifier { get; set; }
 
-        /// <summary>
-        /// Gets or Sets CargoskeletonIndicator
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#skeletonIndicator", EmitDefaultValue = true)]
-        public bool skeletonIndicator { get; set; }
+        ///// <summary>
+        ///// Gets or Sets CargoskeletonIndicator
+        ///// </summary>
+        //[DataMember(Name = "https://onerecord.iata.org/ns/cargo#skeletonIndicator", EmitDefaultValue = true)]
+        //public bool skeletonIndicator { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoattachedIotDevices
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#attachedIotDevices", EmitDefaultValue = false)]
-        public List<IotDevice> attachedIotDevices { get; set; }
+        public List<IotDevice> AttachedIotDevices { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoinvolvedInActions
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#involvedInActions", EmitDefaultValue = false)]
-        public List<LogisticsAction> involvedInActions { get; set; }
+        public List<LogisticsAction> InvolvedInActions { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoloadedPiecesOnLoadingUnit
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#loadedPiecesOnLoadingUnit", EmitDefaultValue = false)]
-        public List<Piece> loadedPiecesOnLoadingUnit { get; set; }
+        public List<Piece> LoadedPiecesOnLoadingUnit { get; set; }
 
         /// <summary>
         /// Gets or Sets CargotareWeight
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#tareWeight", EmitDefaultValue = false)]
-        public Value tareWeight { get; set; }
+        public Value TareWeight { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargoremarks
         /// </summary>
         [DataMember(Name = "https://onerecord.iata.org/ns/cargo#remarks", EmitDefaultValue = false)]
-        public string remarks { get; set; }
+        public string Remarks { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,16 +137,16 @@ namespace OneRecord.Api.SDK.Model
             sb.Append("class LoadingUnit {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Cargochecks: ").Append(checks).Append("\n");
-            sb.Append("  Cargoevents: ").Append(events).Append("\n");
-            sb.Append("  CargoexternalReferences: ").Append(externalReferences).Append("\n");
-            sb.Append("  CargocompanyIdentifier: ").Append(companyIdentifier).Append("\n");
-            sb.Append("  CargoskeletonIndicator: ").Append(skeletonIndicator).Append("\n");
-            sb.Append("  CargoattachedIotDevices: ").Append(attachedIotDevices).Append("\n");
-            sb.Append("  CargoinvolvedInActions: ").Append(involvedInActions).Append("\n");
-            sb.Append("  CargoloadedPiecesOnLoadingUnit: ").Append(loadedPiecesOnLoadingUnit).Append("\n");
-            sb.Append("  CargotareWeight: ").Append(tareWeight).Append("\n");
-            sb.Append("  Cargoremarks: ").Append(remarks).Append("\n");
+            sb.Append("  Cargochecks: ").Append(Checks).Append("\n");
+            sb.Append("  Cargoevents: ").Append(Events).Append("\n");
+            sb.Append("  CargoexternalReferences: ").Append(ExternalReferences).Append("\n");
+            sb.Append("  CargocompanyIdentifier: ").Append(CompanyIdentifier).Append("\n");
+            sb.Append("  CargoskeletonIndicator: ").Append(SkeletonIndicator).Append("\n");
+            sb.Append("  CargoattachedIotDevices: ").Append(AttachedIotDevices).Append("\n");
+            sb.Append("  CargoinvolvedInActions: ").Append(InvolvedInActions).Append("\n");
+            sb.Append("  CargoloadedPiecesOnLoadingUnit: ").Append(LoadedPiecesOnLoadingUnit).Append("\n");
+            sb.Append("  CargotareWeight: ").Append(TareWeight).Append("\n");
+            sb.Append("  Cargoremarks: ").Append(Remarks).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -194,59 +194,59 @@ namespace OneRecord.Api.SDK.Model
                     this.Type.SequenceEqual(httpsInput.Type)
                 ) && 
                 (
-                    this.checks == httpsInput.checks ||
-                    this.checks != null &&
-                    httpsInput.checks != null &&
-                    this.checks.SequenceEqual(httpsInput.checks)
+                    this.Checks == httpsInput.Checks ||
+                    this.Checks != null &&
+                    httpsInput.Checks != null &&
+                    this.Checks.SequenceEqual(httpsInput.Checks)
                 ) && 
                 (
-                    this.events == httpsInput.events ||
-                    this.events != null &&
-                    httpsInput.events != null &&
-                    this.events.SequenceEqual(httpsInput.events)
+                    this.Events == httpsInput.Events ||
+                    this.Events != null &&
+                    httpsInput.Events != null &&
+                    this.Events.SequenceEqual(httpsInput.Events)
                 ) && 
                 (
-                    this.externalReferences == httpsInput.externalReferences ||
-                    this.externalReferences != null &&
-                    httpsInput.externalReferences != null &&
-                    this.externalReferences.SequenceEqual(httpsInput.externalReferences)
+                    this.ExternalReferences == httpsInput.ExternalReferences ||
+                    this.ExternalReferences != null &&
+                    httpsInput.ExternalReferences != null &&
+                    this.ExternalReferences.SequenceEqual(httpsInput.ExternalReferences)
                 ) && 
                 (
-                    this.companyIdentifier == httpsInput.companyIdentifier ||
-                    (this.companyIdentifier != null &&
-                    this.companyIdentifier.Equals(httpsInput.companyIdentifier))
+                    this.CompanyIdentifier == httpsInput.CompanyIdentifier ||
+                    (this.CompanyIdentifier != null &&
+                    this.CompanyIdentifier.Equals(httpsInput.CompanyIdentifier))
                 ) && 
                 (
-                    this.skeletonIndicator == httpsInput.skeletonIndicator ||
-                    this.skeletonIndicator.Equals(httpsInput.skeletonIndicator)
+                    this.SkeletonIndicator == httpsInput.SkeletonIndicator ||
+                    this.SkeletonIndicator.Equals(httpsInput.SkeletonIndicator)
                 ) && 
                 (
-                    this.attachedIotDevices == httpsInput.attachedIotDevices ||
-                    this.attachedIotDevices != null &&
-                    httpsInput.attachedIotDevices != null &&
-                    this.attachedIotDevices.SequenceEqual(httpsInput.attachedIotDevices)
+                    this.AttachedIotDevices == httpsInput.AttachedIotDevices ||
+                    this.AttachedIotDevices != null &&
+                    httpsInput.AttachedIotDevices != null &&
+                    this.AttachedIotDevices.SequenceEqual(httpsInput.AttachedIotDevices)
                 ) && 
                 (
-                    this.involvedInActions == httpsInput.involvedInActions ||
-                    this.involvedInActions != null &&
-                    httpsInput.involvedInActions != null &&
-                    this.involvedInActions.SequenceEqual(httpsInput.involvedInActions)
+                    this.InvolvedInActions == httpsInput.InvolvedInActions ||
+                    this.InvolvedInActions != null &&
+                    httpsInput.InvolvedInActions != null &&
+                    this.InvolvedInActions.SequenceEqual(httpsInput.InvolvedInActions)
                 ) && 
                 (
-                    this.loadedPiecesOnLoadingUnit == httpsInput.loadedPiecesOnLoadingUnit ||
-                    this.loadedPiecesOnLoadingUnit != null &&
-                    httpsInput.loadedPiecesOnLoadingUnit != null &&
-                    this.loadedPiecesOnLoadingUnit.SequenceEqual(httpsInput.loadedPiecesOnLoadingUnit)
+                    this.LoadedPiecesOnLoadingUnit == httpsInput.LoadedPiecesOnLoadingUnit ||
+                    this.LoadedPiecesOnLoadingUnit != null &&
+                    httpsInput.LoadedPiecesOnLoadingUnit != null &&
+                    this.LoadedPiecesOnLoadingUnit.SequenceEqual(httpsInput.LoadedPiecesOnLoadingUnit)
                 ) && 
                 (
-                    this.tareWeight == httpsInput.tareWeight ||
-                    (this.tareWeight != null &&
-                    this.tareWeight.Equals(httpsInput.tareWeight))
+                    this.TareWeight == httpsInput.TareWeight ||
+                    (this.TareWeight != null &&
+                    this.TareWeight.Equals(httpsInput.TareWeight))
                 ) && 
                 (
-                    this.remarks == httpsInput.remarks ||
-                    (this.remarks != null &&
-                    this.remarks.Equals(httpsInput.remarks))
+                    this.Remarks == httpsInput.Remarks ||
+                    (this.Remarks != null &&
+                    this.Remarks.Equals(httpsInput.Remarks))
                 );
         }
 
@@ -267,42 +267,42 @@ namespace OneRecord.Api.SDK.Model
                 {
                     hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
-                if (this.checks != null)
+                if (this.Checks != null)
                 {
-                    hashCode = (hashCode * 59) + this.checks.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Checks.GetHashCode();
                 }
-                if (this.events != null)
+                if (this.Events != null)
                 {
-                    hashCode = (hashCode * 59) + this.events.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Events.GetHashCode();
                 }
-                if (this.externalReferences != null)
+                if (this.ExternalReferences != null)
                 {
-                    hashCode = (hashCode * 59) + this.externalReferences.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ExternalReferences.GetHashCode();
                 }
-                if (this.companyIdentifier != null)
+                if (this.CompanyIdentifier != null)
                 {
-                    hashCode = (hashCode * 59) + this.companyIdentifier.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CompanyIdentifier.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.skeletonIndicator.GetHashCode();
-                if (this.attachedIotDevices != null)
+                hashCode = (hashCode * 59) + this.SkeletonIndicator.GetHashCode();
+                if (this.AttachedIotDevices != null)
                 {
-                    hashCode = (hashCode * 59) + this.attachedIotDevices.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AttachedIotDevices.GetHashCode();
                 }
-                if (this.involvedInActions != null)
+                if (this.InvolvedInActions != null)
                 {
-                    hashCode = (hashCode * 59) + this.involvedInActions.GetHashCode();
+                    hashCode = (hashCode * 59) + this.InvolvedInActions.GetHashCode();
                 }
-                if (this.loadedPiecesOnLoadingUnit != null)
+                if (this.LoadedPiecesOnLoadingUnit != null)
                 {
-                    hashCode = (hashCode * 59) + this.loadedPiecesOnLoadingUnit.GetHashCode();
+                    hashCode = (hashCode * 59) + this.LoadedPiecesOnLoadingUnit.GetHashCode();
                 }
-                if (this.tareWeight != null)
+                if (this.TareWeight != null)
                 {
-                    hashCode = (hashCode * 59) + this.tareWeight.GetHashCode();
+                    hashCode = (hashCode * 59) + this.TareWeight.GetHashCode();
                 }
-                if (this.remarks != null)
+                if (this.Remarks != null)
                 {
-                    hashCode = (hashCode * 59) + this.remarks.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Remarks.GetHashCode();
                 }
                 return hashCode;
             }

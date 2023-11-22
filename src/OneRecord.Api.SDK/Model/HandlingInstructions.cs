@@ -22,7 +22,7 @@ namespace OneRecord.Api.SDK.Model
     /// HandlingInstructions
     /// </summary>
     [DataContract(Name = "HandlingInstructions")]
-    public partial class HandlingInstructions : IEquatable<HandlingInstructions>, IValidatableObject
+    public partial class HandlingInstructions : LogisticsObject, IEquatable<HandlingInstructions>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HandlingInstructions" /> class.
@@ -35,48 +35,48 @@ namespace OneRecord.Api.SDK.Model
         /// <param name="httpsCargohandlingInstructionsTypeCode">CargohandlingInstructionsTypeCode.</param>
         public HandlingInstructions(string httpsId = default(string), List<string> httpsType = default(List<string>), Person httpsCargorequestedByActor = default(Person), string httpsCargodescription = default(string), string httpsCargohandlingInstructionsType = default(string), string httpsCargohandlingInstructionsTypeCode = default(string))
         {
-            this.HttpsId = httpsId;
-            this.HttpsType = httpsType;
+            this.Id = httpsId;
+            this.Type = httpsType;
             this.HttpsCargorequestedByActor = httpsCargorequestedByActor;
             this.HttpsCargodescription = httpsCargodescription;
             this.HttpsCargohandlingInstructionsType = httpsCargohandlingInstructionsType;
             this.HttpsCargohandlingInstructionsTypeCode = httpsCargohandlingInstructionsTypeCode;
         }
 
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string HttpsId { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Id
+        ///// </summary>
+        //[DataMember(Name = "@id", EmitDefaultValue = false)]
+        //public string Id { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> HttpsType { get; set; }
+        ///// <summary>
+        ///// Gets or Sets Type
+        ///// </summary>
+        //[DataMember(Name = "@type", EmitDefaultValue = false)]
+        //public List<string> Type { get; set; }
 
         /// <summary>
         /// Gets or Sets CargorequestedByActor
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#requestedByActor", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:requestedByActor", EmitDefaultValue = false)]
         public Person HttpsCargorequestedByActor { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargodescription
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#description", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:description", EmitDefaultValue = false)]
         public string HttpsCargodescription { get; set; }
 
         /// <summary>
         /// Gets or Sets CargohandlingInstructionsType
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#handlingInstructionsType", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:handlingInstructionsType", EmitDefaultValue = false)]
         public string HttpsCargohandlingInstructionsType { get; set; }
 
         /// <summary>
         /// Gets or Sets CargohandlingInstructionsTypeCode
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#handlingInstructionsTypeCode", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:handlingInstructionsTypeCode", EmitDefaultValue = false)]
         public string HttpsCargohandlingInstructionsTypeCode { get; set; }
 
         /// <summary>
@@ -87,8 +87,8 @@ namespace OneRecord.Api.SDK.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class HandlingInstructions {\n");
-            sb.Append("  Id: ").Append(HttpsId).Append("\n");
-            sb.Append("  Type: ").Append(HttpsType).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  CargorequestedByActor: ").Append(HttpsCargorequestedByActor).Append("\n");
             sb.Append("  Cargodescription: ").Append(HttpsCargodescription).Append("\n");
             sb.Append("  CargohandlingInstructionsType: ").Append(HttpsCargohandlingInstructionsType).Append("\n");
@@ -129,15 +129,15 @@ namespace OneRecord.Api.SDK.Model
             }
             return 
                 (
-                    this.HttpsId == httpsInput.HttpsId ||
-                    (this.HttpsId != null &&
-                    this.HttpsId.Equals(httpsInput.HttpsId))
+                    this.Id == httpsInput.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(httpsInput.Id))
                 ) && 
                 (
-                    this.HttpsType == httpsInput.HttpsType ||
-                    this.HttpsType != null &&
-                    httpsInput.HttpsType != null &&
-                    this.HttpsType.SequenceEqual(httpsInput.HttpsType)
+                    this.Type == httpsInput.Type ||
+                    this.Type != null &&
+                    httpsInput.Type != null &&
+                    this.Type.SequenceEqual(httpsInput.Type)
                 ) && 
                 (
                     this.HttpsCargorequestedByActor == httpsInput.HttpsCargorequestedByActor ||
@@ -170,13 +170,13 @@ namespace OneRecord.Api.SDK.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HttpsId != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.HttpsType != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
                 if (this.HttpsCargorequestedByActor != null)
                 {
