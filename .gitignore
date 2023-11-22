@@ -5,3 +5,14 @@
 /src/OneRecord.Api.SDK/bin/Debug/net7.0
 /src/.vs/HackathonDoha
 /src/OneRecord.Api.SDK/obj
+/src/NeOne.Dataseeder/obj/Debug/net8.0/NeOne.Dataseeder.assets.cache
+/src/NeOne.Dataseeder/obj/Debug/net8.0/NeOne.Dataseeder.GeneratedMSBuildEditorConfig.editorconfig
+/src/OneCheck.Api/obj/Debug/net8.0/OneCheck.Api.assets.cache
+/src/OneCheck.Api/obj/Debug/net8.0/OneCheck.Api.csproj.AssemblyReference.cache
+/src/OneCheck.Api/obj/Debug/net8.0/OneCheck.Api.GeneratedMSBuildEditorConfig.editorconfig
+/src/OneCheck.Application/obj/Debug/net8.0/OneCheck.Application.assets.cache
+/src/OneCheck.Application/obj/Debug/net8.0/OneCheck.Application.GeneratedMSBuildEditorConfig.editorconfig
+/src/OneCheck.Domain/obj/Debug/net8.0/OneCheck.Domain.assets.cache
+/src/OneCheck.Domain/obj/Debug/net8.0/OneCheck.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/src/OneCheck.Repository/obj/Debug/net8.0/OneCheck.Repository.assets.cache
+/src/OneCheck.Repository/obj/Debug/net8.0/OneCheck.Repository.GeneratedMSBuildEditorConfig.editorconfig
