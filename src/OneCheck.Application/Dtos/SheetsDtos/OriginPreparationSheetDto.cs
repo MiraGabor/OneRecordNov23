@@ -15,6 +15,6 @@ public class OriginPreparationSheetDto : CheckSheetDto
     public int GoodsPrecooledAtTemps { get; set; }
     public int ULDPrecooledTemp { get; set; }
     public int TempSetting { get; set; }
-    public int AcceptedTempRange { get; set; }
+    public string AcceptedTempRange { get; set; }
     public string EmergencyPhone {  get; set; }
 }
