@@ -18,13 +18,56 @@ Configuration config = new Configuration
 
 var apiClient = new LogisticsObjectsApi(config);
 
+var checks = new List<Check>
+    {
+        new Check
+        {
+            Type = new List<string>
+            {
+                "cargo:Check"
+            },
+            UsedTemplate = new CheckTemplate
+            {
+                Type = new List<string>
+                {
+                    "cargo:CheckTemplate"
+                },
+                Name = "OriginPreparationSheetDto",
+                Questions = new List<Question>
+                {
+                    new Question
+                    {
+                        Type = new List<string>
+                        {
+                            "cargo:Question"
+                        },
+                        HttpsCargoshortText = "Signature",
+                        HttpsCargoanswer = new Answer
+                        {
+                            Type = new List<string>
+                            {
+                                "cargo:Answer"
+                            },
+                            Text = "Blaaaaaaaa"
+                        },
+                    }
+                }
+            },
+
+        }
+
+    };
+
+
+
 var uld = new ULD
 {
     Type = new List<string>
     {
         "cargo:LoadingUnit"
     },
-    UldSerialNumber = "RKN61424PC"
+    UldSerialNumber = "RKN61424PC",
+    Checks = checks
 };
 
 var piece = new Piece()
