@@ -43,7 +43,7 @@ var piece = new Piece()
         }
     },
     UldReference = uld
-    
+
 };
 
 var shipment = new Shipment
@@ -57,6 +57,7 @@ var shipment = new Shipment
     {
         piece
     },
+
     Waybill = new Waybill
     {
         Type = new List<string>
@@ -64,7 +65,79 @@ var shipment = new Shipment
             "cargo:WayBill"
         },
         WaybillNumber = "724-24112023",
-    }
+        ReferredBookingOption = new Booking
+        {
+            Type = new List<string>
+            {
+                "cargo:Booking"
+            },
+            HttpsCargoforBookingRequest = new BookingRequest
+            {
+                Type = new List<string>
+                {
+                    "cargo:BookingRequest"
+                },
+                HttpsCargobookingOption = new BookingOption
+                {
+                    Type = new List<string>
+                    {
+                        "cargo:BookingOption"
+                    },
+                    TransportLegs = new List<TransportLegs>
+                    {
+                        new()
+                        {
+                            Type = new List<string>
+                            {
+                                "cargo:TransportLegs",
+                                "cargo:LogisticsObject"
+                            },
+                            TransportIdentifier = "LX177",
+                            DepartureDate = new DateTime(2023,11,25,00,05,00),
+                            DepartureLocation = new Location
+                            {
+                                Type = new List<string>
+                                {
+                                    "cargo:Location"
+                                },
+                                HttpsCargocode = "SIN"
+                            },
+                            ArrivalLocation = new Location
+                            {
+                                Type = new List<string>
+                                {
+                                    "cargo:Location"
+                                },
+                                HttpsCargocode = "ZRH"
+                            },
+                            LegNumber = 1
+                        },
+                        new()
+                        {
+                            Type = new List<string>
+                            {
+                                "cargo:TransportLegs",
+                                "cargo:LogisticsObject"
+                            },
+                            TransportIdentifier = "LX18",
+                            DepartureDate = new DateTime(2023,11,26,00,05,00),
+                            DepartureLocation = new Location
+                            {
+                                Type = new List < string > { "cargo:Location" },
+                                HttpsCargocode = "ZRH"
+                            },
+                            ArrivalLocation = new Location
+                            {
+                                Type = new List < string > { "cargo:Location" },
+                                HttpsCargocode = "JFK"
+                            },
+                            LegNumber = 2
+                        }
+                    }
+                }
+            }
+        }
+    },
 
 };
 
