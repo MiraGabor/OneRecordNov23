@@ -22,7 +22,7 @@ namespace OneRecord.Api.SDK.Model
     /// CheckTemplate
     /// </summary>
     [DataContract(Name = "CheckTemplate")]
-    public partial class CheckTemplate : IEquatable<CheckTemplate>, IValidatableObject
+    public partial class CheckTemplate : LogisticsObject, IEquatable<CheckTemplate>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CheckTemplate" /> class.
@@ -43,105 +43,63 @@ namespace OneRecord.Api.SDK.Model
         /// <param name="httpsCargoversion">Cargoversion.</param>
         public CheckTemplate(string httpsId = default(string), List<string> httpsType = default(List<string>), List<Check> httpsCargochecks = default(List<Check>), List<LogisticsEvent> httpsCargoevents = default(List<LogisticsEvent>), List<ExternalReference> httpsCargoexternalReferences = default(List<ExternalReference>), string httpsCargocompanyIdentifier = default(string), bool httpsCargoskeletonIndicator = default(bool), List<Party> httpsCargoinvolvedParties = default(List<Party>), ExternalReference httpsCargolegacyTemplate = default(ExternalReference), List<Question> httpsCargoquestions = default(List<Question>), DateTime httpsCargodate = default(DateTime), string httpsCargoname = default(string), string httpsCargotemplatePurpose = default(string), string httpsCargoversion = default(string))
         {
-            this.HttpsId = httpsId;
-            this.HttpsType = httpsType;
-            this.HttpsCargochecks = httpsCargochecks;
-            this.HttpsCargoevents = httpsCargoevents;
-            this.HttpsCargoexternalReferences = httpsCargoexternalReferences;
-            this.HttpsCargocompanyIdentifier = httpsCargocompanyIdentifier;
-            this.HttpsCargoskeletonIndicator = httpsCargoskeletonIndicator;
-            this.HttpsCargoinvolvedParties = httpsCargoinvolvedParties;
-            this.HttpsCargolegacyTemplate = httpsCargolegacyTemplate;
-            this.HttpsCargoquestions = httpsCargoquestions;
-            this.HttpsCargodate = httpsCargodate;
-            this.HttpsCargoname = httpsCargoname;
-            this.HttpsCargotemplatePurpose = httpsCargotemplatePurpose;
-            this.HttpsCargoversion = httpsCargoversion;
+            this.Id = httpsId;
+            this.Type = httpsType;
+            this.Checks = httpsCargochecks;
+            this.Events = httpsCargoevents;
+            this.ExternalReferences = httpsCargoexternalReferences;
+            this.CompanyIdentifier = httpsCargocompanyIdentifier;
+            this.SkeletonIndicator = httpsCargoskeletonIndicator;
+            this.InvolvedParties = httpsCargoinvolvedParties;
+            this.LegacyTemplate = httpsCargolegacyTemplate;
+            this.Questions = httpsCargoquestions;
+            this.Date = httpsCargodate;
+            this.Name = httpsCargoname;
+            this.TemplatePurpose = httpsCargotemplatePurpose;
+            this.Version = httpsCargoversion;
         }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string HttpsId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> HttpsType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cargochecks
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checks", EmitDefaultValue = false)]
-        public List<Check> HttpsCargochecks { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cargoevents
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#events", EmitDefaultValue = false)]
-        public List<LogisticsEvent> HttpsCargoevents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CargoexternalReferences
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#externalReferences", EmitDefaultValue = false)]
-        public List<ExternalReference> HttpsCargoexternalReferences { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CargocompanyIdentifier
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#companyIdentifier", EmitDefaultValue = false)]
-        public string HttpsCargocompanyIdentifier { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CargoskeletonIndicator
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#skeletonIndicator", EmitDefaultValue = true)]
-        public bool HttpsCargoskeletonIndicator { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoinvolvedParties
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#involvedParties", EmitDefaultValue = false)]
-        public List<Party> HttpsCargoinvolvedParties { get; set; }
+        [DataMember(Name = "cargo:involvedParties", EmitDefaultValue = false)]
+        public List<Party> InvolvedParties { get; set; }
 
         /// <summary>
         /// Gets or Sets CargolegacyTemplate
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#legacyTemplate", EmitDefaultValue = false)]
-        public ExternalReference HttpsCargolegacyTemplate { get; set; }
+        [DataMember(Name = "cargo:legacyTemplate", EmitDefaultValue = false)]
+        public ExternalReference LegacyTemplate { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargoquestions
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#questions", EmitDefaultValue = false)]
-        public List<Question> HttpsCargoquestions { get; set; }
+        [DataMember(Name = "cargo:questions", EmitDefaultValue = false)]
+        public List<Question> Questions { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargodate
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#date", EmitDefaultValue = false)]
-        public DateTime HttpsCargodate { get; set; }
+        [DataMember(Name = "cargo:date", EmitDefaultValue = false)]
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargoname
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#name", EmitDefaultValue = false)]
-        public string HttpsCargoname { get; set; }
+        [DataMember(Name = "cargo:name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets CargotemplatePurpose
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#templatePurpose", EmitDefaultValue = false)]
-        public string HttpsCargotemplatePurpose { get; set; }
+        [DataMember(Name = "cargo:templatePurpose", EmitDefaultValue = false)]
+        public string TemplatePurpose { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargoversion
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#version", EmitDefaultValue = false)]
-        public string HttpsCargoversion { get; set; }
+        [DataMember(Name = "cargo:version", EmitDefaultValue = false)]
+        public string Version { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -151,20 +109,20 @@ namespace OneRecord.Api.SDK.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CheckTemplate {\n");
-            sb.Append("  Id: ").Append(HttpsId).Append("\n");
-            sb.Append("  Type: ").Append(HttpsType).Append("\n");
-            sb.Append("  Cargochecks: ").Append(HttpsCargochecks).Append("\n");
-            sb.Append("  Cargoevents: ").Append(HttpsCargoevents).Append("\n");
-            sb.Append("  CargoexternalReferences: ").Append(HttpsCargoexternalReferences).Append("\n");
-            sb.Append("  CargocompanyIdentifier: ").Append(HttpsCargocompanyIdentifier).Append("\n");
-            sb.Append("  CargoskeletonIndicator: ").Append(HttpsCargoskeletonIndicator).Append("\n");
-            sb.Append("  CargoinvolvedParties: ").Append(HttpsCargoinvolvedParties).Append("\n");
-            sb.Append("  CargolegacyTemplate: ").Append(HttpsCargolegacyTemplate).Append("\n");
-            sb.Append("  Cargoquestions: ").Append(HttpsCargoquestions).Append("\n");
-            sb.Append("  Cargodate: ").Append(HttpsCargodate).Append("\n");
-            sb.Append("  Cargoname: ").Append(HttpsCargoname).Append("\n");
-            sb.Append("  CargotemplatePurpose: ").Append(HttpsCargotemplatePurpose).Append("\n");
-            sb.Append("  Cargoversion: ").Append(HttpsCargoversion).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Cargochecks: ").Append(Checks).Append("\n");
+            sb.Append("  Cargoevents: ").Append(Events).Append("\n");
+            sb.Append("  CargoexternalReferences: ").Append(ExternalReferences).Append("\n");
+            sb.Append("  CargocompanyIdentifier: ").Append(CompanyIdentifier).Append("\n");
+            sb.Append("  CargoskeletonIndicator: ").Append(SkeletonIndicator).Append("\n");
+            sb.Append("  CargoinvolvedParties: ").Append(InvolvedParties).Append("\n");
+            sb.Append("  CargolegacyTemplate: ").Append(LegacyTemplate).Append("\n");
+            sb.Append("  Cargoquestions: ").Append(Questions).Append("\n");
+            sb.Append("  Cargodate: ").Append(Date).Append("\n");
+            sb.Append("  Cargoname: ").Append(Name).Append("\n");
+            sb.Append("  CargotemplatePurpose: ").Append(TemplatePurpose).Append("\n");
+            sb.Append("  Cargoversion: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -201,79 +159,79 @@ namespace OneRecord.Api.SDK.Model
             }
             return 
                 (
-                    this.HttpsId == httpsInput.HttpsId ||
-                    (this.HttpsId != null &&
-                    this.HttpsId.Equals(httpsInput.HttpsId))
+                    this.Id == httpsInput.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(httpsInput.Id))
                 ) && 
                 (
-                    this.HttpsType == httpsInput.HttpsType ||
-                    this.HttpsType != null &&
-                    httpsInput.HttpsType != null &&
-                    this.HttpsType.SequenceEqual(httpsInput.HttpsType)
+                    this.Type == httpsInput.Type ||
+                    this.Type != null &&
+                    httpsInput.Type != null &&
+                    this.Type.SequenceEqual(httpsInput.Type)
                 ) && 
                 (
-                    this.HttpsCargochecks == httpsInput.HttpsCargochecks ||
-                    this.HttpsCargochecks != null &&
-                    httpsInput.HttpsCargochecks != null &&
-                    this.HttpsCargochecks.SequenceEqual(httpsInput.HttpsCargochecks)
+                    this.Checks == httpsInput.Checks ||
+                    this.Checks != null &&
+                    httpsInput.Checks != null &&
+                    this.Checks.SequenceEqual(httpsInput.Checks)
                 ) && 
                 (
-                    this.HttpsCargoevents == httpsInput.HttpsCargoevents ||
-                    this.HttpsCargoevents != null &&
-                    httpsInput.HttpsCargoevents != null &&
-                    this.HttpsCargoevents.SequenceEqual(httpsInput.HttpsCargoevents)
+                    this.Events == httpsInput.Events ||
+                    this.Events != null &&
+                    httpsInput.Events != null &&
+                    this.Events.SequenceEqual(httpsInput.Events)
                 ) && 
                 (
-                    this.HttpsCargoexternalReferences == httpsInput.HttpsCargoexternalReferences ||
-                    this.HttpsCargoexternalReferences != null &&
-                    httpsInput.HttpsCargoexternalReferences != null &&
-                    this.HttpsCargoexternalReferences.SequenceEqual(httpsInput.HttpsCargoexternalReferences)
+                    this.ExternalReferences == httpsInput.ExternalReferences ||
+                    this.ExternalReferences != null &&
+                    httpsInput.ExternalReferences != null &&
+                    this.ExternalReferences.SequenceEqual(httpsInput.ExternalReferences)
                 ) && 
                 (
-                    this.HttpsCargocompanyIdentifier == httpsInput.HttpsCargocompanyIdentifier ||
-                    (this.HttpsCargocompanyIdentifier != null &&
-                    this.HttpsCargocompanyIdentifier.Equals(httpsInput.HttpsCargocompanyIdentifier))
+                    this.CompanyIdentifier == httpsInput.CompanyIdentifier ||
+                    (this.CompanyIdentifier != null &&
+                    this.CompanyIdentifier.Equals(httpsInput.CompanyIdentifier))
                 ) && 
                 (
-                    this.HttpsCargoskeletonIndicator == httpsInput.HttpsCargoskeletonIndicator ||
-                    this.HttpsCargoskeletonIndicator.Equals(httpsInput.HttpsCargoskeletonIndicator)
+                    this.SkeletonIndicator == httpsInput.SkeletonIndicator ||
+                    this.SkeletonIndicator.Equals(httpsInput.SkeletonIndicator)
                 ) && 
                 (
-                    this.HttpsCargoinvolvedParties == httpsInput.HttpsCargoinvolvedParties ||
-                    this.HttpsCargoinvolvedParties != null &&
-                    httpsInput.HttpsCargoinvolvedParties != null &&
-                    this.HttpsCargoinvolvedParties.SequenceEqual(httpsInput.HttpsCargoinvolvedParties)
+                    this.InvolvedParties == httpsInput.InvolvedParties ||
+                    this.InvolvedParties != null &&
+                    httpsInput.InvolvedParties != null &&
+                    this.InvolvedParties.SequenceEqual(httpsInput.InvolvedParties)
                 ) && 
                 (
-                    this.HttpsCargolegacyTemplate == httpsInput.HttpsCargolegacyTemplate ||
-                    (this.HttpsCargolegacyTemplate != null &&
-                    this.HttpsCargolegacyTemplate.Equals(httpsInput.HttpsCargolegacyTemplate))
+                    this.LegacyTemplate == httpsInput.LegacyTemplate ||
+                    (this.LegacyTemplate != null &&
+                    this.LegacyTemplate.Equals(httpsInput.LegacyTemplate))
                 ) && 
                 (
-                    this.HttpsCargoquestions == httpsInput.HttpsCargoquestions ||
-                    this.HttpsCargoquestions != null &&
-                    httpsInput.HttpsCargoquestions != null &&
-                    this.HttpsCargoquestions.SequenceEqual(httpsInput.HttpsCargoquestions)
+                    this.Questions == httpsInput.Questions ||
+                    this.Questions != null &&
+                    httpsInput.Questions != null &&
+                    this.Questions.SequenceEqual(httpsInput.Questions)
                 ) && 
                 (
-                    this.HttpsCargodate == httpsInput.HttpsCargodate ||
-                    (this.HttpsCargodate != null &&
-                    this.HttpsCargodate.Equals(httpsInput.HttpsCargodate))
+                    this.Date == httpsInput.Date ||
+                    (this.Date != null &&
+                    this.Date.Equals(httpsInput.Date))
                 ) && 
                 (
-                    this.HttpsCargoname == httpsInput.HttpsCargoname ||
-                    (this.HttpsCargoname != null &&
-                    this.HttpsCargoname.Equals(httpsInput.HttpsCargoname))
+                    this.Name == httpsInput.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(httpsInput.Name))
                 ) && 
                 (
-                    this.HttpsCargotemplatePurpose == httpsInput.HttpsCargotemplatePurpose ||
-                    (this.HttpsCargotemplatePurpose != null &&
-                    this.HttpsCargotemplatePurpose.Equals(httpsInput.HttpsCargotemplatePurpose))
+                    this.TemplatePurpose == httpsInput.TemplatePurpose ||
+                    (this.TemplatePurpose != null &&
+                    this.TemplatePurpose.Equals(httpsInput.TemplatePurpose))
                 ) && 
                 (
-                    this.HttpsCargoversion == httpsInput.HttpsCargoversion ||
-                    (this.HttpsCargoversion != null &&
-                    this.HttpsCargoversion.Equals(httpsInput.HttpsCargoversion))
+                    this.Version == httpsInput.Version ||
+                    (this.Version != null &&
+                    this.Version.Equals(httpsInput.Version))
                 );
         }
 
@@ -286,58 +244,58 @@ namespace OneRecord.Api.SDK.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HttpsId != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.HttpsType != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
-                if (this.HttpsCargochecks != null)
+                if (this.Checks != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargochecks.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Checks.GetHashCode();
                 }
-                if (this.HttpsCargoevents != null)
+                if (this.Events != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoevents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Events.GetHashCode();
                 }
-                if (this.HttpsCargoexternalReferences != null)
+                if (this.ExternalReferences != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoexternalReferences.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ExternalReferences.GetHashCode();
                 }
-                if (this.HttpsCargocompanyIdentifier != null)
+                if (this.CompanyIdentifier != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocompanyIdentifier.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CompanyIdentifier.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.HttpsCargoskeletonIndicator.GetHashCode();
-                if (this.HttpsCargoinvolvedParties != null)
+                hashCode = (hashCode * 59) + this.SkeletonIndicator.GetHashCode();
+                if (this.InvolvedParties != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoinvolvedParties.GetHashCode();
+                    hashCode = (hashCode * 59) + this.InvolvedParties.GetHashCode();
                 }
-                if (this.HttpsCargolegacyTemplate != null)
+                if (this.LegacyTemplate != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargolegacyTemplate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.LegacyTemplate.GetHashCode();
                 }
-                if (this.HttpsCargoquestions != null)
+                if (this.Questions != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoquestions.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Questions.GetHashCode();
                 }
-                if (this.HttpsCargodate != null)
+                if (this.Date != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargodate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Date.GetHashCode();
                 }
-                if (this.HttpsCargoname != null)
+                if (this.Name != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoname.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
-                if (this.HttpsCargotemplatePurpose != null)
+                if (this.TemplatePurpose != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargotemplatePurpose.GetHashCode();
+                    hashCode = (hashCode * 59) + this.TemplatePurpose.GetHashCode();
                 }
-                if (this.HttpsCargoversion != null)
+                if (this.Version != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoversion.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Version.GetHashCode();
                 }
                 return hashCode;
             }

@@ -67,48 +67,6 @@ namespace OneRecord.Api.SDK.Model
             this.UsedTemplate = usedTemplate;
         }
 
-        ///// <summary>
-        ///// Gets or Sets Id
-        ///// </summary>
-        //[DataMember(Name = "@id", EmitDefaultValue = false)]
-        //public string HttpsId { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets Type
-        ///// </summary>
-        //[DataMember(Name = "@type", EmitDefaultValue = false)]
-        //public List<string> HttpsType { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets Cargochecks
-        ///// </summary>
-        //[DataMember(Name = "cargo:checks", EmitDefaultValue = false)]
-        //public List<Check> checks { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets Cargoevents
-        ///// </summary>
-        //[DataMember(Name = "cargo:events", EmitDefaultValue = false)]
-        //public List<LogisticsEvent> events { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets CargoexternalReferences
-        ///// </summary>
-        //[DataMember(Name = "cargo:externalReferences", EmitDefaultValue = false)]
-        //public List<ExternalReference> externalReferences { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets CargocompanyIdentifier
-        ///// </summary>
-        //[DataMember(Name = "cargo:companyIdentifier", EmitDefaultValue = false)]
-        //public string companyIdentifier { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets CargoskeletonIndicator
-        ///// </summary>
-        //[DataMember(Name = "cargo:skeletonIndicator", EmitDefaultValue = true)]
-        //public bool skeletonIndicator { get; set; }
-
         /// <summary>
         /// Gets or Sets CargocontactDetails
         /// </summary>
