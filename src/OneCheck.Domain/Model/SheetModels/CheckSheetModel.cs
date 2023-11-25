@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OneCheck.Repository.Model;
+namespace OneCheck.Domain.Model.SheetModels;
 public class CheckSheetModel
 {
-    public Guid CheckSheetId { get; set; }
     public DateOnly Date { get; set; }
     public TimeOnly Time { get; set; }
     public string SealNumber { get; set; }
