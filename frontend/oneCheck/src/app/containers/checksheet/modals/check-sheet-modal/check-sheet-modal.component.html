@@ -23,6 +23,7 @@
   <!-- Export for example -->
   <ng-container>
     <ion-accordion-group>
+      <!-- Origin Handling Agent Sheet-->
       <ion-accordion
         *ngIf="
           activeSegment === 'export' && checksheet?.originHandlingAgentSheet
@@ -33,36 +34,13 @@
           <ion-label>Origin Handling Agent Sheet</ion-label>
         </ion-item>
         <div class="ion-padding" slot="content">
-          <ion-list>
-            <ion-item>
-              <ion-label> Example Readonly </ion-label>
-              <ion-checkbox disabled slot="end"> </ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <!-- todo value / selected -->
-              <ion-label>Example Readonly 2</ion-label>
-              <ion-checkbox [checked]="true" disabled slot="end">
-              </ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <ion-label> test </ion-label>
-              <ion-checkbox slot="end"> </ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <ion-label> test </ion-label>
-              <ion-checkbox slot="end"> </ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <ion-label> test </ion-label>
-              <ion-checkbox slot="end"> </ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <ion-input label="Temperature" placeholder="C°"></ion-input>
-            </ion-item>
-          </ion-list>
+          <app-origin-handling-agent-sheet
+            [originHandlingAgentSheet]="checksheet?.originHandlingAgentSheet"
+          ></app-origin-handling-agent-sheet>
         </div>
       </ion-accordion>
 
+      <!-- Inbound Transit Sheets -->
       <ion-accordion value="second">
         <ion-item slot="header" color="light">
           <ion-label>Second Accordion</ion-label>
