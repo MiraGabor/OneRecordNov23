@@ -9,10 +9,10 @@ namespace Neone.ServiceClient
 
         private readonly LogisticsObjectsApi _logisticsObjectsApi;
 
-        public Client(string token)
+        public Client()
         {
-            //TODO get token
-
+            var token = TokenClient.GetAccessToken(@"http://localhost:8089", "neone", "neone-client",
+                "lx7ThS5aYggdsMm42BP3wMrVqKm9WpNY").GetAwaiter().GetResult();
 
             Configuration config = new Configuration
             {
@@ -23,25 +23,31 @@ namespace Neone.ServiceClient
                 },
             };
 
-
             _logisticsObjectsApi = new LogisticsObjectsApi(config);
         }
 
         public async Task<Shipment?> GetShipment(string id)
         {
             var response = await _logisticsObjectsApi.GetLogisticsObjectWithHttpInfoAsync(id);
-            return response.HttpsContent as Shipment;
+            return (Shipment)response.HttpsData;
         }
 
         public async Task<LoadingUnit?> GetLoadingUnit(string id)
         {
             var response = await _logisticsObjectsApi.GetLogisticsObjectWithHttpInfoAsync(id);
-            return response.HttpsContent as LoadingUnit;
+            return (LoadingUnit)response.HttpsData;
         }
 
-        public async Task UpdateLoadingUnit(string id)
+        public async Task<Piece> GetPiece(string id)
         {
-            //_logisticsObjectsApi.UpdateLogisticsObjectWithHttpInfoAsync(id, cha)
+            var response = await _logisticsObjectsApi.GetLogisticsObjectWithHttpInfoAsync(id);
+            return (Piece) response.HttpsData;
+        }
+
+        public async Task<Waybill> GetWayBill(string id)
+        {
+            var response = await _logisticsObjectsApi.GetLogisticsObjectWithHttpInfoAsync(id);
+            return (Waybill)response.HttpsData;
         }
     }
 }

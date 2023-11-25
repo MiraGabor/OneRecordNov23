@@ -24,14 +24,16 @@ public class PostSheetRequestHandler : IRequestHandler<PostSheetRequest>
     {
 
         var check = new Check();
-        check.Id = new Guid().ToString();
+        //check.Id = new Guid().ToString();
         check.ContactPersons = new List<Person> { new Person { HttpsCargolastName = originPreparationSheetDto.Name } };
+        check.Type.Add("cargo:Check");
         check.Type.Add("OriginPreparationSheet");
         check.UsedTemplate.Name = "OriginPreparationSheetDto";
         check.UsedTemplate.Questions.AddRange(new List<Question>
         {
             new Question
             {
+                Type = new List<string> {"cargo:Question"},
                 HttpsCargoshortText = "Name",
                 HttpsCargoanswer = new Answer
                 {
