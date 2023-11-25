@@ -135,13 +135,6 @@ namespace OneRecord.Api.SDK.Model
             this.Upid = upid;
         }
 
-        ///// <summary>
-        ///// Gets or Sets Id
-        ///// </summary>
-        //[DataMember(Name = "@id", EmitDefaultValue = false)]
-        //public string Id { get; set; }
-
-
         /// <summary>
         /// Gets or Sets Context
         /// </summary>
@@ -150,44 +143,6 @@ namespace OneRecord.Api.SDK.Model
         {
             Cargo = "https://onerecord.iata.org/ns/cargo#"
         };
-    
-
-
-    ///// <summary>
-        ///// Gets or Sets Type
-        ///// </summary>
-        //[DataMember(Name = "@type", EmitDefaultValue = false)]
-        //public List<string> Type { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets Checks
-        ///// </summary>
-        //[DataMember(Name = "cargo:checks", EmitDefaultValue = false)]
-        //public List<Check> Checks { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets Events
-        ///// </summary>
-        //[DataMember(Name = "cargo:events", EmitDefaultValue = false)]
-        //public List<LogisticsEvent> Events { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets ExternalReferences
-        ///// </summary>
-        //[DataMember(Name = "cargo:externalReferences", EmitDefaultValue = false)]
-        //public List<ExternalReference> ExternalReferences { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets CompanyIdentifier
-        ///// </summary>
-        //[DataMember(Name = "cargo:companyIdentifier", EmitDefaultValue = false)]
-        //public string CompanyIdentifier { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets SkeletonIndicator
-        ///// </summary>
-        //[DataMember(Name = "cargo:skeletonIndicator", EmitDefaultValue = true)]
-        //public bool SkeletonIndicator { get; set; }
 
         /// <summary>
         /// Gets or Sets AttachedIotDevices

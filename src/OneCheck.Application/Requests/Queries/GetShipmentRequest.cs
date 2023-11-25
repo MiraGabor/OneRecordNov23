@@ -3,10 +3,6 @@ using OneCheck.Application.Dtos;
 
 namespace OneCheck.Application.Requests.Queries;
 
-public class GetShipmentRequest : IRequest<ShipmentDto>
+public record GetShipmentRequest(string Id) : IRequest<ShipmentDto>
 {
-    public GetShipmentRequest(string httpsId)
-    {
-        throw new NotImplementedException();
-    }
 }

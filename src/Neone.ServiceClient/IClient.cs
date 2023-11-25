@@ -9,6 +9,7 @@ namespace Neone.ServiceClient
 {
     public interface IClient
     {
-        Task<Shipment> GetShipment(string id);
+        Task<Shipment?> GetShipment(string id);
+        Task<LoadingUnit?> GetLoadingUnit(string id);
     }
 }
