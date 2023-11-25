@@ -11,7 +11,7 @@ public class SheetDto
     public SheetDto() 
     {
         this.PreparationSheet =  new OriginPreparationSheetDto();
-        this.InboundTransitSheets  = new List<TransitSheetDto>();
+        this.TransitSheets  = new List<TransitSheetDto>();
         this.OriginHandlingAgentSheet = new OriginHandlingAgentSheetDto();
         this.DestinationHandlingAgentSheet = new DestinationHandlingAgentSheetDto();
         this.DestinationConsigneeSheet = new DestinationConsigneeSheetDto();
@@ -21,7 +21,7 @@ public class SheetDto
     public OriginPreparationSheetDto PreparationSheet { get; set;}
     public OriginHandlingAgentSheetDto OriginHandlingAgentSheet { get; set;}
 
-    public IEnumerable<TransitSheetDto> InboundTransitSheets { get; set;}
+    public IEnumerable<TransitSheetDto> TransitSheets { get; set;}
     public DestinationHandlingAgentSheetDto DestinationHandlingAgentSheet { get; set;}
     public DestinationConsigneeSheetDto DestinationConsigneeSheet { get; set;}
 }
