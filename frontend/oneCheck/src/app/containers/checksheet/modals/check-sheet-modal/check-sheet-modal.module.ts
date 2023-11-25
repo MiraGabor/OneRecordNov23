@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CheckSheetModalComponent } from './check-sheet-modal.component';
 import { OriginHandlingAgentSheetComponentModule } from '../../components/origin-handling-agent-sheet/origin-handling-agent-sheet.module';
+import { PreparationSheetComponentModule } from '../../components/preparation-sheet/preparation-sheet.module';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { OriginHandlingAgentSheetComponentModule } from '../../components/origin
     FormsModule,
     IonicModule,
     OriginHandlingAgentSheetComponentModule,
+    PreparationSheetComponentModule,
   ],
   declarations: [CheckSheetModalComponent],
   exports: [CheckSheetModalComponent],

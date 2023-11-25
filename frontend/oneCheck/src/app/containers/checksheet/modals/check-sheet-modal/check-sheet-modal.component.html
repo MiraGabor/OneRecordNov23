@@ -35,13 +35,17 @@
     </ion-accordion>
 
     <!-- Inbound Transit Sheets -->
-    <ion-accordion value="second">
+    <ion-accordion *ngIf="checksheet?.preparationSheet" value="second">
       <ion-item slot="header" color="light">
         <ion-label
           >Loading and preparation by shipper / issuing agent</ion-label
         >
       </ion-item>
-      <div class="ion-padding" slot="content">Second Content</div>
+      <div class="ion-padding" slot="content">
+        <app-preparation-sheet
+          [preparationSheet]="checksheet?.preparationSheet"
+        ></app-preparation-sheet>
+      </div>
     </ion-accordion>
   </ion-accordion-group>
 

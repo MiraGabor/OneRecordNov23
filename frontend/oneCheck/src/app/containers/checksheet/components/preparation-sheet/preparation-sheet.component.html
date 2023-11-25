@@ -1,0 +1,92 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <ion-list *ngIf="preparationSheet">
+    <ion-item>
+      <ion-input formControlName="uldNumber" label="ULD Number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="sealNumber" label="Seal Number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="awbNumber" label="AWB Number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="routing" label="Routing"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        formControlName="goodsPrecooledAtTemps"
+        label="Goods Precooled At Temps"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        formControlName="uldPrecooledTemp"
+        label="ULD Precooled Temp"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Is Battery Charged</ion-label>
+      <ion-checkbox
+        formControlName="isBatteryCharged"
+        slot="end"
+      ></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="tempSetting" label="Temp Setting"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="date" label="Date"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="time" label="Time"></ion-input>
+    </ion-item>
+
+    <!--ion-item>
+      <ion-input formControlName="signature" label="Signature"></ion-input>
+    </ion-item-->
+
+    <ion-item>
+      <ion-input formControlName="name" label="Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        formControlName="batteryStatusInPercent"
+        label="Battery Status in Percent"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Container Damaged</ion-label>
+      <ion-checkbox
+        formControlName="isContainerDamaged"
+        slot="end"
+      ></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        formControlName="acceptedTempRange"
+        label="Accepted Temp Range"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        formControlName="emergencyPhone"
+        label="Emergency Phone"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" type="submit"> Submit </ion-button>
+</form>

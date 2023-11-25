@@ -14,7 +14,6 @@ export class OriginHandlingAgentSheetComponent implements OnInit {
   public userRole$: Observable<string | undefined> | undefined;
   public canEdit = false;
 
-  // todo prefill from state
   public form: FormGroup = new FormGroup({
     //checkSheetId: new FormControl('', Validators.required), // todo hide in UI?
     date: new FormControl('', Validators.required),
@@ -43,9 +42,10 @@ export class OriginHandlingAgentSheetComponent implements OnInit {
     this.userRole$ = this.store.select(UserStateSelectors.userRole);
 
     this.userRole$.subscribe((role) => {
-      this.canEdit = role === 'export'; // todo change role
+      this.canEdit = role === 'export'; // todo rename role
     });
 
+    // pre-fill sheet
     if (this.originHandlingAgentSheet) {
       this.form.patchValue(this.originHandlingAgentSheet); // todo does this work?
     }
