@@ -10,8 +10,8 @@
  * Do not edit the class manually.
  */
 import { OriginPreparationSheetDto } from './originPreparationSheetDto';
+import { TransitSheetDto } from './transitSheetDto';
 import { DestinationHandlingAgentSheetDto } from './destinationHandlingAgentSheetDto';
-import { TransitCheckSheetDto } from './transitCheckSheetDto';
 import { OriginHandlingAgentSheetDto } from './originHandlingAgentSheetDto';
 import { DestinationConsigneeSheetDto } from './destinationConsigneeSheetDto';
 
@@ -20,7 +20,7 @@ export interface SheetDto {
     checkSheetId?: string;
     preparationSheet?: OriginPreparationSheetDto;
     originHandlingAgentSheet?: OriginHandlingAgentSheetDto;
-    inboundTransitSheets?: Array<TransitCheckSheetDto> | null;
+    transitSheets?: Array<TransitSheetDto> | null;
     destinationHandlingAgentSheet?: DestinationHandlingAgentSheetDto;
     destinationConsigneeSheet?: DestinationConsigneeSheetDto;
 }

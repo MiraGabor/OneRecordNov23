@@ -22,7 +22,6 @@ export interface DestinationHandlingAgentSheetDto {
     signature?: string | null;
     name?: string | null;
     batteryStatusInPercent?: number;
-    inboundCheckAirport?: string | null;
     isContainerOperating?: boolean;
     isContainerDamaged?: boolean;
     displayedTemp?: number;
