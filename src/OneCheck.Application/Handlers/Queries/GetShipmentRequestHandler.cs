@@ -7,11 +7,11 @@ namespace OneCheck.Application.Handlers.Queries
 {
     public class GetShipmentRequestHandler : IRequestHandler<GetShipmentRequest, ShipmentDto>
     {
-        private readonly IShipmentRepository _shipmentRepository;
+        //private readonly IShipmentRepository _shipmentRepository;
 
-        public GetShipmentRequestHandler(IShipmentRepository shipmentRepository)
+        public GetShipmentRequestHandler(/*IShipmentRepository shipmentRepository*/)
         {
-            _shipmentRepository = shipmentRepository;
+            //_shipmentRepository = shipmentRepository;
         }
 
         public async Task<ShipmentDto> Handle(GetShipmentRequest request, CancellationToken cancellationToken)
