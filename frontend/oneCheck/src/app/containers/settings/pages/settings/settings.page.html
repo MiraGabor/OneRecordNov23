@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngIf="userLoggedIn$ | async">
+    <ion-item *ngIf="userRole$ | async; else selectRole">
+      <ion-icon slot="start" name="swap-horizontal-outline"></ion-icon>
+      <app-select-role title="Switch Role"> </app-select-role>
+    </ion-item>
+    <ion-item (click)="logout();">
+      <ion-icon slot="start" name="log-in-outline"></ion-icon>
+      <ion-label>Logout</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<!-- todo different icon -->
+<ng-template #selectRole>
+  <ion-item>
+    <ion-icon slot="start" name="swap-horizontal-outline"></ion-icon>
+    <app-select-role> </app-select-role>
+  </ion-item>
+</ng-template>

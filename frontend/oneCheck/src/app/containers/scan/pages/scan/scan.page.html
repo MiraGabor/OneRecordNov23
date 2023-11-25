@@ -1,0 +1,57 @@
+<ng-container
+  *ngIf="
+{
+  role: userRole$ | async,
+  user: user$ | async,
+  isLoggedIn: userLoggedIn$ | async
+} as observables
+"
+>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title *ngIf="observables.user && observables.role">
+        {{ observables.user.name + ' | ' + observables?.role }}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ng-container *ngIf="observables.isLoggedIn; else loginMask">
+            <ng-container *ngIf="observables.role; else selectRole">
+              <ion-button expand="block" (click)="scan()">
+                <ng-container *ngIf="!scannnerLoading; else loading">
+                  Scan
+                </ng-container>
+              </ion-button>
+            </ng-container>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="presentDummyChecksheet()">
+            Dummy Checksheet
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+
+  <ng-template #loginMask>
+    <!-- todo footer design -->
+    <ion-footer>
+      <app-login-mask></app-login-mask>
+    </ion-footer>
+  </ng-template>
+
+  <ng-template #selectRole>
+    <app-select-role> </app-select-role>
+  </ng-template>
+
+  <ng-template #loading>
+    <ion-spinner></ion-spinner>
+  </ng-template>
+</ng-container>
