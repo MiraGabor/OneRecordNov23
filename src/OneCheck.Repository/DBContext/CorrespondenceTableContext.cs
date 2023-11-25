@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using OneCheck.Repository.Model;
 
 namespace OneCheck.Repository.DBContext;
@@ -8,15 +9,17 @@ public class CorrespondenceTableContext : DbContext
     {
         
     }
-    public CorrespondenceTableContext(DbContextOptions options)
+    public CorrespondenceTableContext(DbContextOptions options, IConfiguration configuration)
         : base(options)
     {
-
+        Configuration = configuration;
     }
     public DbSet<CorrespondenceULDShipmentModel> correspondenceULDShipmentModel { get; set; }
+    public IConfiguration Configuration { get; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("data source=SWISS-SIEE-38;initial catalog=master;user id=Admin;password=@Password123;TrustServerCertificate=True");
+        optionsBuilder.UseSqlServer(Configuration.GetConnectionString("myDB"));
         base.OnConfiguring(optionsBuilder);
     }
 }
