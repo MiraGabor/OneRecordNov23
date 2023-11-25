@@ -26,7 +26,6 @@ public class PostSheetRequestHandler : IRequestHandler<PostSheetRequest>
         var check = new Check();
         check.Id = new Guid().ToString();
         check.ContactPersons = new List<Person> { new Person { HttpsCargolastName = originPreparationSheetDto.Name } };
-
         check.Type.Add("OriginPreparationSheet");
         check.UsedTemplate.Name = "OriginPreparationSheetDto";
         check.UsedTemplate.Questions.AddRange(new List<Question>
@@ -84,7 +83,7 @@ public class PostSheetRequestHandler : IRequestHandler<PostSheetRequest>
                 HttpsCargoshortText = "Routing",
                 HttpsCargoanswer = new Answer
                 {
-                    Text = originPreparationSheetDto.Routing.ToString(),
+                    Text = String.Join(",", originPreparationSheetDto.Routing),
                 }
             }, new Question
             {
@@ -153,4 +152,6 @@ public class PostSheetRequestHandler : IRequestHandler<PostSheetRequest>
         });
         return check;
     }
+
+
 }
