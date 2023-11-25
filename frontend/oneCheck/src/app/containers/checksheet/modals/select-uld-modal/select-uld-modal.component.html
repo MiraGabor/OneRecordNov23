@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Select ULD</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="shipment$ | async as shipment">
+    <ion-item
+      (click)="getChecksheet(uld)"
+      *ngFor="let uld of shipment.uldIdList"
+    >
+      <ion-label>{{ uld }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

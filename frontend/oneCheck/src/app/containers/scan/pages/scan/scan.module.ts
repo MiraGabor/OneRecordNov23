@@ -8,6 +8,7 @@ import { LoginMaskComponentModule } from 'src/app/containers/user/components/log
 import { ScanPageRoutingModule } from './scan-routing.module';
 import { SelectRoleComponentModule } from 'src/app/containers/user/components/select-role/select-role.module';
 import { CheckSheetModalComponentModule } from 'src/app/containers/checksheet/modals/check-sheet-modal/check-sheet-modal.module';
+import { SelectUldModalComponentModule } from 'src/app/containers/checksheet/modals/select-uld-modal/select-uld-modal.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { CheckSheetModalComponentModule } from 'src/app/containers/checksheet/mo
     LoginMaskComponentModule,
     SelectRoleComponentModule,
     CheckSheetModalComponentModule,
+    SelectUldModalComponentModule,
   ],
   declarations: [ScanPage],
 })

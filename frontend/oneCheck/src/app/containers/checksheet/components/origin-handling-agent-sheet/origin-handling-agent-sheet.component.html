@@ -1,0 +1,122 @@
+<ion-list *ngIf="originHandlingAgentSheet">
+  <ion-item>
+    <ion-label> Container operating </ion-label>
+    <ion-checkbox
+      [checked]="originHandlingAgentSheet.isContainerOperating"
+      [disabled]="!canEdit"
+      slot="end"
+    >
+    </ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Seal number"
+      [placeholder]="originHandlingAgentSheet.sealNumber"
+      [disabled]="!canEdit"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Display temperature"
+      [placeholder]="originHandlingAgentSheet.displayTemp + '°C'"
+      [disabled]="!canEdit"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Container damaged </ion-label>
+    <ion-checkbox
+      [checked]="originHandlingAgentSheet.isContainerDamaged"
+      [disabled]="!canEdit"
+      slot="end"
+    >
+    </ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Battery Status"
+      [placeholder]="originHandlingAgentSheet.batteryStatusInPercent + '%'"
+      [disabled]="!canEdit"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Alarm / alert displayed</ion-label>
+    <ion-checkbox
+      [checked]="originHandlingAgentSheet.isAlert"
+      [disabled]="!canEdit"
+      slot="end"
+    >
+    </ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Blue light turns on</ion-label>
+    <ion-radio-group [allowEmptySelection]="false" value="0">
+      <ion-radio value="0" [disabled]="!canEdit">Y</ion-radio><br />
+      <ion-radio value="1" [disabled]="!canEdit">N</ion-radio><br />
+      <ion-radio value="2" [disabled]="!canEdit">N/A</ion-radio><br />
+    </ion-radio-group>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Alarm / alert displayed"
+      [placeholder]="originHandlingAgentSheet.alertDisplayed"
+      [disabled]="!canEdit"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Set Temp on display"
+      [placeholder]="originHandlingAgentSheet.setTempOnDisplay"
+      [disabled]="!canEdit"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Adapter (5 pieces)</ion-label>
+    <ion-checkbox
+      [checked]="originHandlingAgentSheet.is5AdaptersPresents"
+      [disabled]="!canEdit"
+      slot="end"
+    >
+    </ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Date"
+      [placeholder]="originHandlingAgentSheet.date"
+      [disabled]="!canEdit"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Time"
+      [placeholder]="originHandlingAgentSheet.time"
+      [disabled]="!canEdit"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Name (block letters)"
+      [placeholder]="originHandlingAgentSheet.name"
+      [disabled]="!canEdit"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Signature"
+      [placeholder]="originHandlingAgentSheet.signature"
+      [disabled]="!canEdit"
+    ></ion-input>
+  </ion-item>
+</ion-list>

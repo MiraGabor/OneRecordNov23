@@ -14,7 +14,7 @@ export interface UserStateModel {
   name: 'user',
   defaults: {
     user: undefined,
-    role: undefined,
+    role: 'export', // todo undefgined
   },
 })
 @Injectable()

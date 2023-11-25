@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Store } from '@ngxs/store';
 import { ChecksheetActions } from '../../state/checksheet.actions';
+import { SheetDto } from 'src/model/sheetDto';
 
 @Component({
   selector: 'app-check-sheet-modal',
@@ -9,14 +10,19 @@ import { ChecksheetActions } from '../../state/checksheet.actions';
   styleUrls: ['./check-sheet-modal.component.scss'],
 })
 export class CheckSheetModalComponent implements OnInit {
+  @Input() public checksheet: SheetDto | undefined;
+  @Input() public checksheetId: string | undefined;
+
   public constructor(
     private modalCtrl: ModalController,
     private store: Store
   ) {}
 
-  public activeSegment = 'export'; // todo chose via role
+  public activeSegment = 'export'; // todo chose via role // todo change to origin?
 
-  public ngOnInit() {}
+  public ngOnInit() {
+    console.log(this.checksheet);
+  }
 
   public async dismissModal(): Promise<void> {
     await this.modalCtrl.dismiss();

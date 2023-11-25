@@ -1,6 +1,6 @@
 ﻿namespace OneCheck.Application.Dtos.SheetsDtos;
 
-public class TransitSheetDtos
+public class TransitSheetDto
 {
   
     public InboundTransitSheetDto InboundTransitSheetModel { get; set; }
