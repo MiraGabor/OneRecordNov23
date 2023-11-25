@@ -51,14 +51,14 @@ namespace OneRecord.Api.SDK.Model
             this.ExternalReferences = ExternalReference;
             this.CompanyIdentifier = CompanyIdentifier;
             this.SkeletonIndicator = SkeletonIndicator;
-            this.HttpsCargoanswer = httpsCargoanswer;
-            this.HttpsCargocheckTemplate = httpsCargocheckTemplate;
-            this.HttpsCargoanswerOptionsText = httpsCargoanswerOptionsText;
-            this.HttpsCargoanswerOptionsValue = httpsCargoanswerOptionsValue;
-            this.HttpsCargolongText = httpsCargolongText;
-            this.HttpsCargoquestionsNumber = httpsCargoquestionsNumber;
-            this.HttpsCargoquestionsSection = httpsCargoquestionsSection;
-            this.HttpsCargoshortText = httpsCargoshortText;
+            this.Answer = httpsCargoanswer;
+            this.CheckTemplate = httpsCargocheckTemplate;
+            this.AnswerOptionsText = httpsCargoanswerOptionsText;
+            this.AnswerOptionsValue = httpsCargoanswerOptionsValue;
+            this.LongText = httpsCargolongText;
+            this.QuestionsNumber = httpsCargoquestionsNumber;
+            this.QuestionsSection = httpsCargoquestionsSection;
+            this.ShortText = httpsCargoshortText;
         }
 
 
@@ -66,49 +66,49 @@ namespace OneRecord.Api.SDK.Model
         /// Gets or Sets Cargoanswer
         /// </summary>
         [DataMember(Name = "cargo:answer", EmitDefaultValue = false)]
-        public Answer HttpsCargoanswer { get; set; }
+        public Answer Answer { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocheckTemplate
         /// </summary>
         [DataMember(Name = "cargo:checkTemplate", EmitDefaultValue = false)]
-        public CheckTemplate HttpsCargocheckTemplate { get; set; }
+        public CheckTemplate CheckTemplate { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoanswerOptionsText
         /// </summary>
         [DataMember(Name = "cargo:answerOptionsText", EmitDefaultValue = false)]
-        public string HttpsCargoanswerOptionsText { get; set; }
+        public string AnswerOptionsText { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoanswerOptionsValue
         /// </summary>
         [DataMember(Name = "cargo:answerOptionsValue", EmitDefaultValue = false)]
-        public string HttpsCargoanswerOptionsValue { get; set; }
+        public string AnswerOptionsValue { get; set; }
 
         /// <summary>
         /// Gets or Sets CargolongText
         /// </summary>
         [DataMember(Name = "cargo:longText", EmitDefaultValue = false)]
-        public string HttpsCargolongText { get; set; }
+        public string LongText { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoquestionsNumber
         /// </summary>
         [DataMember(Name = "cargo:questionsNumber", EmitDefaultValue = false)]
-        public string HttpsCargoquestionsNumber { get; set; }
+        public string QuestionsNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoquestionsSection
         /// </summary>
         [DataMember(Name = "cargo:questionsSection", EmitDefaultValue = false)]
-        public string HttpsCargoquestionsSection { get; set; }
+        public string QuestionsSection { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoshortText
         /// </summary>
         [DataMember(Name = "cargo:shortText", EmitDefaultValue = false)]
-        public string HttpsCargoshortText { get; set; }
+        public string ShortText { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -125,14 +125,14 @@ namespace OneRecord.Api.SDK.Model
             sb.Append("  CargoexternalReferences: ").Append(ExternalReferences).Append("\n");
             sb.Append("  CargocompanyIdentifier: ").Append(CompanyIdentifier).Append("\n");
             sb.Append("  CargoskeletonIndicator: ").Append(SkeletonIndicator).Append("\n");
-            sb.Append("  Cargoanswer: ").Append(HttpsCargoanswer).Append("\n");
-            sb.Append("  CargocheckTemplate: ").Append(HttpsCargocheckTemplate).Append("\n");
-            sb.Append("  CargoanswerOptionsText: ").Append(HttpsCargoanswerOptionsText).Append("\n");
-            sb.Append("  CargoanswerOptionsValue: ").Append(HttpsCargoanswerOptionsValue).Append("\n");
-            sb.Append("  CargolongText: ").Append(HttpsCargolongText).Append("\n");
-            sb.Append("  CargoquestionsNumber: ").Append(HttpsCargoquestionsNumber).Append("\n");
-            sb.Append("  CargoquestionsSection: ").Append(HttpsCargoquestionsSection).Append("\n");
-            sb.Append("  CargoshortText: ").Append(HttpsCargoshortText).Append("\n");
+            sb.Append("  Cargoanswer: ").Append(Answer).Append("\n");
+            sb.Append("  CargocheckTemplate: ").Append(CheckTemplate).Append("\n");
+            sb.Append("  CargoanswerOptionsText: ").Append(AnswerOptionsText).Append("\n");
+            sb.Append("  CargoanswerOptionsValue: ").Append(AnswerOptionsValue).Append("\n");
+            sb.Append("  CargolongText: ").Append(LongText).Append("\n");
+            sb.Append("  CargoquestionsNumber: ").Append(QuestionsNumber).Append("\n");
+            sb.Append("  CargoquestionsSection: ").Append(QuestionsSection).Append("\n");
+            sb.Append("  CargoshortText: ").Append(ShortText).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -207,44 +207,44 @@ namespace OneRecord.Api.SDK.Model
                     this.SkeletonIndicator.Equals(httpsInput.SkeletonIndicator)
                 ) && 
                 (
-                    this.HttpsCargoanswer == httpsInput.HttpsCargoanswer ||
-                    (this.HttpsCargoanswer != null &&
-                    this.HttpsCargoanswer.Equals(httpsInput.HttpsCargoanswer))
+                    this.Answer == httpsInput.Answer ||
+                    (this.Answer != null &&
+                    this.Answer.Equals(httpsInput.Answer))
                 ) && 
                 (
-                    this.HttpsCargocheckTemplate == httpsInput.HttpsCargocheckTemplate ||
-                    (this.HttpsCargocheckTemplate != null &&
-                    this.HttpsCargocheckTemplate.Equals(httpsInput.HttpsCargocheckTemplate))
+                    this.CheckTemplate == httpsInput.CheckTemplate ||
+                    (this.CheckTemplate != null &&
+                    this.CheckTemplate.Equals(httpsInput.CheckTemplate))
                 ) && 
                 (
-                    this.HttpsCargoanswerOptionsText == httpsInput.HttpsCargoanswerOptionsText ||
-                    (this.HttpsCargoanswerOptionsText != null &&
-                    this.HttpsCargoanswerOptionsText.Equals(httpsInput.HttpsCargoanswerOptionsText))
+                    this.AnswerOptionsText == httpsInput.AnswerOptionsText ||
+                    (this.AnswerOptionsText != null &&
+                    this.AnswerOptionsText.Equals(httpsInput.AnswerOptionsText))
                 ) && 
                 (
-                    this.HttpsCargoanswerOptionsValue == httpsInput.HttpsCargoanswerOptionsValue ||
-                    (this.HttpsCargoanswerOptionsValue != null &&
-                    this.HttpsCargoanswerOptionsValue.Equals(httpsInput.HttpsCargoanswerOptionsValue))
+                    this.AnswerOptionsValue == httpsInput.AnswerOptionsValue ||
+                    (this.AnswerOptionsValue != null &&
+                    this.AnswerOptionsValue.Equals(httpsInput.AnswerOptionsValue))
                 ) && 
                 (
-                    this.HttpsCargolongText == httpsInput.HttpsCargolongText ||
-                    (this.HttpsCargolongText != null &&
-                    this.HttpsCargolongText.Equals(httpsInput.HttpsCargolongText))
+                    this.LongText == httpsInput.LongText ||
+                    (this.LongText != null &&
+                    this.LongText.Equals(httpsInput.LongText))
                 ) && 
                 (
-                    this.HttpsCargoquestionsNumber == httpsInput.HttpsCargoquestionsNumber ||
-                    (this.HttpsCargoquestionsNumber != null &&
-                    this.HttpsCargoquestionsNumber.Equals(httpsInput.HttpsCargoquestionsNumber))
+                    this.QuestionsNumber == httpsInput.QuestionsNumber ||
+                    (this.QuestionsNumber != null &&
+                    this.QuestionsNumber.Equals(httpsInput.QuestionsNumber))
                 ) && 
                 (
-                    this.HttpsCargoquestionsSection == httpsInput.HttpsCargoquestionsSection ||
-                    (this.HttpsCargoquestionsSection != null &&
-                    this.HttpsCargoquestionsSection.Equals(httpsInput.HttpsCargoquestionsSection))
+                    this.QuestionsSection == httpsInput.QuestionsSection ||
+                    (this.QuestionsSection != null &&
+                    this.QuestionsSection.Equals(httpsInput.QuestionsSection))
                 ) && 
                 (
-                    this.HttpsCargoshortText == httpsInput.HttpsCargoshortText ||
-                    (this.HttpsCargoshortText != null &&
-                    this.HttpsCargoshortText.Equals(httpsInput.HttpsCargoshortText))
+                    this.ShortText == httpsInput.ShortText ||
+                    (this.ShortText != null &&
+                    this.ShortText.Equals(httpsInput.ShortText))
                 );
         }
 
@@ -282,37 +282,37 @@ namespace OneRecord.Api.SDK.Model
                     hashCode = (hashCode * 59) + this.CompanyIdentifier.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SkeletonIndicator.GetHashCode();
-                if (this.HttpsCargoanswer != null)
+                if (this.Answer != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoanswer.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Answer.GetHashCode();
                 }
-                if (this.HttpsCargocheckTemplate != null)
+                if (this.CheckTemplate != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocheckTemplate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CheckTemplate.GetHashCode();
                 }
-                if (this.HttpsCargoanswerOptionsText != null)
+                if (this.AnswerOptionsText != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoanswerOptionsText.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AnswerOptionsText.GetHashCode();
                 }
-                if (this.HttpsCargoanswerOptionsValue != null)
+                if (this.AnswerOptionsValue != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoanswerOptionsValue.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AnswerOptionsValue.GetHashCode();
                 }
-                if (this.HttpsCargolongText != null)
+                if (this.LongText != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargolongText.GetHashCode();
+                    hashCode = (hashCode * 59) + this.LongText.GetHashCode();
                 }
-                if (this.HttpsCargoquestionsNumber != null)
+                if (this.QuestionsNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoquestionsNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.QuestionsNumber.GetHashCode();
                 }
-                if (this.HttpsCargoquestionsSection != null)
+                if (this.QuestionsSection != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoquestionsSection.GetHashCode();
+                    hashCode = (hashCode * 59) + this.QuestionsSection.GetHashCode();
                 }
-                if (this.HttpsCargoshortText != null)
+                if (this.ShortText != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoshortText.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ShortText.GetHashCode();
                 }
                 return hashCode;
             }
