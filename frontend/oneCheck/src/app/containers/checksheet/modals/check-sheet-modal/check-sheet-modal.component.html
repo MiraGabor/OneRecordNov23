@@ -54,24 +54,6 @@
   <ion-accordion-group *ngIf="activeSegment === 'transit'">
     <!-- Transit Sheets -->
     <ng-container *ngIf="checksheet?.transitSheets">
-      <!--ion-accordion
-        [value]="transitChecks.inboundTransitSheetModel?.checkSheetId"
-        *ngFor="let transitChecks of checksheet?.transitSheets"
-      >
-        <ion-item slot="header" color="light">
-          <ion-label>{{
-            "Inbound Transit " + transitChecks.inboundTransitSheetModel?.checkSheetId
-          }}</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">
-          <app-inbound-transit-sheet
-            [inboundTransitCheckSheet]="transitChecks[0].inboundTransitCheckSheet"
-          ></app-inbound-transit-sheet>
-        </div>
-      </ion-accordion-->
-
-      <!-- todo müde -> loop durch alle transits -> pro iteration gibt es in und out -> akkordion pro sheet  -->
-
       <ng-container *ngFor="let checks of checksheet?.transitSheets">
         <ion-accordion>
           <ion-item slot="header" color="light">
@@ -94,7 +76,11 @@
                 checks.outboundTransitSheetModel?.outboundCheckAirportCode
             }}</ion-label>
           </ion-item>
-          <div class="ion-padding" slot="content">todo outbounf</div>
+          <div class="ion-padding" slot="content">
+            <app-outbound-transit-sheet
+              [outboundTransitCheckSheet]="checks.outboundTransitSheetModel"
+            ></app-outbound-transit-sheet>
+          </div>
         </ion-accordion>
       </ng-container>
     </ng-container>
