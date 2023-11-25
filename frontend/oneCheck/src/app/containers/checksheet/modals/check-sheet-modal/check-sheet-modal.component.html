@@ -50,7 +50,6 @@
   </ion-accordion-group>
 
   <ion-accordion-group *ngIf="activeSegment === 'transit'">
-    <!-- todo Transit loop -->
     <!-- Inbound Transit Sheets -->
     <ng-container *ngIf="checksheet?.inboundTransitSheets">
       <ion-accordion
@@ -58,11 +57,14 @@
         *ngFor="let check of checksheet?.inboundTransitSheets"
       >
         <ion-item slot="header" color="light">
-          <ion-label>Transit todo</ion-label>
+          <ion-label>{{
+            "Inbound Transit " + check.inboundCheckAirport
+          }}</ion-label>
         </ion-item>
         <div class="ion-padding" slot="content">
-          <!-- todo transit component -->
-          {{ check.checkSheetId }}
+          <app-inbound-transit-sheet
+            [inboundTransitCheckSheet]="checksheet?.inboundTransitSheets"
+          ></app-inbound-transit-sheet>
         </div>
       </ion-accordion>
     </ng-container>
