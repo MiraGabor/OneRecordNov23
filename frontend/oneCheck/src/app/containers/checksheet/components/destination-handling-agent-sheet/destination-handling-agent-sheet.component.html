@@ -1,0 +1,79 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <ion-list *ngIf="destinationHandlingAgentSheet">
+    <ion-item>
+      <ion-label> Container operating </ion-label>
+      <ion-checkbox
+        formControlName="isContainerOperating"
+        slot="end"
+      ></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="sealNumber" label="Seal number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        formControlName="displayedTemp"
+        label="Display temperature"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Container damaged </ion-label>
+      <ion-checkbox
+        formControlName="isContainerDamaged"
+        slot="end"
+      ></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        formControlName="batteryStatusInPercent"
+        label="Battery Status"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Alarm / alert displayed</ion-label>
+      <ion-checkbox
+        formControlName="isAlarmDisplayed"
+        slot="end"
+      ></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Blue light turns on</ion-label>
+      <ion-radio-group
+        formControlName="blueLight"
+        [allowEmptySelection]="false"
+        value="0"
+      >
+        <ion-radio value="0">Y</ion-radio><br />
+        <ion-radio value="1">N</ion-radio><br />
+        <ion-radio value="2">N/A</ion-radio><br />
+      </ion-radio-group>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="date" label="Date"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="time" label="Time"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        formControlName="name"
+        label="Name (block letters)"
+      ></ion-input>
+    </ion-item>
+
+    <!--ion-item>
+      <ion-input formControlName="signature" label="Signature"></ion-input>
+    </ion-item-->
+  </ion-list>
+
+  <ion-button expand="block" type="submit"> Submit </ion-button>
+</form>

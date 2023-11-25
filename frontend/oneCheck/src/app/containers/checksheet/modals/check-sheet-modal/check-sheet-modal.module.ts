@@ -6,6 +6,7 @@ import { CheckSheetModalComponent } from './check-sheet-modal.component';
 import { OriginHandlingAgentSheetComponentModule } from '../../components/origin-handling-agent-sheet/origin-handling-agent-sheet.module';
 import { PreparationSheetComponentModule } from '../../components/preparation-sheet/preparation-sheet.module';
 import { InboundTransitSheetComponentModule } from '../../components/inbound-transit-sheet/inbound-transit-sheet.module';
+import { DestinationHandlingAgentSheetComponentModule } from '../../components/destination-handling-agent-sheet/destination-handling-agent-sheet.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { InboundTransitSheetComponentModule } from '../../components/inbound-tra
     OriginHandlingAgentSheetComponentModule,
     PreparationSheetComponentModule,
     InboundTransitSheetComponentModule,
+    DestinationHandlingAgentSheetComponentModule,
   ],
   declarations: [CheckSheetModalComponent],
   exports: [CheckSheetModalComponent],

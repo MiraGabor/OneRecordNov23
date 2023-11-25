@@ -49,6 +49,7 @@
     </ion-accordion>
   </ion-accordion-group>
 
+  <!-- Transit -->
   <ion-accordion-group *ngIf="activeSegment === 'transit'">
     <!-- Inbound Transit Sheets -->
     <ng-container *ngIf="checksheet?.inboundTransitSheets">
@@ -68,5 +69,39 @@
         </div>
       </ion-accordion>
     </ng-container>
+  </ion-accordion-group>
+
+  <!-- Import -->
+  <ion-accordion-group *ngIf="activeSegment === 'import'">
+    <!-- Origin Handling Agent Sheet-->
+    <ion-accordion
+      *ngIf="checksheet?.destinationHandlingAgentSheet"
+      value="first"
+    >
+      <ion-item slot="header" color="light">
+        <ion-label>Destination Handling Agent</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <app-destination-handling-agent-sheet
+          [destinationHandlingAgentSheet]="
+            checksheet?.destinationHandlingAgentSheet
+          "
+        ></app-destination-handling-agent-sheet>
+      </div>
+    </ion-accordion>
+
+    <!-- todo Delivery COnsignee -->
+    <ion-accordion *ngIf="checksheet?.preparationSheet" value="second">
+      <ion-item slot="header" color="light">
+        <ion-label
+          >Loading and preparation by shipper / issuing agent</ion-label
+        >
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <app-preparation-sheet
+          [preparationSheet]="checksheet?.preparationSheet"
+        ></app-preparation-sheet>
+      </div>
+    </ion-accordion>
   </ion-accordion-group>
 </ion-content>
