@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OneCheck.Repository.DBContext;
 
@@ -10,9 +11,11 @@ using OneCheck.Repository.DBContext;
 namespace OneCheck.Repository.Migrations
 {
     [DbContext(typeof(CorrespondenceTableContext))]
-    partial class CorrespondenceTableContextModelSnapshot : ModelSnapshot
+    [Migration("20231125145244_add-NeoneGuid")]
+    partial class addNeoneGuid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
