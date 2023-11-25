@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Neone.ServiceClient\Neone.ServiceClient.csproj" />
+    <ProjectReference Include="..\OneCheck.Application\OneCheck.Application.csproj" />
     <ProjectReference Include="..\OneRecord.Api.SDK\OneRecord.Api.SDK.csproj" />
   </ItemGroup>
 
