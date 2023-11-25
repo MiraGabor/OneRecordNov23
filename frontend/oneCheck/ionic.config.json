@@ -1,0 +1,7 @@
+{
+  "name": "oneCheck",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
