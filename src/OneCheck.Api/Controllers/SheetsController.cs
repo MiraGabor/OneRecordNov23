@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OneCheck.Api.Dtos.SheetsDtos;
+using OneCheck.Application.Dtos.SheetsDtos;
 using OneCheck.Application.Requests.Queries;
 
 namespace OneCheck.Api.Controllers;
@@ -20,5 +20,12 @@ public class SheetsController : ControllerBase
     {
         var sheet = await _mediator.Send(new GetSheetRequest(ULDId));
         return Ok(sheet);
+    }
+
+    [HttpPost("{ULDId}")]
+    public async Task<ActionResult<SheetDto>> PostSheet(string ULDId, [FromBody] SheetDto filledSheet, CancellationToken cancellationToken = default)
+    {
+        await _mediator.Send(new PostSheetRequest(filledSheet));
+        return Ok();
     }
 }
