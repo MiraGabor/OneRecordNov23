@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { CheckSheetState } from './containers/checksheet/state/checksheet.state';
 import { BarcodeScanningModalComponent } from './containers/scan/modals/scanner-modal/scanner-modal.component';
 import { UserState } from './containers/user/state/user.state';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, BarcodeScanningModalComponent],
@@ -20,6 +21,7 @@ import { UserState } from './containers/user/state/user.state';
       developmentMode: true, // todo
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
+    HttpClientModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
