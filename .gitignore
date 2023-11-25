@@ -37,3 +37,9 @@
 /src/NeOne.Dataseeder/obj/project.assets.json
 /src/NeOne.Dataseeder/obj/project.nuget.cache
 /src/OneCheck.Api/bin/Debug/net8.0
+/src/OneCheck.Api/obj/Debug/net8.0/*
+/src/OneCheck.Application/bin/Debug/net8.0/*
+/src/OneCheck.Repository/obj/Debug/*
+/src/OneCheck.Application/obj/Debug/net8.0/*
+*.dll
+/src/OneCheck.Application/obj/Debug
