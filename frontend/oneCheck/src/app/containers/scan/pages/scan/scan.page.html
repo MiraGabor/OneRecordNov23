@@ -9,6 +9,11 @@
 >
   <ion-header>
     <ion-toolbar>
+      <ion-img
+        class="logo"
+        slot="start"
+        src="assets/logo/SWC_rgb.png"
+      ></ion-img>
       <ion-title *ngIf="observables.user && observables.role">
         {{ observables.user.name + ' | ' + observables?.role }}
       </ion-title>
@@ -16,6 +21,16 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
+    <ng-container *ngIf="!observables.isLoggedIn">
+      <!-- todo: login text -->
+    </ng-container>
+
+    <div class="center-content">
+      <ion-img class="app-logo" src="assets/logo/OneCheck Logo.svg"></ion-img>
+    </div>
+  </ion-content>
+
+  <ion-footer>
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -31,15 +46,6 @@
         </ion-col>
       </ion-row>
 
-      <!-- dummy checksheet -->
-      <ion-row>
-        <ion-col>
-          <ion-button expand="block" (click)="presentDummyChecksheet()">
-            Dummy Checksheet
-          </ion-button>
-        </ion-col>
-      </ion-row>
-
       <!-- test API call -->
       <ion-row>
         <ion-col>
@@ -49,13 +55,11 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-content>
+  </ion-footer>
 
   <ng-template #loginMask>
     <!-- todo footer design -->
-    <ion-footer>
-      <app-login-mask></app-login-mask>
-    </ion-footer>
+    <app-login-mask></app-login-mask>
   </ng-template>
 
   <ng-template #selectRole>

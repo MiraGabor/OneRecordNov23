@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <ion-list *ngIf="originHandlingAgentSheet">
+  <ion-list *ngIf="inboundTransitCheckSheet">
     <ion-item>
       <ion-label> Container operating </ion-label>
       <ion-checkbox
@@ -14,7 +14,7 @@
 
     <ion-item>
       <ion-input
-        formControlName="displayTemp"
+        formControlName="displayedTemp"
         label="Display temperature"
       ></ion-input>
     </ion-item>
@@ -36,13 +36,16 @@
 
     <ion-item>
       <ion-label>Alarm / alert displayed</ion-label>
-      <ion-checkbox formControlName="isAlert" slot="end"></ion-checkbox>
+      <ion-checkbox
+        formControlName="isAlarmDisplayed"
+        slot="end"
+      ></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Blue light turns on</ion-label>
       <ion-radio-group
-        formControlName="isBlueLightOn"
+        formControlName="blueLight"
         [allowEmptySelection]="false"
         value="0"
       >
@@ -50,28 +53,6 @@
         <ion-radio value="1">N</ion-radio><br />
         <ion-radio value="2">N/A</ion-radio><br />
       </ion-radio-group>
-    </ion-item>
-
-    <ion-item>
-      <ion-input
-        formControlName="alertDisplayed"
-        label="Alarm / alert displayed"
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input
-        formControlName="setTempOnDisplay"
-        label="Set Temp on display"
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Adapter (5 pieces)</ion-label>
-      <ion-checkbox
-        formControlName="is5AdaptersPresents"
-        slot="end"
-      ></ion-checkbox>
     </ion-item>
 
     <ion-item>
