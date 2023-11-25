@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dummy Checksheet</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [value]="activeSegment" (ionChange)="changeSegment($event)">
+    <ion-segment-button value="export">
+      <ion-label>Export</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="transit">
+      <ion-label>Transit</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="import">
+      <ion-label>Import</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Export for example -->
+  <ion-list *ngIf="activeSegment === 'export'">
+    <ion-item>
+      <ion-label> Example Readonly </ion-label>
+      <ion-checkbox disabled slot="end"> </ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <!-- todo value / selected -->
+      <ion-label>Example Readonly 2</ion-label>
+      <ion-checkbox [checked]="true" disabled slot="end"> </ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label> test </ion-label>
+      <ion-checkbox slot="end"> </ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label> test </ion-label>
+      <ion-checkbox slot="end"> </ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label> test </ion-label>
+      <ion-checkbox slot="end"> </ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Temperature" placeholder="C°"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="block">Submit</ion-button>
+</ion-footer>
