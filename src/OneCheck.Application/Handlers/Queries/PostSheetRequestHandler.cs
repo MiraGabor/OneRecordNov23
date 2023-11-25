@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using OneCheck.Application.Requests.Queries;
+using OneRecord.Api.SDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
