@@ -23,7 +23,7 @@ export interface DestinationConsigneeSheetDto {
     batteryStatusInPercent?: number;
     isContainerDamaged?: boolean;
     isContainerOperating?: boolean;
-    displayTemp?: number;
+    displayedTemp?: number;
     is5AdaptersPresents?: boolean;
     recipientName?: string | null;
     recipientSignature?: string | null;

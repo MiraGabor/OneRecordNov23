@@ -10,10 +10,11 @@
  * Do not edit the class manually.
  */
 import { DateOnly } from './dateOnly';
+import { BlueLightEnumDto } from './blueLightEnumDto';
 import { TimeOnly } from './timeOnly';
 
 
-export interface OriginPreparationSheetDto { 
+export interface InboundTransitSheetDto { 
     checkSheetId?: string;
     date?: DateOnly;
     time?: TimeOnly;
@@ -21,15 +22,14 @@ export interface OriginPreparationSheetDto {
     signature?: string | null;
     name?: string | null;
     batteryStatusInPercent?: number;
-    uldNumber?: string | null;
-    awbNumber?: number;
-    isBatteryCharged?: boolean;
+    isContainerOperating?: boolean;
     isContainerDamaged?: boolean;
-    routing?: Array<string> | null;
-    goodsPrecooledAtTemps?: number;
-    uldPrecooledTemp?: number;
-    tempSetting?: number;
-    acceptedTempRange?: string | null;
-    emergencyPhone?: string | null;
+    displayedTemp?: number;
+    inboundCheckAirportCode?: string | null;
+    blueLight?: BlueLightEnumDto;
+    isAlarmDisplayed?: boolean;
 }
+export namespace InboundTransitSheetDto {
+}
+
 

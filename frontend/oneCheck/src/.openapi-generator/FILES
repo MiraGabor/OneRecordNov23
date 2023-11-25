@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/api.ts
@@ -14,12 +13,14 @@ model/dateOnly.ts
 model/dayOfWeek.ts
 model/destinationConsigneeSheetDto.ts
 model/destinationHandlingAgentSheetDto.ts
+model/inboundTransitSheetDto.ts
 model/models.ts
 model/originHandlingAgentSheetDto.ts
 model/originPreparationSheetDto.ts
+model/outboundTransitSheetDto.ts
 model/sheetDto.ts
 model/shipmentDto.ts
 model/timeOnly.ts
-model/transitCheckSheetDto.ts
+model/transitSheetDto.ts
 param.ts
 variables.ts

@@ -24,7 +24,7 @@ export interface OriginHandlingAgentSheetDto {
     batteryStatusInPercent?: number;
     isContainerDamaged?: boolean;
     isContainerOperating?: boolean;
-    displayTemp?: number;
+    displayedTemp?: number;
     isAlert?: boolean;
     isBlueLightOn?: BlueLightEnumDto;
     alertDisplayed?: string | null;
