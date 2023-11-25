@@ -9,6 +9,11 @@
 >
   <ion-header>
     <ion-toolbar>
+      <ion-img
+        class="logo"
+        slot="start"
+        src="assets/logo/SWC_rgb.png"
+      ></ion-img>
       <ion-title *ngIf="observables.user && observables.role">
         {{ observables.user.name + ' | ' + observables?.role }}
       </ion-title>
@@ -16,7 +21,13 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
-    <ng-container *ngIf="!observables.isLoggedIn"> balbla log in </ng-container>
+    <ng-container *ngIf="!observables.isLoggedIn">
+      <!-- todo: login text -->
+    </ng-container>
+
+    <div class="center-content">
+      <ion-img class="app-logo" src="assets/logo/OneCheck Logo.svg"></ion-img>
+    </div>
   </ion-content>
 
   <ion-footer>
