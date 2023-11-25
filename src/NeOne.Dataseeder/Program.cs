@@ -12,6 +12,15 @@ var uld = GetUld();
 
 //Console.WriteLine(shipmentId);
 
+var check = GetCheck();
+
+var checkCreateResponse = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(check);
+checkCreateResponse.HttpsHeaders.TryGetValue("Location", out var checkLocation);
+
+var checkCreateResponse2 = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(check);
+checkCreateResponse2.HttpsHeaders.TryGetValue("Location", out var checkLocation2);
+//var checkId = GetIdFromResponse(checkCreateResponse);
+
 
 var uldCreateResponse = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(uld);
 var uldId = GetIdFromResponse(uldCreateResponse);
@@ -19,46 +28,8 @@ var uldId = GetIdFromResponse(uldCreateResponse);
 
 uldCreateResponse.HttpsHeaders.TryGetValue("Location", out var value);
 
-
-var change = new Change
-{
-    Type = "api:Change",
-    HasLogisticsObject = new LogisticsObject
-    {
-        Id = value.First(),
-    },
-    HasDescription = "Add remarks",
-    HasOperation = new List<Operation>
-    {
-        new Operation
-        {
-            Type = "api:Operation"
-            ,
-            PatchOperation = new PatchOperation
-            {
-                Id = "api:ADD"
-            },
-            Source = value.First(),
-            Property = "https://onerecord.iata.org/ns/cargo#remarks",
-            Objects = new List<OperationObject>
-            {
-                new OperationObject
-                {
-                    Type = "api:OperationObject",
-                    HasDatatype = "http://www.w3.org/2001/XMLSchema#string",
-                    HasValue = "This is the remarks"
-                }
-            }
-        }
-    },
-    HasRevision = new Revision
-    {
-        Type = "http://www.w3.org/2001/XMLSchema#positiveInteger",
-        Value = 1
-
-    }
-};
-apiClient.UpdateLogisticsObjectWithHttpInfo(uldId, change);
+var change = GetChangerRequest(value.First(), new List<string>{ checkLocation.First(), checkLocation2.First()} );
+var updateResponse = apiClient.UpdateLogisticsObjectWithHttpInfo(uldId, change);
 
 
 
@@ -91,41 +62,7 @@ List<Check> GetChecks()
 {
     return new List<Check>
     {
-        new Check
-        {
-            Type = new List<string>
-            {
-                "cargo:Check"
-            },
-            UsedTemplate = new CheckTemplate
-            {
-                Type = new List<string>
-                {
-                    "cargo:CheckTemplate"
-                },
-                Name = "OriginPreparationSheetDto",
-                Questions = new List<Question>
-                {
-                    new Question
-                    {
-                        Type = new List<string>
-                        {
-                            "cargo:Question"
-                        },
-                        HttpsCargoshortText = "Signature",
-                        HttpsCargoanswer = new Answer
-                        {
-                            Type = new List<string>
-                            {
-                                "cargo:Answer"
-                            },
-                            Text = "Blaaaaaaaa"
-                        },
-                    }
-                }
-            },
-
-        }
+        GetCheck()
 
     };
 }
@@ -279,4 +216,96 @@ async Task<string> CreateShipment(LogisticsObjectsApi httpsLogisticsObjectsApi, 
     var shipmentCreateResponse = await httpsLogisticsObjectsApi.CreateLogisticsObjectWithHttpInfoAsync(httpsShipment1);
     var httpsShipmentId = GetIdFromResponse(shipmentCreateResponse);
     return httpsShipmentId;
+}
+
+Check GetCheck()
+{
+    return new Check
+    {
+        Type = new List<string>
+        {
+            "cargo:Check",
+            "cargo:LogisticsObject"
+        },
+        UsedTemplate = new CheckTemplate
+        {
+            Type = new List<string>
+            {
+                "cargo:CheckTemplate"
+            },
+            Name = "OriginPreparationSheetDto",
+            Questions = new List<Question>
+            {
+                new Question
+                {
+                    Type = new List<string>
+                    {
+                        "cargo:Question"
+                    },
+                    HttpsCargoshortText = "Signature",
+                    HttpsCargoanswer = new Answer
+                    {
+                        Type = new List<string>
+                        {
+                            "cargo:Answer"
+                        },
+                        Text = "Blaaaaaaaa"
+                    },
+                }
+            }
+        },
+
+    };
+}
+
+Change GetChangerRequest(string listReference, IList<string> checkLocations)
+{
+
+    var operations = new List<Operation>();
+
+    foreach (var checkLocation in checkLocations)
+    {
+        operations.Add(GetOperation(listReference,checkLocation));
+    }
+
+    var httpsChange = new Change
+    {
+        Type = "api:Change",
+        HasLogisticsObject = new LogisticsObject
+        {
+            Id = listReference,
+        },
+        HasDescription = "Add checks",
+        HasOperation = operations,
+        HasRevision = new Revision
+        {
+            Type = "http://www.w3.org/2001/XMLSchema#positiveInteger",
+            Value = 1
+        }
+    };
+    return httpsChange;
+}
+
+
+Operation GetOperation(string listReference, string checkReference)
+{
+    return new Operation
+    {
+        Type = "api:Operation",
+        PatchOperation = new PatchOperation
+        {
+            Id = "api:ADD"
+        },
+        Subject = listReference,
+        Predicate = "https://onerecord.iata.org/ns/cargo#checks",
+        Objects = new List<OperationObject>
+        {
+            new OperationObject
+            {
+                Type = "api:OperationObject",
+                HasDatatype = "https://onerecord.iata.org/ns/cargo#Check",
+                HasValue = checkReference
+            }
+        }
+    };
 }

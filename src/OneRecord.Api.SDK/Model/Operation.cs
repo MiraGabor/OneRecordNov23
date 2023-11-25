@@ -39,8 +39,8 @@ namespace OneRecord.Api.SDK.Model
             this.Type = httpsType;
             this.Objects = httpsApio;
             this.PatchOperation = httpsApiop;
-            this.Property = httpsApip;
-            this.Source = httpsApis;
+            this.Predicate = httpsApip;
+            this.Subject = httpsApis;
         }
 
         /// <summary>
@@ -71,13 +71,13 @@ namespace OneRecord.Api.SDK.Model
         /// Gets or Sets Apip
         /// </summary>
         [DataMember(Name = "api:p", EmitDefaultValue = false)]
-        public string Property { get; set; }
+        public string Predicate { get; set; }
 
         /// <summary>
         /// Gets or Sets Apis
         /// </summary>
         [DataMember(Name = "api:s", EmitDefaultValue = false)]
-        public string Source { get; set; }
+        public string Subject { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,8 +91,8 @@ namespace OneRecord.Api.SDK.Model
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Apio: ").Append(Objects).Append("\n");
             sb.Append("  Apiop: ").Append(PatchOperation).Append("\n");
-            sb.Append("  Apip: ").Append(Property).Append("\n");
-            sb.Append("  Apis: ").Append(Source).Append("\n");
+            sb.Append("  Apip: ").Append(Predicate).Append("\n");
+            sb.Append("  Apis: ").Append(Subject).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -150,14 +150,14 @@ namespace OneRecord.Api.SDK.Model
                     this.PatchOperation.Equals(httpsInput.PatchOperation))
                 ) && 
                 (
-                    this.Property == httpsInput.Property ||
-                    (this.Property != null &&
-                    this.Property.Equals(httpsInput.Property))
+                    this.Predicate == httpsInput.Predicate ||
+                    (this.Predicate != null &&
+                    this.Predicate.Equals(httpsInput.Predicate))
                 ) && 
                 (
-                    this.Source == httpsInput.Source ||
-                    (this.Source != null &&
-                    this.Source.Equals(httpsInput.Source))
+                    this.Subject == httpsInput.Subject ||
+                    (this.Subject != null &&
+                    this.Subject.Equals(httpsInput.Subject))
                 ));
         }
 
@@ -186,13 +186,13 @@ namespace OneRecord.Api.SDK.Model
                 {
                     hashCode = (hashCode * 59) + this.PatchOperation.GetHashCode();
                 }
-                if (this.Property != null)
+                if (this.Predicate != null)
                 {
-                    hashCode = (hashCode * 59) + this.Property.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Predicate.GetHashCode();
                 }
-                if (this.Source != null)
+                if (this.Subject != null)
                 {
-                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Subject.GetHashCode();
                 }
                 return hashCode;
             }

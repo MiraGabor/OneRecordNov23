@@ -68,6 +68,15 @@ namespace OneRecord.Api.SDK.Model
         }
 
         /// <summary>
+        /// Gets or Sets Context
+        /// </summary>
+        [DataMember(Name = "@context", EmitDefaultValue = true)]
+        public Context Context = new Context
+        {
+            Cargo = "https://onerecord.iata.org/ns/cargo#"
+        };
+
+        /// <summary>
         /// Gets or Sets CargocontactDetails
         /// </summary>
         [DataMember(Name = "cargo:contactDetails", EmitDefaultValue = false)]
