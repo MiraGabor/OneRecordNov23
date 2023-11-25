@@ -4,6 +4,9 @@ using MediatR;
 using OneCheck.Application;
 using OneCheck.Domain.Contracts;
 using OneCheck.Repository;
+using Microsoft.EntityFrameworkCore;
+using OneRecord.Api.SDK.Client;
+using OneCheck.Repository.DBContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +14,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IShipmentRepository, ShipmentRepository>();
 
 builder.Services.ConfigureApplicationServices();
-//builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddTransient<IConfiguration>(sp =>
+{
+    IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+    configurationBuilder.AddJsonFile("appsettings.json");
+    return configurationBuilder.Build();
+});//builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
 //builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 
@@ -19,6 +27,8 @@ builder.Services.ConfigureApplicationServices();
 //builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 builder.Services.AddControllers();
+builder.Services.AddDbContext<CorrespondenceTableContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("myDb")));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

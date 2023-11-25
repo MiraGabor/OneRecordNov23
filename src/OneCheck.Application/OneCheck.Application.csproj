@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OneCheck.Domain\OneCheck.Domain.csproj" />
+    <ProjectReference Include="..\OneRecord.Api.SDK\OneRecord.Api.SDK.csproj" />
   </ItemGroup>
 
 </Project>
