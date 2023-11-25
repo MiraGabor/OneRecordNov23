@@ -84,7 +84,7 @@ namespace OneRecord.Api.SDK.Model
         /// <summary>
         /// Gets or Sets CargoskeletonIndicator
         /// </summary>
-        [DataMember(Name = "cargo:skeletonIndicator", EmitDefaultValue = true)]
+        [DataMember(Name = "cargo:skeletonIndicator", EmitDefaultValue = false)]
         public bool SkeletonIndicator { get; set; }
 
         /// <summary>

@@ -2,210 +2,205 @@
 using OneRecord.Api.SDK.Client;
 using OneRecord.Api.SDK.Model;
 
-var token = await TokenClient.GetAccessToken(@"http://localhost:8089", "neone", "neone-client",
-    "lx7ThS5aYggdsMm42BP3wMrVqKm9WpNY");
+var apiClient = await GetLogisticsObjectsApi();
 
-Configuration config = new Configuration
+//var checks = GetChecks();
+var uld = GetUld();
+//var piece = GetPiece(uld);
+//var shipment = GetShipment(piece);
+//var shipmentId = await CreateShipment(apiClient, shipment);
+
+//Console.WriteLine(shipmentId);
+
+var check = GetCheck();
+
+var checkCreateResponse = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(check);
+checkCreateResponse.HttpsHeaders.TryGetValue("Location", out var checkLocation);
+
+var checkCreateResponse2 = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(check);
+checkCreateResponse2.HttpsHeaders.TryGetValue("Location", out var checkLocation2);
+//var checkId = GetIdFromResponse(checkCreateResponse);
+
+
+var uldCreateResponse = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(uld);
+var uldId = GetIdFromResponse(uldCreateResponse);
+//add remarks string
+
+uldCreateResponse.HttpsHeaders.TryGetValue("Location", out var value);
+
+var change = GetChangerRequest(value.First(), new List<string>{ checkLocation.First(), checkLocation2.First()} );
+var updateResponse = apiClient.UpdateLogisticsObjectWithHttpInfo(uldId, change);
+
+
+
+var s = apiClient.GetLogisticsObjectWithHttpInfo(uldId);
+string jsonString = s?.HttpsData?.ToString() ?? String.Empty;
+Console.WriteLine(jsonString);
+
+
+async Task<LogisticsObjectsApi> GetLogisticsObjectsApi()
 {
-    HttpsBasePath = "http://localhost:8080",
-    HttpsDefaultHeaders = new Dictionary<string, string>
-    {
-        { "Authorization", $"Bearer {token}" },
-        { "Authentication", $"Bearer {token}" }
-    },
-    HttpsAccessToken = Guid.NewGuid().ToString()
-};
+    var token = await TokenClient.GetAccessToken(@"http://localhost:8089", "neone", "neone-client",
+        "lx7ThS5aYggdsMm42BP3wMrVqKm9WpNY");
 
-var apiClient = new LogisticsObjectsApi(config);
-
-var checks = new List<Check>
+    Configuration config = new Configuration
     {
-        new Check
+        HttpsBasePath = "http://localhost:8080",
+        HttpsDefaultHeaders = new Dictionary<string, string>
         {
-            Type = new List<string>
-            {
-                "cargo:Check"
-            },
-            UsedTemplate = new CheckTemplate
-            {
-                Type = new List<string>
-                {
-                    "cargo:CheckTemplate"
-                },
-                Name = "OriginPreparationSheetDto",
-                Questions = new List<Question>
-                {
-                    new Question
-                    {
-                        Type = new List<string>
-                        {
-                            "cargo:Question"
-                        },
-                        ShortText = "Signature",
-                        Answer = new Answer
-                        {
-                            Type = new List<string>
-                            {
-                                "cargo:Answer"
-                            },
-                            Text = "Blaaaaaaaa"
-                        },
-                    }
-                }
-            },
-
-        }
-
+            { "Authorization", $"Bearer {token}" },
+            { "Authentication", $"Bearer {token}" }
+        },
+        HttpsAccessToken = Guid.NewGuid().ToString()
     };
 
+    var httpsApiClient = new LogisticsObjectsApi(config);
+    return httpsApiClient;
+}
 
-
-var uld = new ULD
+List<Check> GetChecks()
 {
-    Type = new List<string>
+    return new List<Check>
     {
-        "cargo:LoadingUnit"
-    },
-    UldSerialNumber = "RKN61424PC",
-    Checks = checks
-};
+        GetCheck()
 
-var piece = new Piece()
+    };
+}
+
+ULD GetUld()
 {
-    Type = new List<string> { "cargo:Piece" },
-    Coload = false,
-    HandlingInstructions = new List<HandlingInstructions>
-    {
-        new HandlingInstructions
-        {
-            HttpsCargohandlingInstructionsType = "SPH",
-            HttpsCargohandlingInstructionsTypeCode = "VAL",
-            HttpsCargodescription = "Valuable Cargo",
-            Type = new List<string>{ "cargo:HandlingInstructions"},
-
-        }
-    },
-    UldReference = uld
-
-};
-
-var shipment = new Shipment
-{
-    Type = new List<string>
-    {
-        "cargo:Shipment"
-    },
-    GoodsDescription = "a shipment with a single piece",
-    ShipmentOfPieces = new List<Piece>
-    {
-        piece
-    },
-
-    Waybill = new Waybill
+    var httpsUld = new ULD
     {
         Type = new List<string>
         {
-            "cargo:WayBill"
+            "cargo:LoadingUnit",
+            "cargo:LogisticsObject"
         },
-        WaybillNumber = "724-24112023",
-        ReferredBookingOption = new Booking
+        UldSerialNumber = "RKN61424PC",
+
+
+    };
+    return httpsUld;
+}
+
+Piece GetPiece(ULD httpsUld1)
+{
+    var httpsPiece = new Piece()
+    {
+        Type = new List<string> { "cargo:Piece" },
+        Coload = false,
+        HandlingInstructions = new List<HandlingInstructions>
+        {
+            new HandlingInstructions
+            {
+                HttpsCargohandlingInstructionsType = "SPH",
+                HttpsCargohandlingInstructionsTypeCode = "VAL",
+                HttpsCargodescription = "Valuable Cargo",
+                Type = new List<string> { "cargo:HandlingInstructions" },
+            }
+        },
+        UldReference = httpsUld1
+    };
+    return httpsPiece;
+}
+
+Shipment GetShipment(Piece httpsPiece1)
+{
+    var httpsShipment = new Shipment
+    {
+        Type = new List<string>
+        {
+            "cargo:Shipment"
+        },
+        GoodsDescription = "a shipment with a single piece",
+        ShipmentOfPieces = new List<Piece>
+        {
+            httpsPiece1
+        },
+
+        Waybill = new Waybill
         {
             Type = new List<string>
             {
-                "cargo:Booking"
+                "cargo:WayBill"
             },
-            HttpsCargoforBookingRequest = new BookingRequest
+            WaybillNumber = "724-24112023",
+            ReferredBookingOption = new Booking
             {
                 Type = new List<string>
                 {
-                    "cargo:BookingRequest"
+                    "cargo:Booking"
                 },
-                HttpsCargobookingOption = new BookingOption
+                HttpsCargoforBookingRequest = new BookingRequest
                 {
                     Type = new List<string>
                     {
-                        "cargo:BookingOption"
+                        "cargo:BookingRequest"
                     },
-                    TransportLegs = new List<TransportLegs>
+                    HttpsCargobookingOption = new BookingOption
                     {
-                        new()
+                        Type = new List<string>
                         {
-                            Type = new List<string>
-                            {
-                                "cargo:TransportLegs",
-                                "cargo:LogisticsObject"
-                            },
-                            TransportIdentifier = "LX177",
-                            DepartureDate = new DateTime(2023,11,25,00,05,00),
-                            DepartureLocation = new Location
-                            {
-                                Type = new List<string>
-                                {
-                                    "cargo:Location"
-                                },
-                                HttpsCargocode = "SIN"
-                            },
-                            ArrivalLocation = new Location
-                            {
-                                Type = new List<string>
-                                {
-                                    "cargo:Location"
-                                },
-                                HttpsCargocode = "ZRH"
-                            },
-                            LegNumber = 1
+                            "cargo:BookingOption"
                         },
-                        new()
+                        TransportLegs = new List<TransportLegs>
                         {
-                            Type = new List<string>
+                            new()
                             {
-                                "cargo:TransportLegs",
-                                "cargo:LogisticsObject"
+                                Type = new List<string>
+                                {
+                                    "cargo:TransportLegs",
+                                    "cargo:LogisticsObject"
+                                },
+                                TransportIdentifier = "LX177",
+                                DepartureDate = new DateTime(2023, 11, 25, 00, 05, 00),
+                                DepartureLocation = new Location
+                                {
+                                    Type = new List<string>
+                                    {
+                                        "cargo:Location"
+                                    },
+                                    HttpsCargocode = "SIN"
+                                },
+                                ArrivalLocation = new Location
+                                {
+                                    Type = new List<string>
+                                    {
+                                        "cargo:Location"
+                                    },
+                                    HttpsCargocode = "ZRH"
+                                },
+                                LegNumber = 1
                             },
-                            TransportIdentifier = "LX18",
-                            DepartureDate = new DateTime(2023,11,26,00,05,00),
-                            DepartureLocation = new Location
+                            new()
                             {
-                                Type = new List < string > { "cargo:Location" },
-                                HttpsCargocode = "ZRH"
-                            },
-                            ArrivalLocation = new Location
-                            {
-                                Type = new List < string > { "cargo:Location" },
-                                HttpsCargocode = "JFK"
-                            },
-                            LegNumber = 2
+                                Type = new List<string>
+                                {
+                                    "cargo:TransportLegs",
+                                    "cargo:LogisticsObject"
+                                },
+                                TransportIdentifier = "LX18",
+                                DepartureDate = new DateTime(2023, 11, 26, 00, 05, 00),
+                                DepartureLocation = new Location
+                                {
+                                    Type = new List<string> { "cargo:Location" },
+                                    HttpsCargocode = "ZRH"
+                                },
+                                ArrivalLocation = new Location
+                                {
+                                    Type = new List<string> { "cargo:Location" },
+                                    HttpsCargocode = "JFK"
+                                },
+                                LegNumber = 2
+                            }
                         }
                     }
                 }
             }
-        }
-    },
-
-};
-
-var shipmentCreateResponse = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(shipment);
-var shipmentId = GetIdFromResponse(shipmentCreateResponse);
-
-Console.WriteLine(shipmentId);
-
-
-//var client = new Client(token);
-
-var s = apiClient.GetLogisticsObjectWithHttpInfo(shipmentId);
-
-string jsonString = s?.HttpsData?.ToString() ?? String.Empty;
-
-//var typed = JsonSerializer.Deserialize<Shipment>(jsonString);
-
-Console.WriteLine(jsonString);
-
-
-
-
-
-//var aaaa = await client.GetShipment("bf96675b-b56e-4f46-b3ff-dcdd8827bc76");
-//Console.WriteLine(aaaa.GoodsDescription);
+        },
+    };
+    return httpsShipment;
+}
 
 string GetIdFromResponse(ApiResponse<object> httpsResult)
 {
@@ -214,4 +209,103 @@ string GetIdFromResponse(ApiResponse<object> httpsResult)
     var id = new Uri(value.First()).Segments.Last();
 
     return id;
+}
+
+async Task<string> CreateShipment(LogisticsObjectsApi httpsLogisticsObjectsApi, Shipment httpsShipment1)
+{
+    var shipmentCreateResponse = await httpsLogisticsObjectsApi.CreateLogisticsObjectWithHttpInfoAsync(httpsShipment1);
+    var httpsShipmentId = GetIdFromResponse(shipmentCreateResponse);
+    return httpsShipmentId;
+}
+
+Check GetCheck()
+{
+    return new Check
+    {
+        Type = new List<string>
+        {
+            "cargo:Check",
+            "cargo:LogisticsObject"
+        },
+        UsedTemplate = new CheckTemplate
+        {
+            Type = new List<string>
+            {
+                "cargo:CheckTemplate"
+            },
+            Name = "OriginPreparationSheetDto",
+            Questions = new List<Question>
+            {
+                new Question
+                {
+                    Type = new List<string>
+                    {
+                        "cargo:Question"
+                    },
+                    HttpsCargoshortText = "Signature",
+                    HttpsCargoanswer = new Answer
+                    {
+                        Type = new List<string>
+                        {
+                            "cargo:Answer"
+                        },
+                        Text = "Blaaaaaaaa"
+                    },
+                }
+            }
+        },
+
+    };
+}
+
+Change GetChangerRequest(string listReference, IList<string> checkLocations)
+{
+
+    var operations = new List<Operation>();
+
+    foreach (var checkLocation in checkLocations)
+    {
+        operations.Add(GetOperation(listReference,checkLocation));
+    }
+
+    var httpsChange = new Change
+    {
+        Type = "api:Change",
+        HasLogisticsObject = new LogisticsObject
+        {
+            Id = listReference,
+        },
+        HasDescription = "Add checks",
+        HasOperation = operations,
+        HasRevision = new Revision
+        {
+            Type = "http://www.w3.org/2001/XMLSchema#positiveInteger",
+            Value = 1
+        }
+    };
+    return httpsChange;
+}
+
+
+Operation GetOperation(string listReference, string checkReference)
+{
+    return new Operation
+    {
+        Type = "api:Operation",
+        PatchOperation = new PatchOperation
+        {
+            Id = "api:ADD"
+        },
+        Subject = listReference,
+        Predicate = "https://onerecord.iata.org/ns/cargo#checks",
+        Objects = new List<OperationObject>
+        {
+            new OperationObject
+            {
+                Type = "api:OperationObject",
+                HasDatatype = "https://onerecord.iata.org/ns/cargo#Check",
+                HasValue = checkReference
+            }
+        }
+    };
 }

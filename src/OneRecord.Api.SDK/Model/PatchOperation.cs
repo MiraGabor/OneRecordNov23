@@ -31,21 +31,21 @@ namespace OneRecord.Api.SDK.Model
         /// <param name="httpsType">type.</param>
         public PatchOperation(string httpsId = default(string), List<string> httpsType = default(List<string>))
         {
-            this.HttpsId = httpsId;
-            this.HttpsType = httpsType;
+            this.Id = httpsId;
+            this.Type = httpsType;
         }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string HttpsId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> HttpsType { get; set; }
+        public List<string> Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,8 +55,8 @@ namespace OneRecord.Api.SDK.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class PatchOperation {\n");
-            sb.Append("  Id: ").Append(HttpsId).Append("\n");
-            sb.Append("  Type: ").Append(HttpsType).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -93,15 +93,15 @@ namespace OneRecord.Api.SDK.Model
             }
             return 
                 (
-                    this.HttpsId == httpsInput.HttpsId ||
-                    (this.HttpsId != null &&
-                    this.HttpsId.Equals(httpsInput.HttpsId))
+                    this.Id == httpsInput.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(httpsInput.Id))
                 ) && 
                 (
-                    this.HttpsType == httpsInput.HttpsType ||
-                    this.HttpsType != null &&
-                    httpsInput.HttpsType != null &&
-                    this.HttpsType.SequenceEqual(httpsInput.HttpsType)
+                    this.Type == httpsInput.Type ||
+                    this.Type != null &&
+                    httpsInput.Type != null &&
+                    this.Type.SequenceEqual(httpsInput.Type)
                 );
         }
 
@@ -114,13 +114,13 @@ namespace OneRecord.Api.SDK.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HttpsId != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.HttpsType != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
                 return hashCode;
             }

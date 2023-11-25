@@ -27,65 +27,75 @@ namespace OneRecord.Api.SDK.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Change" /> class.
         /// </summary>
-        /// <param name="httpsId">id.</param>
-        /// <param name="httpsType">type.</param>
+        /// <param name="Id">id.</param>
+        /// <param name="Type">type.</param>
         /// <param name="httpsApihasLogisticsObject">ApihasLogisticsObject.</param>
         /// <param name="httpsApihasOperation">ApihasOperation.</param>
         /// <param name="httpsApihasDescription">ApihasDescription.</param>
         /// <param name="httpsApihasRevision">ApihasRevision.</param>
         /// <param name="httpsApinotifyRequestStatusChange">ApinotifyRequestStatusChange.</param>
-        public Change(string httpsId = default(string), List<string> httpsType = default(List<string>), LogisticsObject httpsApihasLogisticsObject = default(LogisticsObject), List<Operation> httpsApihasOperation = default(List<Operation>), string httpsApihasDescription = default(string), List<string> httpsApihasRevision = default(List<string>), bool httpsApinotifyRequestStatusChange = default(bool))
+        public Change(string Id = default(string), string Type = default(string), LogisticsObject httpsApihasLogisticsObject = default(LogisticsObject), List<Operation> httpsApihasOperation = default(List<Operation>), string httpsApihasDescription = default(string), Revision httpsApihasRevision = default(Revision), bool httpsApinotifyRequestStatusChange = default(bool))
         {
-            this.HttpsId = httpsId;
-            this.HttpsType = httpsType;
-            this.HttpsApihasLogisticsObject = httpsApihasLogisticsObject;
-            this.HttpsApihasOperation = httpsApihasOperation;
-            this.HttpsApihasDescription = httpsApihasDescription;
-            this.HttpsApihasRevision = httpsApihasRevision;
-            this.HttpsApinotifyRequestStatusChange = httpsApinotifyRequestStatusChange;
+            this.Id = Id;
+            this.Type = Type;
+            this.HasLogisticsObject = httpsApihasLogisticsObject;
+            this.HasOperation = httpsApihasOperation;
+            this.HasDescription = httpsApihasDescription;
+            this.HasRevision = httpsApihasRevision;
+            this.NotifyRequestStatusChange = httpsApinotifyRequestStatusChange;
         }
+
+        /// <summary>
+        /// Gets or Sets Context
+        /// </summary>
+        [DataMember(Name = "@context", EmitDefaultValue = true)]
+        public Context Context = new Context
+        {
+            Cargo = "https://onerecord.iata.org/ns/cargo#",
+            Api = "https://onerecord.iata.org/ns/api#"
+        };
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string HttpsId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> HttpsType { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or Sets ApihasLogisticsObject
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/api#hasLogisticsObject", EmitDefaultValue = false)]
-        public LogisticsObject HttpsApihasLogisticsObject { get; set; }
+        [DataMember(Name = "api:hasLogisticsObject", EmitDefaultValue = false)]
+        public LogisticsObject HasLogisticsObject { get; set; }
 
         /// <summary>
         /// Gets or Sets ApihasOperation
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/api#hasOperation", EmitDefaultValue = false)]
-        public List<Operation> HttpsApihasOperation { get; set; }
+        [DataMember(Name = "api:hasOperation", EmitDefaultValue = false)]
+        public List<Operation> HasOperation { get; set; }
 
         /// <summary>
         /// Gets or Sets ApihasDescription
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/api#hasDescription", EmitDefaultValue = false)]
-        public string HttpsApihasDescription { get; set; }
+        [DataMember(Name = "api:hasDescription", EmitDefaultValue = false)]
+        public string HasDescription { get; set; }
 
         /// <summary>
         /// Gets or Sets ApihasRevision
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/api#hasRevision", EmitDefaultValue = false)]
-        public List<string> HttpsApihasRevision { get; set; }
+        [DataMember(Name = "api:hasRevision", EmitDefaultValue = false)]
+        public Revision HasRevision { get; set; }
 
         /// <summary>
         /// Gets or Sets ApinotifyRequestStatusChange
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/api#notifyRequestStatusChange", EmitDefaultValue = true)]
-        public bool HttpsApinotifyRequestStatusChange { get; set; }
+        [DataMember(Name = "api:notifyRequestStatusChange", EmitDefaultValue = false)]
+        public bool NotifyRequestStatusChange { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,13 +105,13 @@ namespace OneRecord.Api.SDK.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Change {\n");
-            sb.Append("  Id: ").Append(HttpsId).Append("\n");
-            sb.Append("  Type: ").Append(HttpsType).Append("\n");
-            sb.Append("  ApihasLogisticsObject: ").Append(HttpsApihasLogisticsObject).Append("\n");
-            sb.Append("  ApihasOperation: ").Append(HttpsApihasOperation).Append("\n");
-            sb.Append("  ApihasDescription: ").Append(HttpsApihasDescription).Append("\n");
-            sb.Append("  ApihasRevision: ").Append(HttpsApihasRevision).Append("\n");
-            sb.Append("  ApinotifyRequestStatusChange: ").Append(HttpsApinotifyRequestStatusChange).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  ApihasLogisticsObject: ").Append(HasLogisticsObject).Append("\n");
+            sb.Append("  ApihasOperation: ").Append(HasOperation).Append("\n");
+            sb.Append("  ApihasDescription: ").Append(HasDescription).Append("\n");
+            sb.Append("  ApihasRevision: ").Append(HasRevision).Append("\n");
+            sb.Append("  ApinotifyRequestStatusChange: ").Append(NotifyRequestStatusChange).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -138,41 +148,41 @@ namespace OneRecord.Api.SDK.Model
             }
             return 
                 (
-                    this.HttpsId == httpsInput.HttpsId ||
-                    (this.HttpsId != null &&
-                    this.HttpsId.Equals(httpsInput.HttpsId))
+                    this.Id == httpsInput.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(httpsInput.Id))
                 ) && 
                 (
-                    this.HttpsType == httpsInput.HttpsType ||
-                    this.HttpsType != null &&
-                    httpsInput.HttpsType != null &&
-                    this.HttpsType.SequenceEqual(httpsInput.HttpsType)
+                    this.Type == httpsInput.Type ||
+                    this.Type != null &&
+                    httpsInput.Type != null &&
+                    this.Type.SequenceEqual(httpsInput.Type)
                 ) && 
                 (
-                    this.HttpsApihasLogisticsObject == httpsInput.HttpsApihasLogisticsObject ||
-                    (this.HttpsApihasLogisticsObject != null &&
-                    this.HttpsApihasLogisticsObject.Equals(httpsInput.HttpsApihasLogisticsObject))
+                    this.HasLogisticsObject == httpsInput.HasLogisticsObject ||
+                    (this.HasLogisticsObject != null &&
+                    this.HasLogisticsObject.Equals(httpsInput.HasLogisticsObject))
                 ) && 
                 (
-                    this.HttpsApihasOperation == httpsInput.HttpsApihasOperation ||
-                    this.HttpsApihasOperation != null &&
-                    httpsInput.HttpsApihasOperation != null &&
-                    this.HttpsApihasOperation.SequenceEqual(httpsInput.HttpsApihasOperation)
+                    this.HasOperation == httpsInput.HasOperation ||
+                    this.HasOperation != null &&
+                    httpsInput.HasOperation != null &&
+                    this.HasOperation.SequenceEqual(httpsInput.HasOperation)
                 ) && 
                 (
-                    this.HttpsApihasDescription == httpsInput.HttpsApihasDescription ||
-                    (this.HttpsApihasDescription != null &&
-                    this.HttpsApihasDescription.Equals(httpsInput.HttpsApihasDescription))
+                    this.HasDescription == httpsInput.HasDescription ||
+                    (this.HasDescription != null &&
+                    this.HasDescription.Equals(httpsInput.HasDescription))
                 ) && 
                 (
-                    this.HttpsApihasRevision == httpsInput.HttpsApihasRevision ||
-                    this.HttpsApihasRevision != null &&
-                    httpsInput.HttpsApihasRevision != null &&
-                    this.HttpsApihasRevision.SequenceEqual(httpsInput.HttpsApihasRevision)
+                    this.HasRevision == httpsInput.HasRevision ||
+                    this.HasRevision != null &&
+                    httpsInput.HasRevision != null &&
+                    this.HasRevision.Equals(httpsInput.HasRevision)
                 ) && 
                 (
-                    this.HttpsApinotifyRequestStatusChange == httpsInput.HttpsApinotifyRequestStatusChange ||
-                    this.HttpsApinotifyRequestStatusChange.Equals(httpsInput.HttpsApinotifyRequestStatusChange)
+                    this.NotifyRequestStatusChange == httpsInput.NotifyRequestStatusChange ||
+                    this.NotifyRequestStatusChange.Equals(httpsInput.NotifyRequestStatusChange)
                 );
         }
 
@@ -185,31 +195,31 @@ namespace OneRecord.Api.SDK.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HttpsId != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.HttpsType != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
-                if (this.HttpsApihasLogisticsObject != null)
+                if (this.HasLogisticsObject != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsApihasLogisticsObject.GetHashCode();
+                    hashCode = (hashCode * 59) + this.HasLogisticsObject.GetHashCode();
                 }
-                if (this.HttpsApihasOperation != null)
+                if (this.HasOperation != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsApihasOperation.GetHashCode();
+                    hashCode = (hashCode * 59) + this.HasOperation.GetHashCode();
                 }
-                if (this.HttpsApihasDescription != null)
+                if (this.HasDescription != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsApihasDescription.GetHashCode();
+                    hashCode = (hashCode * 59) + this.HasDescription.GetHashCode();
                 }
-                if (this.HttpsApihasRevision != null)
+                if (this.HasRevision != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsApihasRevision.GetHashCode();
+                    hashCode = (hashCode * 59) + this.HasRevision.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.HttpsApinotifyRequestStatusChange.GetHashCode();
+                hashCode = (hashCode * 59) + this.NotifyRequestStatusChange.GetHashCode();
                 return hashCode;
             }
         }
