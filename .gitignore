@@ -78,3 +78,14 @@
 /src/OneCheck.Repository/obj/project.assets.json
 /src/OneCheck.Repository/obj/project.nuget.cache
 /src/OneRecord.Api.SDK/OneRecord.Api.SDK.csproj
+/src/NeOne.Dataseeder/obj/Release/net8.0
+/src/Neone.ServiceClient/bin/Debug/net8.0
+/src/Neone.ServiceClient/obj/Debug/net8.0
+/src/Neone.ServiceClient/obj
+/src/OneCheck.Api/obj
+/src/OneCheck.Application/obj/Release/net8.0
+/src/OneCheck.Domain/obj/Debug/net8.0
+/src/OneCheck.Domain/obj/Release/net8.0
+/src/OneCheck.Repository/obj/Release/net8.0
+/.vs/OneRecordNov23/v17
+/.vs
