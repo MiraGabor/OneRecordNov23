@@ -16,6 +16,10 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
+    <ng-container *ngIf="!observables.isLoggedIn"> balbla log in </ng-container>
+  </ion-content>
+
+  <ion-footer>
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -49,13 +53,11 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-content>
+  </ion-footer>
 
   <ng-template #loginMask>
     <!-- todo footer design -->
-    <ion-footer>
-      <app-login-mask></app-login-mask>
-    </ion-footer>
+    <app-login-mask></app-login-mask>
   </ng-template>
 
   <ng-template #selectRole>

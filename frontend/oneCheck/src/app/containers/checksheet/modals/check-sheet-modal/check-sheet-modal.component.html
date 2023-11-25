@@ -20,37 +20,47 @@
     </ion-segment-button>
   </ion-segment>
 
-  <!-- Export for example -->
-  <ng-container>
-    <ion-accordion-group>
-      <!-- Origin Handling Agent Sheet-->
+  <!-- Export -->
+  <ion-accordion-group *ngIf="activeSegment === 'export'">
+    <!-- Origin Handling Agent Sheet-->
+    <ion-accordion *ngIf="checksheet?.originHandlingAgentSheet" value="first">
+      <ion-item slot="header" color="light">
+        <ion-label>Origin Handling Agent Sheet</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <app-origin-handling-agent-sheet
+          [originHandlingAgentSheet]="checksheet?.originHandlingAgentSheet"
+        ></app-origin-handling-agent-sheet>
+      </div>
+    </ion-accordion>
+
+    <!-- Inbound Transit Sheets -->
+    <ion-accordion value="second">
+      <ion-item slot="header" color="light">
+        <ion-label
+          >Loading and preparation by shipper / issuing agent</ion-label
+        >
+      </ion-item>
+      <div class="ion-padding" slot="content">Second Content</div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+  <ion-accordion-group *ngIf="activeSegment === 'transit'">
+    <!-- todo Transit loop -->
+    <!-- Inbound Transit Sheets -->
+    <ng-container *ngIf="checksheet?.inboundTransitSheets">
       <ion-accordion
-        *ngIf="
-          activeSegment === 'export' && checksheet?.originHandlingAgentSheet
-        "
-        value="first"
+        [value]="check.checkSheetId"
+        *ngFor="let check of checksheet?.inboundTransitSheets"
       >
         <ion-item slot="header" color="light">
-          <ion-label>Origin Handling Agent Sheet</ion-label>
+          <ion-label>Transit todo</ion-label>
         </ion-item>
         <div class="ion-padding" slot="content">
-          <app-origin-handling-agent-sheet
-            [originHandlingAgentSheet]="checksheet?.originHandlingAgentSheet"
-          ></app-origin-handling-agent-sheet>
+          <!-- todo transit component -->
+          {{ check.checkSheetId }}
         </div>
       </ion-accordion>
-
-      <!-- Inbound Transit Sheets -->
-      <ion-accordion value="second">
-        <ion-item slot="header" color="light">
-          <ion-label>Second Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">Second Content</div>
-      </ion-accordion>
-    </ion-accordion-group>
-  </ng-container>
+    </ng-container>
+  </ion-accordion-group>
 </ion-content>
-
-<ion-footer>
-  <ion-button expand="block">Submit</ion-button>
-</ion-footer>

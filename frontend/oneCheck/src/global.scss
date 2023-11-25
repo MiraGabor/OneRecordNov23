@@ -43,3 +43,12 @@ body.barcode-scanner-active {
     --ion-background-color: transparent;
   }
 }
+
+ion-footer {
+  border-top: 1px solid lightgray;
+  padding-top: 20px;
+
+  ion-button {
+    margin-bottom: 50px;
+  }
+}
