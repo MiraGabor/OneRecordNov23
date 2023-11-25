@@ -12,4 +12,7 @@ public class Context
     /// </summary>
     [DataMember(Name = "cargo")]
     public string Cargo { get; set; }
+
+    [DataMember(Name = "api")]
+    public string Api { get; set; }
 }
