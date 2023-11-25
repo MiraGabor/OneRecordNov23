@@ -189,8 +189,8 @@ public class PostSheetRequestHandler : IRequestHandler<PostSheetRequest>
        return new Question
         {
             Type = new List<string> { "cargo:Question" },
-            HttpsCargoshortText = propertyName,
-            HttpsCargoanswer = new Answer
+            ShortText = propertyName,
+            Answer = new Answer
             {
                 Type = new List<string> { "cargo:Answer" },
                 Text = value,
