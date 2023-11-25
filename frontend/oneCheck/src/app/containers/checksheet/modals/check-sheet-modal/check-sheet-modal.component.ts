@@ -21,7 +21,7 @@ export class CheckSheetModalComponent implements OnInit {
   public activeSegment = 'export'; // todo chose via role // todo change to origin?
 
   public ngOnInit() {
-    console.log(this.checksheet);
+    console.log(this.checksheet, 'kek');
   }
 
   public async dismissModal(): Promise<void> {

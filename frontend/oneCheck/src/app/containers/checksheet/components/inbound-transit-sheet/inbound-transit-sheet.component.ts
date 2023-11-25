@@ -30,10 +30,7 @@ export class InboundTransitSheetComponent implements OnInit {
     isAlarmDisplayed: new FormControl(''),
   });
 
-  @Input() public inboundTransitCheckSheet:
-    | TransitCheckSheetDto[]
-    | null
-    | undefined;
+  @Input() public inboundTransitCheckSheet: TransitCheckSheetDto | undefined;
 
   constructor(private store: Store) {}
 

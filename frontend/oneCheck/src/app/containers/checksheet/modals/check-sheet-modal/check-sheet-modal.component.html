@@ -52,23 +52,51 @@
 
   <!-- Transit -->
   <ion-accordion-group *ngIf="activeSegment === 'transit'">
-    <!-- Inbound Transit Sheets -->
-    <ng-container *ngIf="checksheet?.inboundTransitSheets">
-      <ion-accordion
-        [value]="check.checkSheetId"
-        *ngFor="let check of checksheet?.inboundTransitSheets"
+    <!-- Transit Sheets -->
+    <ng-container *ngIf="checksheet?.transitSheets">
+      <!--ion-accordion
+        [value]="transitChecks.inboundTransitSheetModel?.checkSheetId"
+        *ngFor="let transitChecks of checksheet?.transitSheets"
       >
         <ion-item slot="header" color="light">
           <ion-label>{{
-            "Inbound Transit " + check.inboundCheckAirport
+            "Inbound Transit " + transitChecks.inboundTransitSheetModel?.checkSheetId
           }}</ion-label>
         </ion-item>
         <div class="ion-padding" slot="content">
           <app-inbound-transit-sheet
-            [inboundTransitCheckSheet]="checksheet?.inboundTransitSheets"
+            [inboundTransitCheckSheet]="transitChecks[0].inboundTransitCheckSheet"
           ></app-inbound-transit-sheet>
         </div>
-      </ion-accordion>
+      </ion-accordion-->
+
+      <!-- todo müde -> loop durch alle transits -> pro iteration gibt es in und out -> akkordion pro sheet  -->
+
+      <ng-container *ngFor="let checks of checksheet?.transitSheets">
+        <ion-accordion>
+          <ion-item slot="header" color="light">
+            <ion-label>{{
+              "Inbound Transit " +
+                checks.inboundTransitSheetModel?.inboundCheckAirportCode
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <app-inbound-transit-sheet
+              [inboundTransitCheckSheet]="checks.inboundTransitSheetModel"
+            ></app-inbound-transit-sheet>
+          </div>
+        </ion-accordion>
+
+        <ion-accordion>
+          <ion-item slot="header" color="light">
+            <ion-label>{{
+              "Outbound Transit " +
+                checks.outboundTransitSheetModel?.outboundCheckAirportCode
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">todo outbounf</div>
+        </ion-accordion>
+      </ng-container>
     </ng-container>
   </ion-accordion-group>
 
