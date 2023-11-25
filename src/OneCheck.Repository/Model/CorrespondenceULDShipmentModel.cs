@@ -12,4 +12,5 @@ public class CorrespondenceULDShipmentModel
     public int Id {  get; set; }
     public string UldID { get; set; }
     public string ShipmentId { get; set; }
+    public string NeoneGuid { get; set; }
 }
