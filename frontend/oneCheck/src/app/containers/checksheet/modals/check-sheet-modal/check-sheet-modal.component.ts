@@ -31,7 +31,6 @@ export class CheckSheetModalComponent implements OnInit {
   }
 
   public changeSegment(ev: any): void {
-    console.log('segment change', ev.detail.value);
     this.activeSegment = ev.detail.value;
   }
 }

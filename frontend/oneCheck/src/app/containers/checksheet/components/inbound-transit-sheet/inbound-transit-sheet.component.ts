@@ -13,7 +13,6 @@ import { TransitCheckSheetDto } from 'src/model/transitCheckSheetDto';
 })
 export class InboundTransitSheetComponent implements OnInit {
   public userRole$: Observable<string | undefined> | undefined;
-  public canEdit = false;
 
   public form: FormGroup = new FormGroup({
     checkSheetId: new FormControl(''),
@@ -39,7 +38,10 @@ export class InboundTransitSheetComponent implements OnInit {
     this.userRole$ = this.store.select(UserStateSelectors.userRole);
 
     this.userRole$.subscribe((role) => {
-      this.canEdit = role === 'export'; // todo rename role
+      // todo check station Code
+      if (role !== 'transit') {
+        this.form.disable();
+      }
     });
 
     // pre-fill sheet

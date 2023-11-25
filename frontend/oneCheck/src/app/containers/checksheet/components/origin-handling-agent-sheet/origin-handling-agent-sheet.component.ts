@@ -12,7 +12,6 @@ import { OriginHandlingAgentSheetDto } from 'src/model/originHandlingAgentSheetD
 })
 export class OriginHandlingAgentSheetComponent implements OnInit {
   public userRole$: Observable<string | undefined> | undefined;
-  public canEdit = false;
 
   public form: FormGroup = new FormGroup({
     //checkSheetId: new FormControl('', Validators.required), // todo hide in UI?
@@ -42,7 +41,12 @@ export class OriginHandlingAgentSheetComponent implements OnInit {
     this.userRole$ = this.store.select(UserStateSelectors.userRole);
 
     this.userRole$.subscribe((role) => {
-      this.canEdit = role === 'export'; // todo rename role
+      console.log('lel', role);
+
+      // todo station code
+      if (role !== 'export') {
+        this.form.disable();
+      }
     });
 
     // pre-fill sheet
