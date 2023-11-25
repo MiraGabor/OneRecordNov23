@@ -1,0 +1,6 @@
+@OneCheck.Api_HostAddress = http://localhost:5070
+
+GET {{OneCheck.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
