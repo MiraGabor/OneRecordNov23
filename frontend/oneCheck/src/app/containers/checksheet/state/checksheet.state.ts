@@ -31,7 +31,7 @@ export class CheckSheetState {
   ): Observable<any> {
     const state = ctx.getState();
 
-    // todo replace mock service
+    // todo robert: replace mock service
     return this.scanService.mockGetShipment(action.shipmentCode).pipe(
       tap((result) => {
         ctx.setState({

@@ -68,13 +68,24 @@ export class ScanPage implements OnInit {
     this.scannnerLoading = false;
 
     // todo replace Alert with API Call
-    const alert = await this.alertCtrl.create({
-      header: 'Barcode scanned successfully',
-      message: `${barcodes[0].rawValue}`,
-      buttons: ['Close'],
-    });
+    // const alert = await this.alertCtrl.create({
+    //   header: 'Barcode scanned successfully',
+    //   message: `${barcodes[0].rawValue}`,
+    //   buttons: ['Close'],
+    // });
 
-    await alert.present();
+    // await alert.present();
+
+    this.store
+      .dispatch(new ChecksheetActions.getShipment('test'))
+      .subscribe(async () => {
+        const modal = await this.modalCtrl.create({
+          component: SelectUldModalComponent,
+          componentProps: { testAWB: `${barcodes[0].rawValue}` },
+        });
+
+        await modal.present();
+      });
   }
 
   public async presentDummyChecksheet(): Promise<void> {
