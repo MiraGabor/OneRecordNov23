@@ -41,8 +41,8 @@ var checks = new List<Check>
                         {
                             "cargo:Question"
                         },
-                        HttpsCargoshortText = "Signature",
-                        HttpsCargoanswer = new Answer
+                        ShortText = "Signature",
+                        Answer = new Answer
                         {
                             Type = new List<string>
                             {
