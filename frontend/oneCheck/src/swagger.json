@@ -1,0 +1,522 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OneCheck.Api",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Sheets/{ULDId}": {
+      "get": {
+        "tags": [
+          "Sheets"
+        ],
+        "parameters": [
+          {
+            "name": "ULDId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SheetDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SheetDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SheetDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Shipment/{id}": {
+      "get": {
+        "tags": [
+          "Shipment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BlueLightEnumDto": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DateOnly": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dayOfWeek": {
+            "$ref": "#/components/schemas/DayOfWeek"
+          },
+          "dayOfYear": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "dayNumber": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DayOfWeek": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DestinationConsigneeSheetDto": {
+        "type": "object",
+        "properties": {
+          "checkSheetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "date": {
+            "$ref": "#/components/schemas/DateOnly"
+          },
+          "time": {
+            "$ref": "#/components/schemas/TimeOnly"
+          },
+          "sealNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "signature": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "batteryStatusInPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isContainerDamaged": {
+            "type": "boolean"
+          },
+          "isContainerOperating": {
+            "type": "boolean"
+          },
+          "displayTemp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is5AdaptersPresents": {
+            "type": "boolean"
+          },
+          "recipientName": {
+            "type": "string",
+            "nullable": true
+          },
+          "recipientSignature": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DestinationHandlingAgentSheetDto": {
+        "type": "object",
+        "properties": {
+          "checkSheetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "date": {
+            "$ref": "#/components/schemas/DateOnly"
+          },
+          "time": {
+            "$ref": "#/components/schemas/TimeOnly"
+          },
+          "sealNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "signature": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "batteryStatusInPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "inboundCheckAirport": {
+            "type": "string",
+            "nullable": true
+          },
+          "isContainerOperating": {
+            "type": "boolean"
+          },
+          "isContainerDamaged": {
+            "type": "boolean"
+          },
+          "displayedTemp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "inboundCheckAirportCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "blueLight": {
+            "$ref": "#/components/schemas/BlueLightEnumDto"
+          },
+          "isAlarmDisplayed": {
+            "type": "boolean"
+          },
+          "setTempOnDisplay": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OriginHandlingAgentSheetDto": {
+        "type": "object",
+        "properties": {
+          "checkSheetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "date": {
+            "$ref": "#/components/schemas/DateOnly"
+          },
+          "time": {
+            "$ref": "#/components/schemas/TimeOnly"
+          },
+          "sealNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "signature": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "batteryStatusInPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isContainerDamaged": {
+            "type": "boolean"
+          },
+          "isContainerOperating": {
+            "type": "boolean"
+          },
+          "displayTemp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isAlert": {
+            "type": "boolean"
+          },
+          "isBlueLightOn": {
+            "$ref": "#/components/schemas/BlueLightEnumDto"
+          },
+          "alertDisplayed": {
+            "type": "string",
+            "nullable": true
+          },
+          "setTempOnDisplay": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is5AdaptersPresents": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OriginPreparationSheetDto": {
+        "type": "object",
+        "properties": {
+          "checkSheetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "date": {
+            "$ref": "#/components/schemas/DateOnly"
+          },
+          "time": {
+            "$ref": "#/components/schemas/TimeOnly"
+          },
+          "sealNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "signature": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "batteryStatusInPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uldNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "awbNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isBatteryCharged": {
+            "type": "boolean"
+          },
+          "isContainerDamaged": {
+            "type": "boolean"
+          },
+          "routing": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "goodsPrecooledAtTemps": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uldPrecooledTemp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tempSetting": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "acceptedTempRange": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "emergencyPhone": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SheetDto": {
+        "type": "object",
+        "properties": {
+          "checkSheetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "preparationSheet": {
+            "$ref": "#/components/schemas/OriginPreparationSheetDto"
+          },
+          "originHandlingAgentSheet": {
+            "$ref": "#/components/schemas/OriginHandlingAgentSheetDto"
+          },
+          "inboundTransitSheets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransitCheckSheetDto"
+            },
+            "nullable": true
+          },
+          "destinationHandlingAgentSheet": {
+            "$ref": "#/components/schemas/DestinationHandlingAgentSheetDto"
+          },
+          "destinationConsigneeSheet": {
+            "$ref": "#/components/schemas/DestinationConsigneeSheetDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipmentDto": {
+        "type": "object",
+        "properties": {
+          "uldIdList": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimeOnly": {
+        "type": "object",
+        "properties": {
+          "hour": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minute": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "second": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "millisecond": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "microsecond": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "nanosecond": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "ticks": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TransitCheckSheetDto": {
+        "type": "object",
+        "properties": {
+          "checkSheetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "date": {
+            "$ref": "#/components/schemas/DateOnly"
+          },
+          "time": {
+            "$ref": "#/components/schemas/TimeOnly"
+          },
+          "sealNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "signature": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "batteryStatusInPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "inboundCheckAirport": {
+            "type": "string",
+            "nullable": true
+          },
+          "isContainerOperating": {
+            "type": "boolean"
+          },
+          "isContainerDamaged": {
+            "type": "boolean"
+          },
+          "displayedTemp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "blueLight": {
+            "$ref": "#/components/schemas/BlueLightEnumDto"
+          },
+          "isAlarmDisplayed": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
