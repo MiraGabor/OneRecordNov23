@@ -21,32 +21,56 @@
   </ion-segment>
 
   <!-- Export for example -->
-  <ion-list *ngIf="activeSegment === 'export'">
-    <ion-item>
-      <ion-label> Example Readonly </ion-label>
-      <ion-checkbox disabled slot="end"> </ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <!-- todo value / selected -->
-      <ion-label>Example Readonly 2</ion-label>
-      <ion-checkbox [checked]="true" disabled slot="end"> </ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label> test </ion-label>
-      <ion-checkbox slot="end"> </ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label> test </ion-label>
-      <ion-checkbox slot="end"> </ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label> test </ion-label>
-      <ion-checkbox slot="end"> </ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-input label="Temperature" placeholder="C°"></ion-input>
-    </ion-item>
-  </ion-list>
+  <ng-container>
+    <ion-accordion-group>
+      <ion-accordion
+        *ngIf="
+          activeSegment === 'export' && checksheet?.originHandlingAgentSheet
+        "
+        value="first"
+      >
+        <ion-item slot="header" color="light">
+          <ion-label>Origin Handling Agent Sheet</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-list>
+            <ion-item>
+              <ion-label> Example Readonly </ion-label>
+              <ion-checkbox disabled slot="end"> </ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <!-- todo value / selected -->
+              <ion-label>Example Readonly 2</ion-label>
+              <ion-checkbox [checked]="true" disabled slot="end">
+              </ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label> test </ion-label>
+              <ion-checkbox slot="end"> </ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label> test </ion-label>
+              <ion-checkbox slot="end"> </ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label> test </ion-label>
+              <ion-checkbox slot="end"> </ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-input label="Temperature" placeholder="C°"></ion-input>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-accordion>
+
+      <ion-accordion value="second">
+        <ion-item slot="header" color="light">
+          <ion-label>Second Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">Second Content</div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ng-container>
 </ion-content>
 
 <ion-footer>

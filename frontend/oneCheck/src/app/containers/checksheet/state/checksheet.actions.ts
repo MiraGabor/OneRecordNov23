@@ -4,8 +4,13 @@ export namespace ChecksheetActions {
     public constructor() {} // todo include checksheet
   }
 
-  export class getULDs {
-    public static readonly type = '[CheckSheet] Get ULDs';
-    public constructor(shipmentCode: string) {} // todo include checksheet
+  export class getShipment {
+    public static readonly type = '[CheckSheet] Get Shipment';
+    public constructor(public shipmentCode: string) {}
+  }
+
+  export class getChecksheet {
+    public static readonly type = '[CheckSheet] Get Checksheet';
+    public constructor(public uldId: string) {}
   }
 }

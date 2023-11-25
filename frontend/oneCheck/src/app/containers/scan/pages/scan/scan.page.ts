@@ -10,6 +10,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { CheckSheetModalComponent } from 'src/app/containers/checksheet/modals/check-sheet-modal/check-sheet-modal.component';
+import { SelectUldModalComponent } from 'src/app/containers/checksheet/modals/select-uld-modal/select-uld-modal.component';
 import { ChecksheetActions } from 'src/app/containers/checksheet/state/checksheet.actions';
 import { User } from 'src/app/containers/user/models/user.model';
 import { UserStateSelectors } from 'src/app/containers/user/state/user.selectors';
@@ -87,7 +88,23 @@ export class ScanPage implements OnInit {
   }
 
   public testAPI(): void {
-    this.store.dispatch(new ChecksheetActions.getULDs('test'));
+    this.store
+      .dispatch(new ChecksheetActions.getShipment('test'))
+      .subscribe(async () => {
+        const modal = await this.modalCtrl.create({
+          component: SelectUldModalComponent,
+        });
+
+        await modal.present();
+      });
+  }
+
+  public async presentDummySelectUldModal(): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: SelectUldModalComponent,
+    });
+
+    await modal.present();
   }
 
   private _scannerSetup(): void {
