@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OneCheck.Repository.Model;
-public class CheckSheetModel
+namespace OneCheck.Api.Dtos.SheetsDtos;
+public class CheckSheetDto
 {
     public Guid CheckSheetId { get; set; }
     public DateOnly Date { get; set; }

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OneCheck.Repository.Model;
-public class OriginPreparationSheetModel : CheckSheetModel
+namespace OneCheck.Application.Dtos.SheetsDtos;
+public class OriginPreparationSheetDto : CheckSheetDto
 {
     public string ULDNumber { get; set; }
     public int AWBNumber { get; set; }
