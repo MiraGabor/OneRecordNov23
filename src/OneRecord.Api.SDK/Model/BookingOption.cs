@@ -22,20 +22,20 @@ namespace OneRecord.Api.SDK.Model
     /// BookingOption
     /// </summary>
     [DataContract(Name = "BookingOption")]
-    public partial class BookingOption : IEquatable<BookingOption>, IValidatableObject
+    public partial class BookingOption : LogisticsObject, IEquatable<BookingOption>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BookingOption" /> class.
         /// </summary>
-        /// <param name="httpsId">id.</param>
-        /// <param name="httpsType">type.</param>
-        /// <param name="httpsCargochecks">Cargochecks.</param>
-        /// <param name="httpsCargoevents">Cargoevents.</param>
-        /// <param name="httpsCargoexternalReferences">CargoexternalReferences.</param>
-        /// <param name="httpsCargocompanyIdentifier">CargocompanyIdentifier.</param>
-        /// <param name="httpsCargoskeletonIndicator">CargoskeletonIndicator.</param>
-        /// <param name="httpsCargobookingSegment">CargobookingSegment.</param>
-        /// <param name="httpsCargobookingTimes">CargobookingTimes.</param>
+        /// <param name="Id">id.</param>
+        /// <param name="Type">type.</param>
+        /// <param name="Checks">Cargochecks.</param>
+        /// <param name="Events">Cargoevents.</param>
+        /// <param name="ExternalReferences">CargoexternalReferences.</param>
+        /// <param name="CompanyIdentifier">CargocompanyIdentifier.</param>
+        /// <param name="SkeletonIndicator">CargoskeletonIndicator.</param>
+        /// <param name="BookingSegment">CargobookingSegment.</param>
+        /// <param name="BookingTimes">CargobookingTimes.</param>
         /// <param name="httpsCargocarrierProductInfo">CargocarrierProductInfo.</param>
         /// <param name="httpsCargoforBookingRequest">CargoforBookingRequest.</param>
         /// <param name="httpsCargofromCarrier">CargofromCarrier.</param>
@@ -50,17 +50,17 @@ namespace OneRecord.Api.SDK.Model
         /// <param name="httpsCargoshipmentSecurityStatus">CargoshipmentSecurityStatus.</param>
         /// <param name="httpsCargovalidFrom">CargovalidFrom.</param>
         /// <param name="httpsCargovalidUntil">CargovalidUntil.</param>
-        public BookingOption(string httpsId = default(string), List<string> httpsType = default(List<string>), List<Check> httpsCargochecks = default(List<Check>), List<LogisticsEvent> httpsCargoevents = default(List<LogisticsEvent>), List<ExternalReference> httpsCargoexternalReferences = default(List<ExternalReference>), string httpsCargocompanyIdentifier = default(string), bool httpsCargoskeletonIndicator = default(bool), BookingSegment httpsCargobookingSegment = default(BookingSegment), BookingTimes httpsCargobookingTimes = default(BookingTimes), CarrierProduct httpsCargocarrierProductInfo = default(CarrierProduct), BookingRequest httpsCargoforBookingRequest = default(BookingRequest), Carrier httpsCargofromCarrier = default(Carrier), List<Party> httpsCargoinvolvedParties = default(List<Party>), Price httpsCargoprice = default(Price), BookingOptionRequest httpsCargorequestRef = default(BookingOptionRequest), Routing httpsCargorouting = default(Routing), TransportMovement httpsCargotransportMovement = default(TransportMovement), string httpsCargobookingOptionStatus = default(string), string httpsCargoproposedWaybillNumber = default(string), bool httpsCargorequestMatchInd = default(bool), string httpsCargoshipmentSecurityStatus = default(string), DateTime httpsCargovalidFrom = default(DateTime), DateTime httpsCargovalidUntil = default(DateTime))
+        public BookingOption(string Id = default(string), List<string> Type = default(List<string>), List<Check> Checks = default(List<Check>), List<LogisticsEvent> Events = default(List<LogisticsEvent>), List<ExternalReference> ExternalReferences = default(List<ExternalReference>), string CompanyIdentifier = default(string), bool SkeletonIndicator = default(bool), BookingSegment BookingSegment = default(BookingSegment), BookingTimes BookingTimes = default(BookingTimes), CarrierProduct httpsCargocarrierProductInfo = default(CarrierProduct), BookingRequest httpsCargoforBookingRequest = default(BookingRequest), Carrier httpsCargofromCarrier = default(Carrier), List<Party> httpsCargoinvolvedParties = default(List<Party>), Price httpsCargoprice = default(Price), BookingOptionRequest httpsCargorequestRef = default(BookingOptionRequest), Routing httpsCargorouting = default(Routing), TransportMovement httpsCargotransportMovement = default(TransportMovement), string httpsCargobookingOptionStatus = default(string), string httpsCargoproposedWaybillNumber = default(string), bool httpsCargorequestMatchInd = default(bool), string httpsCargoshipmentSecurityStatus = default(string), DateTime httpsCargovalidFrom = default(DateTime), DateTime httpsCargovalidUntil = default(DateTime))
         {
-            this.HttpsId = httpsId;
-            this.HttpsType = httpsType;
-            this.HttpsCargochecks = httpsCargochecks;
-            this.HttpsCargoevents = httpsCargoevents;
-            this.HttpsCargoexternalReferences = httpsCargoexternalReferences;
-            this.HttpsCargocompanyIdentifier = httpsCargocompanyIdentifier;
-            this.HttpsCargoskeletonIndicator = httpsCargoskeletonIndicator;
-            this.HttpsCargobookingSegment = httpsCargobookingSegment;
-            this.HttpsCargobookingTimes = httpsCargobookingTimes;
+            this.Id = Id;
+            this.Type = Type;
+            this.Checks = Checks;
+            this.Events = Events;
+            this.ExternalReferences = ExternalReferences;
+            this.CompanyIdentifier = CompanyIdentifier;
+            this.SkeletonIndicator = SkeletonIndicator;
+            this.BookingSegment = BookingSegment;
+            this.BookingTimes = BookingTimes;
             this.HttpsCargocarrierProductInfo = httpsCargocarrierProductInfo;
             this.HttpsCargoforBookingRequest = httpsCargoforBookingRequest;
             this.HttpsCargofromCarrier = httpsCargofromCarrier;
@@ -77,143 +77,105 @@ namespace OneRecord.Api.SDK.Model
             this.HttpsCargovalidUntil = httpsCargovalidUntil;
         }
 
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "@id", EmitDefaultValue = false)]
-        public string HttpsId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "@type", EmitDefaultValue = false)]
-        public List<string> HttpsType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cargochecks
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#checks", EmitDefaultValue = false)]
-        public List<Check> HttpsCargochecks { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cargoevents
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#events", EmitDefaultValue = false)]
-        public List<LogisticsEvent> HttpsCargoevents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CargoexternalReferences
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#externalReferences", EmitDefaultValue = false)]
-        public List<ExternalReference> HttpsCargoexternalReferences { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CargocompanyIdentifier
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#companyIdentifier", EmitDefaultValue = false)]
-        public string HttpsCargocompanyIdentifier { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CargoskeletonIndicator
-        /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#skeletonIndicator", EmitDefaultValue = true)]
-        public bool HttpsCargoskeletonIndicator { get; set; }
 
         /// <summary>
         /// Gets or Sets CargobookingSegment
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#bookingSegment", EmitDefaultValue = false)]
-        public BookingSegment HttpsCargobookingSegment { get; set; }
+        [DataMember(Name = "cargo:bookingSegment", EmitDefaultValue = false)]
+        public BookingSegment BookingSegment { get; set; }
 
         /// <summary>
         /// Gets or Sets CargobookingTimes
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#bookingTimes", EmitDefaultValue = false)]
-        public BookingTimes HttpsCargobookingTimes { get; set; }
+        [DataMember(Name = "cargo:bookingTimes", EmitDefaultValue = false)]
+        public BookingTimes BookingTimes { get; set; }
 
         /// <summary>
         /// Gets or Sets CargocarrierProductInfo
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#carrierProductInfo", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:carrierProductInfo", EmitDefaultValue = false)]
         public CarrierProduct HttpsCargocarrierProductInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoforBookingRequest
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#forBookingRequest", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:forBookingRequest", EmitDefaultValue = false)]
         public BookingRequest HttpsCargoforBookingRequest { get; set; }
 
         /// <summary>
         /// Gets or Sets CargofromCarrier
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#fromCarrier", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:fromCarrier", EmitDefaultValue = false)]
         public Carrier HttpsCargofromCarrier { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoinvolvedParties
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#involvedParties", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:involvedParties", EmitDefaultValue = false)]
         public List<Party> HttpsCargoinvolvedParties { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargoprice
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#price", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:price", EmitDefaultValue = false)]
         public Price HttpsCargoprice { get; set; }
 
         /// <summary>
         /// Gets or Sets CargorequestRef
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#requestRef", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:requestRef", EmitDefaultValue = false)]
         public BookingOptionRequest HttpsCargorequestRef { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargorouting
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#routing", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:routing", EmitDefaultValue = false)]
         public Routing HttpsCargorouting { get; set; }
 
         /// <summary>
         /// Gets or Sets CargotransportMovement
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#transportMovement", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:transportMovement", EmitDefaultValue = false)]
         public TransportMovement HttpsCargotransportMovement { get; set; }
 
         /// <summary>
         /// Gets or Sets CargobookingOptionStatus
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#bookingOptionStatus", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:bookingOptionStatus", EmitDefaultValue = false)]
         public string HttpsCargobookingOptionStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoproposedWaybillNumber
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#proposedWaybillNumber", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:proposedWaybillNumber", EmitDefaultValue = false)]
         public string HttpsCargoproposedWaybillNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets CargorequestMatchInd
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#requestMatchInd", EmitDefaultValue = true)]
+        [DataMember(Name = "cargo:requestMatchInd", EmitDefaultValue = true)]
         public bool HttpsCargorequestMatchInd { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoshipmentSecurityStatus
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#shipmentSecurityStatus", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:shipmentSecurityStatus", EmitDefaultValue = false)]
         public string HttpsCargoshipmentSecurityStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets CargovalidFrom
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#validFrom", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:validFrom", EmitDefaultValue = false)]
         public DateTime HttpsCargovalidFrom { get; set; }
 
         /// <summary>
         /// Gets or Sets CargovalidUntil
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#validUntil", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:validUntil", EmitDefaultValue = false)]
         public DateTime HttpsCargovalidUntil { get; set; }
+
+        [DataMember(Name = "cargo:transportLegs", EmitDefaultValue = false)]
+        public List<TransportLegs> TransportLegs { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -223,15 +185,15 @@ namespace OneRecord.Api.SDK.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BookingOption {\n");
-            sb.Append("  Id: ").Append(HttpsId).Append("\n");
-            sb.Append("  Type: ").Append(HttpsType).Append("\n");
-            sb.Append("  Cargochecks: ").Append(HttpsCargochecks).Append("\n");
-            sb.Append("  Cargoevents: ").Append(HttpsCargoevents).Append("\n");
-            sb.Append("  CargoexternalReferences: ").Append(HttpsCargoexternalReferences).Append("\n");
-            sb.Append("  CargocompanyIdentifier: ").Append(HttpsCargocompanyIdentifier).Append("\n");
-            sb.Append("  CargoskeletonIndicator: ").Append(HttpsCargoskeletonIndicator).Append("\n");
-            sb.Append("  CargobookingSegment: ").Append(HttpsCargobookingSegment).Append("\n");
-            sb.Append("  CargobookingTimes: ").Append(HttpsCargobookingTimes).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Cargochecks: ").Append(Checks).Append("\n");
+            sb.Append("  Cargoevents: ").Append(Events).Append("\n");
+            sb.Append("  CargoexternalReferences: ").Append(ExternalReferences).Append("\n");
+            sb.Append("  CargocompanyIdentifier: ").Append(CompanyIdentifier).Append("\n");
+            sb.Append("  CargoskeletonIndicator: ").Append(SkeletonIndicator).Append("\n");
+            sb.Append("  CargobookingSegment: ").Append(BookingSegment).Append("\n");
+            sb.Append("  CargobookingTimes: ").Append(BookingTimes).Append("\n");
             sb.Append("  CargocarrierProductInfo: ").Append(HttpsCargocarrierProductInfo).Append("\n");
             sb.Append("  CargoforBookingRequest: ").Append(HttpsCargoforBookingRequest).Append("\n");
             sb.Append("  CargofromCarrier: ").Append(HttpsCargofromCarrier).Append("\n");
@@ -282,52 +244,52 @@ namespace OneRecord.Api.SDK.Model
             }
             return 
                 (
-                    this.HttpsId == httpsInput.HttpsId ||
-                    (this.HttpsId != null &&
-                    this.HttpsId.Equals(httpsInput.HttpsId))
+                    this.Id == httpsInput.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(httpsInput.Id))
                 ) && 
                 (
-                    this.HttpsType == httpsInput.HttpsType ||
-                    this.HttpsType != null &&
-                    httpsInput.HttpsType != null &&
-                    this.HttpsType.SequenceEqual(httpsInput.HttpsType)
+                    this.Type == httpsInput.Type ||
+                    this.Type != null &&
+                    httpsInput.Type != null &&
+                    this.Type.SequenceEqual(httpsInput.Type)
                 ) && 
                 (
-                    this.HttpsCargochecks == httpsInput.HttpsCargochecks ||
-                    this.HttpsCargochecks != null &&
-                    httpsInput.HttpsCargochecks != null &&
-                    this.HttpsCargochecks.SequenceEqual(httpsInput.HttpsCargochecks)
+                    this.Checks == httpsInput.Checks ||
+                    this.Checks != null &&
+                    httpsInput.Checks != null &&
+                    this.Checks.SequenceEqual(httpsInput.Checks)
                 ) && 
                 (
-                    this.HttpsCargoevents == httpsInput.HttpsCargoevents ||
-                    this.HttpsCargoevents != null &&
-                    httpsInput.HttpsCargoevents != null &&
-                    this.HttpsCargoevents.SequenceEqual(httpsInput.HttpsCargoevents)
+                    this.Events == httpsInput.Events ||
+                    this.Events != null &&
+                    httpsInput.Events != null &&
+                    this.Events.SequenceEqual(httpsInput.Events)
                 ) && 
                 (
-                    this.HttpsCargoexternalReferences == httpsInput.HttpsCargoexternalReferences ||
-                    this.HttpsCargoexternalReferences != null &&
-                    httpsInput.HttpsCargoexternalReferences != null &&
-                    this.HttpsCargoexternalReferences.SequenceEqual(httpsInput.HttpsCargoexternalReferences)
+                    this.ExternalReferences == httpsInput.ExternalReferences ||
+                    this.ExternalReferences != null &&
+                    httpsInput.ExternalReferences != null &&
+                    this.ExternalReferences.SequenceEqual(httpsInput.ExternalReferences)
                 ) && 
                 (
-                    this.HttpsCargocompanyIdentifier == httpsInput.HttpsCargocompanyIdentifier ||
-                    (this.HttpsCargocompanyIdentifier != null &&
-                    this.HttpsCargocompanyIdentifier.Equals(httpsInput.HttpsCargocompanyIdentifier))
+                    this.CompanyIdentifier == httpsInput.CompanyIdentifier ||
+                    (this.CompanyIdentifier != null &&
+                    this.CompanyIdentifier.Equals(httpsInput.CompanyIdentifier))
                 ) && 
                 (
-                    this.HttpsCargoskeletonIndicator == httpsInput.HttpsCargoskeletonIndicator ||
-                    this.HttpsCargoskeletonIndicator.Equals(httpsInput.HttpsCargoskeletonIndicator)
+                    this.SkeletonIndicator == httpsInput.SkeletonIndicator ||
+                    this.SkeletonIndicator.Equals(httpsInput.SkeletonIndicator)
                 ) && 
                 (
-                    this.HttpsCargobookingSegment == httpsInput.HttpsCargobookingSegment ||
-                    (this.HttpsCargobookingSegment != null &&
-                    this.HttpsCargobookingSegment.Equals(httpsInput.HttpsCargobookingSegment))
+                    this.BookingSegment == httpsInput.BookingSegment ||
+                    (this.BookingSegment != null &&
+                    this.BookingSegment.Equals(httpsInput.BookingSegment))
                 ) && 
                 (
-                    this.HttpsCargobookingTimes == httpsInput.HttpsCargobookingTimes ||
-                    (this.HttpsCargobookingTimes != null &&
-                    this.HttpsCargobookingTimes.Equals(httpsInput.HttpsCargobookingTimes))
+                    this.BookingTimes == httpsInput.BookingTimes ||
+                    (this.BookingTimes != null &&
+                    this.BookingTimes.Equals(httpsInput.BookingTimes))
                 ) && 
                 (
                     this.HttpsCargocarrierProductInfo == httpsInput.HttpsCargocarrierProductInfo ||
@@ -410,38 +372,38 @@ namespace OneRecord.Api.SDK.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HttpsId != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.HttpsType != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
-                if (this.HttpsCargochecks != null)
+                if (this.Checks != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargochecks.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Checks.GetHashCode();
                 }
-                if (this.HttpsCargoevents != null)
+                if (this.Events != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoevents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Events.GetHashCode();
                 }
-                if (this.HttpsCargoexternalReferences != null)
+                if (this.ExternalReferences != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargoexternalReferences.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ExternalReferences.GetHashCode();
                 }
-                if (this.HttpsCargocompanyIdentifier != null)
+                if (this.CompanyIdentifier != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargocompanyIdentifier.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CompanyIdentifier.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.HttpsCargoskeletonIndicator.GetHashCode();
-                if (this.HttpsCargobookingSegment != null)
+                hashCode = (hashCode * 59) + this.SkeletonIndicator.GetHashCode();
+                if (this.BookingSegment != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargobookingSegment.GetHashCode();
+                    hashCode = (hashCode * 59) + this.BookingSegment.GetHashCode();
                 }
-                if (this.HttpsCargobookingTimes != null)
+                if (this.BookingTimes != null)
                 {
-                    hashCode = (hashCode * 59) + this.HttpsCargobookingTimes.GetHashCode();
+                    hashCode = (hashCode * 59) + this.BookingTimes.GetHashCode();
                 }
                 if (this.HttpsCargocarrierProductInfo != null)
                 {

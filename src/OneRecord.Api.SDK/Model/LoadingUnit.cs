@@ -55,76 +55,34 @@ namespace OneRecord.Api.SDK.Model
             this.Remarks = remarks;
         }
 
-        ///// <summary>
-        ///// Gets or Sets Id
-        ///// </summary>
-        //[DataMember(Name = "@id", EmitDefaultValue = false)]
-        //public string Id { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets Type
-        ///// </summary>
-        //[DataMember(Name = "@type", EmitDefaultValue = false)]
-        //public List<string> Type { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets Cargochecks
-        ///// </summary>
-        //[DataMember(Name = "https://onerecord.iata.org/ns/cargo#checks", EmitDefaultValue = false)]
-        //public List<Check> Checks { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets Cargoevents
-        ///// </summary>
-        //[DataMember(Name = "https://onerecord.iata.org/ns/cargo#events", EmitDefaultValue = false)]
-        //public List<LogisticsEvent> events { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets CargoexternalReferences
-        ///// </summary>
-        //[DataMember(Name = "https://onerecord.iata.org/ns/cargo#externalReferences", EmitDefaultValue = false)]
-        //public List<ExternalReference> externalReferences { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets CargocompanyIdentifier
-        ///// </summary>
-        //[DataMember(Name = "https://onerecord.iata.org/ns/cargo#companyIdentifier", EmitDefaultValue = false)]
-        //public string companyIdentifier { get; set; }
-
-        ///// <summary>
-        ///// Gets or Sets CargoskeletonIndicator
-        ///// </summary>
-        //[DataMember(Name = "https://onerecord.iata.org/ns/cargo#skeletonIndicator", EmitDefaultValue = true)]
-        //public bool skeletonIndicator { get; set; }
-
         /// <summary>
         /// Gets or Sets CargoattachedIotDevices
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#attachedIotDevices", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:attachedIotDevices", EmitDefaultValue = false)]
         public List<IotDevice> AttachedIotDevices { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoinvolvedInActions
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#involvedInActions", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:involvedInActions", EmitDefaultValue = false)]
         public List<LogisticsAction> InvolvedInActions { get; set; }
 
         /// <summary>
         /// Gets or Sets CargoloadedPiecesOnLoadingUnit
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#loadedPiecesOnLoadingUnit", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:loadedPiecesOnLoadingUnit", EmitDefaultValue = false)]
         public List<Piece> LoadedPiecesOnLoadingUnit { get; set; }
 
         /// <summary>
         /// Gets or Sets CargotareWeight
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#tareWeight", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:tareWeight", EmitDefaultValue = false)]
         public Value TareWeight { get; set; }
 
         /// <summary>
         /// Gets or Sets Cargoremarks
         /// </summary>
-        [DataMember(Name = "https://onerecord.iata.org/ns/cargo#remarks", EmitDefaultValue = false)]
+        [DataMember(Name = "cargo:remarks", EmitDefaultValue = false)]
         public string Remarks { get; set; }
 
         /// <summary>
