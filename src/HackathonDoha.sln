@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneRecord.Api.SDK", "OneRecord.Api.SDK\OneRecord.Api.SDK.csproj", "{62940BC4-EEB1-4358-A9B2-0189FF4FECC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeOne.Dataseeder", "NeOne.Dataseeder\NeOne.Dataseeder.csproj", "{5C8FD255-12BB-47D2-A066-850CDEDD4FEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCheck.Api", "OneCheck.Api\OneCheck.Api.csproj", "{46974B71-325C-4E17-94D1-9E635AC0E72E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCheck.Domain", "OneCheck.Domain\OneCheck.Domain.csproj", "{3C5805F8-989C-45A0-A3FF-AA26B86811D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCheck.Application", "OneCheck.Application\OneCheck.Application.csproj", "{C39B3230-E4CF-4805-8FA9-7719113CE2FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCheck.Repository", "OneCheck.Repository\OneCheck.Repository.csproj", "{3D858F2A-9D06-4D1A-A6D3-9DA9A7F37D14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62940BC4-EEB1-4358-A9B2-0189FF4FECC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62940BC4-EEB1-4358-A9B2-0189FF4FECC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62940BC4-EEB1-4358-A9B2-0189FF4FECC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62940BC4-EEB1-4358-A9B2-0189FF4FECC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C8FD255-12BB-47D2-A066-850CDEDD4FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C8FD255-12BB-47D2-A066-850CDEDD4FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C8FD255-12BB-47D2-A066-850CDEDD4FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C8FD255-12BB-47D2-A066-850CDEDD4FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46974B71-325C-4E17-94D1-9E635AC0E72E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46974B71-325C-4E17-94D1-9E635AC0E72E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46974B71-325C-4E17-94D1-9E635AC0E72E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46974B71-325C-4E17-94D1-9E635AC0E72E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C5805F8-989C-45A0-A3FF-AA26B86811D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5805F8-989C-45A0-A3FF-AA26B86811D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5805F8-989C-45A0-A3FF-AA26B86811D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5805F8-989C-45A0-A3FF-AA26B86811D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C39B3230-E4CF-4805-8FA9-7719113CE2FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C39B3230-E4CF-4805-8FA9-7719113CE2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C39B3230-E4CF-4805-8FA9-7719113CE2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C39B3230-E4CF-4805-8FA9-7719113CE2FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D858F2A-9D06-4D1A-A6D3-9DA9A7F37D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D858F2A-9D06-4D1A-A6D3-9DA9A7F37D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D858F2A-9D06-4D1A-A6D3-9DA9A7F37D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D858F2A-9D06-4D1A-A6D3-9DA9A7F37D14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17FA91D2-940C-44A4-A413-36EF6006D3BF}
+	EndGlobalSection
+EndGlobal
