@@ -4,6 +4,9 @@ using MediatR;
 using OneCheck.Application;
 using OneCheck.Domain.Contracts;
 using OneCheck.Repository;
+using Microsoft.EntityFrameworkCore;
+using OneRecord.Api.SDK.Client;
+using OneCheck.Repository.DBContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,8 @@ builder.Services.ConfigureApplicationServices();
 //builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 builder.Services.AddControllers();
+builder.Services.AddDbContext<CorrespondenceTableContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("myDb")));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
