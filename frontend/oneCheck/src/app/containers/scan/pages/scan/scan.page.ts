@@ -67,8 +67,6 @@ export class ScanPage implements OnInit {
 
     this.scannnerLoading = false;
 
-    console.log(barcodes, 'kek');
-
     // todo replace Alert with API Call
     const alert = await this.alertCtrl.create({
       header: 'Barcode scanned successfully',
@@ -85,18 +83,6 @@ export class ScanPage implements OnInit {
     });
 
     await modal.present();
-  }
-
-  public testAPI(): void {
-    this.store
-      .dispatch(new ChecksheetActions.getShipment('test'))
-      .subscribe(async () => {
-        const modal = await this.modalCtrl.create({
-          component: SelectUldModalComponent,
-        });
-
-        await modal.present();
-      });
   }
 
   public async presentDummySelectUldModal(): Promise<void> {

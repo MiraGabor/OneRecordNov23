@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Dummy Checksheet</ion-title>
+    <ion-title>ULD todo123</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">Close</ion-button>
     </ion-buttons>
@@ -26,7 +26,7 @@
     <!-- Origin Handling Agent Sheet-->
     <ion-accordion *ngIf="checksheet?.originHandlingAgentSheet" value="first">
       <ion-item slot="header" color="light">
-        <ion-label>Origin Handling Agent Sheet</ion-label>
+        <ion-label>Acceptance Check</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <app-origin-handling-agent-sheet
@@ -38,9 +38,7 @@
     <!-- Inbound Transit Sheets -->
     <ion-accordion *ngIf="checksheet?.preparationSheet" value="second">
       <ion-item slot="header" color="light">
-        <ion-label
-          >Loading and preparation by shipper / issuing agent</ion-label
-        >
+        <ion-label>Outbound Origin Check</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <app-preparation-sheet
@@ -94,7 +92,7 @@
       value="first"
     >
       <ion-item slot="header" color="light">
-        <ion-label>Destination Handling Agent</ion-label>
+        <ion-label>Inbound Destination Check</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <app-destination-handling-agent-sheet
@@ -108,9 +106,7 @@
     <!-- todo Delivery COnsignee -->
     <ion-accordion *ngIf="checksheet?.preparationSheet" value="second">
       <ion-item slot="header" color="light">
-        <ion-label
-          >Loading and preparation by shipper / issuing agent</ion-label
-        >
+        <ion-label>Delivery Check</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <app-preparation-sheet

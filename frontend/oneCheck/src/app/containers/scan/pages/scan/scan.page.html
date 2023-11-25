@@ -14,9 +14,6 @@
         slot="start"
         src="assets/logo/SWC_rgb.png"
       ></ion-img>
-      <ion-title *ngIf="observables.user && observables.role">
-        {{ observables.user.name + ' | ' + observables?.role }}
-      </ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -31,30 +28,15 @@
   </ion-content>
 
   <ion-footer>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ng-container *ngIf="observables.isLoggedIn; else loginMask">
-            <ng-container *ngIf="observables.role; else selectRole">
-              <ion-button expand="block" (click)="scan()">
-                <ng-container *ngIf="!scannnerLoading; else loading">
-                  Scan
-                </ng-container>
-              </ion-button>
-            </ng-container>
+    <ng-container *ngIf="observables.isLoggedIn; else loginMask">
+      <ng-container *ngIf="observables.role; else selectRole">
+        <ion-button expand="block" (click)="scan()">
+          <ng-container *ngIf="!scannnerLoading; else loading">
+            Scan
           </ng-container>
-        </ion-col>
-      </ion-row>
-
-      <!-- test API call -->
-      <ion-row>
-        <ion-col>
-          <ion-button expand="block" (click)="testAPI()">
-            Test API Call
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+        </ion-button>
+      </ng-container>
+    </ng-container>
   </ion-footer>
 
   <ng-template #loginMask>

@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
     NgxsModule.forRoot([CheckSheetState, UserState], {
-      developmentMode: true, // todo
+      developmentMode: true,
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     HttpClientModule,

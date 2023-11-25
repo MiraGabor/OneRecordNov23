@@ -35,8 +35,6 @@ export class SelectUldModalComponent {
           ChecksheetStateSelectors.preparationChecksheetByUldNumber(uldId)
         );
 
-        console.log('checksheet', checksheet);
-
         const checksheetModal = await this.modalCtrl.create({
           component: CheckSheetModalComponent,
           componentProps: { checksheet: checksheet, checksheetId: 'todo' }, // todo doublecheck here

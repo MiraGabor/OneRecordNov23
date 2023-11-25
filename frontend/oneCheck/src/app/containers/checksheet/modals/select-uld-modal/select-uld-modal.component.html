@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Select ULD</ion-title>
+    <ion-title>AWB todo</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">Close</ion-button>
     </ion-buttons>
@@ -8,13 +8,13 @@
 </ion-header>
 
 <ion-content>
-  todo: AWB and ULD number in title, routiong
   <ion-list *ngIf="shipment$ | async as shipment">
     <ion-item
       (click)="getChecksheet(uld)"
       *ngFor="let uld of shipment.uldIdList"
     >
       <ion-label>{{ "ULD " + uld }}</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>
