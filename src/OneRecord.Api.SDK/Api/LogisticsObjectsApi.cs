@@ -86,7 +86,7 @@ namespace OneRecord.Api.SDK.Api
         /// <param name="httpsEmbedded"> (optional)</param>
         /// <param name="httpsOperationIndex">Index associated with the operation.</param>
         /// <returns>LogisticsObject</returns>
-        LogisticsObject GetLogisticsObject(string httpsLogisticsObjectId, DateTime? httpsAt = default(DateTime?), bool? httpsEmbedded = default(bool?), int httpsOperationIndex = 0);
+        object GetLogisticsObject(string httpsLogisticsObjectId, DateTime? httpsAt = default(DateTime?), bool? httpsEmbedded = default(bool?), int httpsOperationIndex = 0);
 
         /// <summary>
         /// Request a logistics object
@@ -100,7 +100,7 @@ namespace OneRecord.Api.SDK.Api
         /// <param name="httpsEmbedded"> (optional)</param>
         /// <param name="httpsOperationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LogisticsObject</returns>
-        ApiResponse<LogisticsObject> GetLogisticsObjectWithHttpInfo(string httpsLogisticsObjectId, DateTime? httpsAt = default(DateTime?), bool? httpsEmbedded = default(bool?), int httpsOperationIndex = 0);
+        ApiResponse<object> GetLogisticsObjectWithHttpInfo(string httpsLogisticsObjectId, DateTime? httpsAt = default(DateTime?), bool? httpsEmbedded = default(bool?), int httpsOperationIndex = 0);
         /// <summary>
         /// Request a change for a given logistics object
         /// </summary>
@@ -700,9 +700,9 @@ namespace OneRecord.Api.SDK.Api
         /// <param name="httpsEmbedded"> (optional)</param>
         /// <param name="httpsOperationIndex">Index associated with the operation.</param>
         /// <returns>LogisticsObject</returns>
-        public LogisticsObject GetLogisticsObject(string httpsLogisticsObjectId, DateTime? httpsAt = default(DateTime?), bool? httpsEmbedded = default(bool?), int httpsOperationIndex = 0)
+        public object GetLogisticsObject(string httpsLogisticsObjectId, DateTime? httpsAt = default(DateTime?), bool? httpsEmbedded = default(bool?), int httpsOperationIndex = 0)
         {
-            ApiResponse<LogisticsObject> localVarResponse = GetLogisticsObjectWithHttpInfo(httpsLogisticsObjectId, httpsAt, httpsEmbedded);
+            ApiResponse<object> localVarResponse = GetLogisticsObjectWithHttpInfo(httpsLogisticsObjectId, httpsAt, httpsEmbedded);
             return localVarResponse.HttpsData;
         }
 
@@ -715,7 +715,7 @@ namespace OneRecord.Api.SDK.Api
         /// <param name="httpsEmbedded"> (optional)</param>
         /// <param name="httpsOperationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LogisticsObject</returns>
-        public ApiResponse<LogisticsObject> GetLogisticsObjectWithHttpInfo(string httpsLogisticsObjectId, DateTime? httpsAt = default(DateTime?), bool? httpsEmbedded = default(bool?), int httpsOperationIndex = 0)
+        public ApiResponse<object> GetLogisticsObjectWithHttpInfo(string httpsLogisticsObjectId, DateTime? httpsAt = default(DateTime?), bool? httpsEmbedded = default(bool?), int httpsOperationIndex = 0)
         {
             // verify the required parameter 'logisticsObjectId' is set
             if (httpsLogisticsObjectId == null)
@@ -760,7 +760,7 @@ namespace OneRecord.Api.SDK.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.HttpsClient.Get<LogisticsObject>("/logistics-objects/{logisticsObjectId}", localVarRequestOptions, this.HttpsConfiguration);
+            var localVarResponse = this.HttpsClient.Get<object>("/logistics-objects/{logisticsObjectId}", localVarRequestOptions, this.HttpsConfiguration);
             if (this.HttpsExceptionFactory != null)
             {
                 Exception exception = this.HttpsExceptionFactory("GetLogisticsObject", localVarResponse);
