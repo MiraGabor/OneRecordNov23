@@ -5,15 +5,17 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneRecord.Api.SDK", "OneRecord.Api.SDK\OneRecord.Api.SDK.csproj", "{62940BC4-EEB1-4358-A9B2-0189FF4FECC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeOne.Dataseeder", "NeOne.Dataseeder\NeOne.Dataseeder.csproj", "{5C8FD255-12BB-47D2-A066-850CDEDD4FEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeOne.Dataseeder", "NeOne.Dataseeder\NeOne.Dataseeder.csproj", "{5C8FD255-12BB-47D2-A066-850CDEDD4FEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCheck.Api", "OneCheck.Api\OneCheck.Api.csproj", "{46974B71-325C-4E17-94D1-9E635AC0E72E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneCheck.Api", "OneCheck.Api\OneCheck.Api.csproj", "{46974B71-325C-4E17-94D1-9E635AC0E72E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCheck.Domain", "OneCheck.Domain\OneCheck.Domain.csproj", "{3C5805F8-989C-45A0-A3FF-AA26B86811D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneCheck.Domain", "OneCheck.Domain\OneCheck.Domain.csproj", "{3C5805F8-989C-45A0-A3FF-AA26B86811D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCheck.Application", "OneCheck.Application\OneCheck.Application.csproj", "{C39B3230-E4CF-4805-8FA9-7719113CE2FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneCheck.Application", "OneCheck.Application\OneCheck.Application.csproj", "{C39B3230-E4CF-4805-8FA9-7719113CE2FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCheck.Repository", "OneCheck.Repository\OneCheck.Repository.csproj", "{3D858F2A-9D06-4D1A-A6D3-9DA9A7F37D14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneCheck.Repository", "OneCheck.Repository\OneCheck.Repository.csproj", "{3D858F2A-9D06-4D1A-A6D3-9DA9A7F37D14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neone.ServiceClient", "Neone.ServiceClient\Neone.ServiceClient.csproj", "{7121004E-834E-44AF-8DB1-488D5BF9AA8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{3D858F2A-9D06-4D1A-A6D3-9DA9A7F37D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D858F2A-9D06-4D1A-A6D3-9DA9A7F37D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D858F2A-9D06-4D1A-A6D3-9DA9A7F37D14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7121004E-834E-44AF-8DB1-488D5BF9AA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7121004E-834E-44AF-8DB1-488D5BF9AA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7121004E-834E-44AF-8DB1-488D5BF9AA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7121004E-834E-44AF-8DB1-488D5BF9AA8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
