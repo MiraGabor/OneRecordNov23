@@ -18,6 +18,9 @@ public class GetCheckSheetRequestHandler : IRequestHandler<GetSheetRequest, Shee
         _client = client;
         _mapper = new Mapper(new MapperConfiguration(cfg =>
         {
+            cfg.CreateMap<LogisticsObject, LogisticsObjectReponse>()
+                .ReverseMap();
+
             cfg.CreateMap<Check, CheckResponse>()
                 .ReverseMap();
             cfg.CreateMap<CheckTemplate, CheckTemplateResponse>()
