@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ULD todo123</ion-title>
+    <ion-title>RKN61424PC</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">Close</ion-button>
     </ion-buttons>
@@ -22,23 +22,43 @@
 
   <!-- Export -->
   <ion-accordion-group *ngIf="activeSegment === 'export'">
-    todo: check if finished
     <!-- Origin Handling Agent Sheet-->
     <ion-accordion *ngIf="checksheet?.originHandlingAgentSheet" value="first">
-      <ion-item slot="header" color="light">
-        <ion-label>Acceptance Check</ion-label>
+      <ion-item
+        slot="header"
+        color="light"
+        [class.complete]="userRole !== 'export'"
+      >
+        <ion-label
+          >Acceptance Check
+          <ion-icon
+            *ngIf="userRole !== 'export'"
+            name="checkmark-outline"
+          ></ion-icon
+        ></ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <app-origin-handling-agent-sheet
           [originHandlingAgentSheet]="checksheet?.originHandlingAgentSheet"
+          (submitted)="dismissModal()"
         ></app-origin-handling-agent-sheet>
       </div>
     </ion-accordion>
 
     <!-- Inbound Transit Sheets -->
-    <ion-accordion *ngIf="checksheet?.preparationSheet" value="second">
+    <ion-accordion
+      *ngIf="checksheet?.preparationSheet"
+      value="second"
+      [class.complete]="userRole !== 'export'"
+    >
       <ion-item slot="header" color="light">
-        <ion-label>Outbound Origin Check</ion-label>
+        <ion-label
+          >Outbound Origin Check
+          <ion-icon
+            *ngIf="userRole !== 'export'"
+            name="checkmark-outline"
+          ></ion-icon
+        ></ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <app-preparation-sheet
@@ -99,6 +119,7 @@
           [destinationHandlingAgentSheet]="
             checksheet?.destinationHandlingAgentSheet
           "
+          (submitted)="dismissModal()"
         ></app-destination-handling-agent-sheet>
       </div>
     </ion-accordion>
@@ -116,3 +137,7 @@
     </ion-accordion>
   </ion-accordion-group>
 </ion-content>
+
+<ng-template #completed>
+  <ion-icon name="checkmark-outline"></ion-icon>
+</ng-template>

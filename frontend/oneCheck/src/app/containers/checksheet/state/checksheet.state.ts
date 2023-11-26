@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, delay, map, of, tap } from 'rxjs';
 import { SheetDto } from 'src/model/sheetDto';
 import { ScanService } from '../../scan/services/scan.service';
 import { ChecksheetActions } from './checksheet.actions';
@@ -60,5 +60,27 @@ export class CheckSheetState {
         );
       })
     );
+  }
+
+  @Action(ChecksheetActions.submitOriginHandlingSheet)
+  public submitOriginHandlingSheet(
+    ctx: StateContext<CheckSheetStateModel>,
+    action: ChecksheetActions.submitOriginHandlingSheet
+  ): Observable<boolean> {
+    const state = ctx.getState();
+
+    // todo connect
+    return of(true).pipe(delay(1000));
+  }
+
+  @Action(ChecksheetActions.submiDestinationHandlingSheet)
+  public submitDestinationHandlingSheet(
+    ctx: StateContext<CheckSheetStateModel>,
+    action: ChecksheetActions.submiDestinationHandlingSheet
+  ): Observable<boolean> {
+    const state = ctx.getState();
+
+    // todo connect
+    return of(true).pipe(delay(1000));
   }
 }

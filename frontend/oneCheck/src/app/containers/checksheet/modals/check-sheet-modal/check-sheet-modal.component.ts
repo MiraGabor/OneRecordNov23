@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { Store } from '@ngxs/store';
 import { ChecksheetActions } from '../../state/checksheet.actions';
 import { SheetDto } from 'src/model/sheetDto';
+import { Observable } from 'rxjs';
+import { UserStateSelectors } from 'src/app/containers/user/state/user.selectors';
 
 @Component({
   selector: 'app-check-sheet-modal',
@@ -10,6 +12,9 @@ import { SheetDto } from 'src/model/sheetDto';
   styleUrls: ['./check-sheet-modal.component.scss'],
 })
 export class CheckSheetModalComponent implements OnInit {
+  public userRole$: Observable<string | undefined> | undefined;
+  public userRole = '';
+
   @Input() public checksheet: SheetDto | undefined;
   @Input() public checksheetId: string | undefined;
 
@@ -20,7 +25,16 @@ export class CheckSheetModalComponent implements OnInit {
 
   public activeSegment = 'export'; // todo chose via role // todo change to origin?
 
-  public ngOnInit() {}
+  public ngOnInit() {
+    this.userRole$ = this.store.select(UserStateSelectors.userRole);
+
+    this.userRole$.subscribe((role) => {
+      if (role) {
+        this.activeSegment = role as string; // not typesafe..
+        this.userRole = role;
+      }
+    });
+  }
 
   public async dismissModal(): Promise<void> {
     await this.modalCtrl.dismiss();
