@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IShipmentRepository, ShipmentRepository>();
+builder.Services.AddScoped<ICorrespondenceTableRepository, CorrespondenceTableRepository>();
 
 builder.Services.ConfigureApplicationServices();
 builder.Services.AddTransient<IConfiguration>(sp =>
@@ -16,13 +17,7 @@ builder.Services.AddTransient<IConfiguration>(sp =>
     IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
     configurationBuilder.AddJsonFile("appsettings.json");
     return configurationBuilder.Build();
-});//builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
-
-
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-
+});
 builder.Services.AddScoped<IClient, Client>();
 
 builder.Services.AddControllers();

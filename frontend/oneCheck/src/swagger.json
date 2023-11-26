@@ -7,7 +7,9 @@
   "paths": {
     "/api/Sheets/{ULDId}": {
       "get": {
-        "tags": ["Sheets"],
+        "tags": [
+          "Sheets"
+        ],
         "parameters": [
           {
             "name": "ULDId",
@@ -42,7 +44,9 @@
         }
       },
       "post": {
-        "tags": ["Sheets"],
+        "tags": [
+          "Sheets"
+        ],
         "parameters": [
           {
             "name": "ULDId",
@@ -98,7 +102,9 @@
     },
     "/api/Shipment/{id}": {
       "get": {
-        "tags": ["Shipment"],
+        "tags": [
+          "Shipment"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -137,7 +143,11 @@
   "components": {
     "schemas": {
       "BlueLightEnumDto": {
-        "enum": [0, 1, 2],
+        "enum": [
+          0,
+          1,
+          2
+        ],
         "type": "integer",
         "format": "int32"
       },
@@ -173,7 +183,15 @@
         "additionalProperties": false
       },
       "DayOfWeek": {
-        "enum": [0, 1, 2, 3, 4, 5, 6],
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
         "type": "integer",
         "format": "int32"
       },
@@ -554,7 +572,22 @@
       "ShipmentDto": {
         "type": "object",
         "properties": {
-          "uldIdList": {
+          "uldDictionary": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "arrivalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "departureCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "transitCodes": {
             "type": "array",
             "items": {
               "type": "string"
