@@ -14,19 +14,19 @@ using OneRecord.Api.SDK.Model;
 var apiClient = await GetLogisticsObjectsApi();
 
 
-var uld = GetUld("RKN61424PC");
-var uld2 = GetUld("RKN61635PC");
-var piece = GetPiece(uld);
-var piece2 = GetPiece(uld2);
-var shipment = GetShipment(piece, piece2);
-var shipmentId = await CreateShipment(apiClient, shipment);
+//var uld = GetUld("RKN61424PC");
+//var uld2 = GetUld("RKN61635PC");
+//var piece = GetPiece(uld);
+//var piece2 = GetPiece(uld2);
+//var shipment = GetShipment(piece, piece2);
+//var shipmentId = await CreateShipment(apiClient, shipment);
 
-Console.WriteLine(shipmentId);
+//Console.WriteLine(shipmentId);
 
-//var check = GetCheck();
+var check = GetCheck();
 
-//var checkCreateResponse = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(check);
-//checkCreateResponse.HttpsHeaders.TryGetValue("Location", out var checkLocation);
+var checkCreateResponse = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(check);
+checkCreateResponse.HttpsHeaders.TryGetValue("Location", out var checkLocation);
 
 //var checkCreateResponse2 = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(check);
 //checkCreateResponse2.HttpsHeaders.TryGetValue("Location", out var checkLocation2);
@@ -38,9 +38,8 @@ Console.WriteLine(shipmentId);
 ////add remarks string
 
 //uldCreateResponse.HttpsHeaders.TryGetValue("Location", out var value);
-
-//var change = GetAddChangeRequest(value.First(), new List<string>{ checkLocation.First(), checkLocation2.First()} );
-//var updateResponse = apiClient.UpdateLogisticsObjectWithHttpInfo(uldId, change);
+var change = GetAddChangeRequest("ea537005-6dff-4183-857a-183c635c5359", new List<string>{ checkLocation.First()});
+var updateResponse = apiClient.UpdateLogisticsObjectWithHttpInfo("ea537005-6dff-4183-857a-183c635c5359", change);
 
 
 //var temp = updateResponse.HttpsHeaders.First();

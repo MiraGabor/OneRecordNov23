@@ -26,7 +26,7 @@ export interface OriginHandlingAgentSheetDto {
     isContainerOperating?: boolean;
     displayedTemp?: number;
     isAlert?: boolean;
-    isBlueLightOn?: BlueLightEnumDto;
+    blueLight?: BlueLightEnumDto;
     alertDisplayed?: string | null;
     setTempOnDisplay?: number;
     is5AdaptersPresents?: boolean;

@@ -79,9 +79,11 @@ namespace Neone.ServiceClient
                 ArrivalCode = "JFK",
             };
 
+            //TODO go through waybill until legs
 
-            var w1 = JsonConvert.SerializeObject(JToken.FromObject(w));
-            waybill = JsonConvert.DeserializeObject<WaybillResponse>(w1);
+
+            //var w1 = JsonConvert.SerializeObject(JToken.FromObject(w));
+            //waybill = JsonConvert.DeserializeObject<WaybillResponse>(w1);
 
             return res;
         }
@@ -117,6 +119,12 @@ namespace Neone.ServiceClient
         {
             var response = await _logisticsObjectsApi.GetLogisticsObjectWithHttpInfoAsync(id);
             return (Waybill)response.HttpsData;
+        }
+
+        public async Task<List<Check>> GetChecks(string uldId)
+        {
+            var uld = await GetULD(uldId);
+            return uld.Checks;
         }
 
         public async Task<bool> UpdateCheckList(string uldId, List<Check> checks)

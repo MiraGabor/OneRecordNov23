@@ -12,6 +12,9 @@
 
 
 export interface ShipmentDto { 
-    uldIdList?: Array<string> | null;
+    uldDictionary?: { [key: string]: string; } | null;
+    arrivalCode?: string | null;
+    departureCode?: string | null;
+    transitCodes?: Array<string> | null;
 }
 

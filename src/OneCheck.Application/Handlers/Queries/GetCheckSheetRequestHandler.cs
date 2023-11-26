@@ -9,7 +9,25 @@ public class GetCheckSheetRequestHandler : IRequestHandler<GetSheetRequest, Shee
 {
     public async Task<SheetDto> Handle(GetSheetRequest request, CancellationToken cancellationToken)
     {
-        return new SheetDto();
+        var checks = new List<Check>();
+
+        ConvertFromCheckToOriginPreparationSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToOriginPreparation"));
+
+        return new SheetDto
+        {
+            OriginHandlingAgentSheet = ConvertFromCheckToOriginHandlingAgentSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToOriginHandlingAgent")),
+            PreparationSheet = ConvertFromCheckToOriginPreparationSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToOriginPreparation")),
+            DestinationConsigneeSheet = ConvertFromCheckToDestinationConsigneeSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToDestinationConsignee")),
+            DestinationHandlingAgentSheet = ConvertFromCheckToDestinationHandlingAgentSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToDestinationHandlingAgent")),
+            TransitSheets = new List<TransitSheetDto>
+            {
+                new TransitSheetDto
+                {
+                    InboundTransitSheetModel = ConvertFromCheckToInboundTransitSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToInboundTransit")),
+                    OutboundTransitSheetModel = ConvertFromCheckToOutboundTransitSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToOutboundTransit"))
+                }
+            }
+        };
     }
 
     private OriginPreparationSheetDto ConvertFromCheckToOriginPreparationSheetDto(Check check)
