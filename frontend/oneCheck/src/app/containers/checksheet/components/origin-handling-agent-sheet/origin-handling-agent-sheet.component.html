@@ -15,7 +15,8 @@
     <ion-item>
       <ion-input
         formControlName="displayTemp"
-        label="Display temperature"
+        label="Display temperature C°"
+        placeholder="C°"
       ></ion-input>
     </ion-item>
 
@@ -39,16 +40,16 @@
       <ion-checkbox formControlName="isAlert" slot="end"></ion-checkbox>
     </ion-item>
 
-    <ion-item>
+    <ion-item [class.radioDisabled]="!canEdit">
       <ion-label>Blue light turns on</ion-label>
       <ion-radio-group
         formControlName="isBlueLightOn"
         [allowEmptySelection]="false"
         value="0"
       >
-        <ion-radio value="0">Y</ion-radio><br />
-        <ion-radio value="1">N</ion-radio><br />
-        <ion-radio value="2">N/A</ion-radio><br />
+        <ion-radio [disabled]="!canEdit" value="0">Y</ion-radio><br />
+        <ion-radio [disabled]="!canEdit" value="1">N</ion-radio><br />
+        <ion-radio [disabled]="!canEdit" value="2">N/A</ion-radio><br />
       </ion-radio-group>
     </ion-item>
 
@@ -83,10 +84,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-input
-        formControlName="name"
-        label="Name (block letters)"
-      ></ion-input>
+      <ion-input formControlName="name" label="Name"></ion-input>
     </ion-item>
 
     <!--ion-item>
@@ -94,5 +92,11 @@
     </ion-item-->
   </ion-list>
 
-  <ion-button expand="block" type="submit"> Submit </ion-button>
+  <ion-button [disabled]="!canEdit" expand="block" type="submit">
+    <ng-container *ngIf="!isSubmitting; else loading"> Submit </ng-container>
+  </ion-button>
 </form>
+
+<ng-template #loading>
+  <ion-spinner></ion-spinner>
+</ng-template>

@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { UserStateSelectors } from 'src/app/containers/user/state/user.selectors';
 import { DestinationHandlingAgentSheetDto } from 'src/model/destinationHandlingAgentSheetDto';
+import { ChecksheetActions } from '../../state/checksheet.actions';
 
 @Component({
   selector: 'app-destination-handling-agent-sheet',
@@ -13,6 +14,11 @@ import { DestinationHandlingAgentSheetDto } from 'src/model/destinationHandlingA
 export class DestinationHandlingAgentSheetComponent implements OnInit {
   public userRole$: Observable<string | undefined> | undefined;
   public canEdit = false;
+
+  public isSubmitting = false;
+
+  @Output()
+  submitted = new EventEmitter<boolean>();
 
   public form: FormGroup = new FormGroup({
     checkSheetId: new FormControl(''),
@@ -50,11 +56,25 @@ export class DestinationHandlingAgentSheetComponent implements OnInit {
 
     // pre-fill sheet
     if (this.destinationHandlingAgentSheet) {
-      this.form.patchValue(this.destinationHandlingAgentSheet); // todo does this work?
+      this.form.patchValue(this.destinationHandlingAgentSheet);
+
+      this.form.patchValue({
+        date: '2023-11-28',
+        time: '09:00',
+        name: 'Dante Favero',
+      });
     }
   }
 
   public onSubmit() {
-    console.log(this.form?.value);
+    const checksheet: DestinationHandlingAgentSheetDto = this.form?.value;
+    this.isSubmitting = true;
+
+    this.store
+      .dispatch(new ChecksheetActions.submiDestinationHandlingSheet(checksheet))
+      .subscribe(() => {
+        this.isSubmitting = false;
+        this.submitted.emit(true);
+      });
   }
 }

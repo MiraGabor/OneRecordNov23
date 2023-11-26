@@ -1,9 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { UserStateSelectors } from 'src/app/containers/user/state/user.selectors';
 import { OriginHandlingAgentSheetDto } from 'src/model/originHandlingAgentSheetDto';
+import { ChecksheetActions } from '../../state/checksheet.actions';
 
 @Component({
   selector: 'app-origin-handling-agent-sheet',
@@ -12,6 +14,12 @@ import { OriginHandlingAgentSheetDto } from 'src/model/originHandlingAgentSheetD
 })
 export class OriginHandlingAgentSheetComponent implements OnInit {
   public userRole$: Observable<string | undefined> | undefined;
+
+  public canEdit = true;
+  public isSubmitting = false;
+
+  @Output()
+  submitted = new EventEmitter<boolean>();
 
   public form: FormGroup = new FormGroup({
     //checkSheetId: new FormControl('', Validators.required), // todo hide in UI?
@@ -45,6 +53,7 @@ export class OriginHandlingAgentSheetComponent implements OnInit {
 
       // todo station code
       if (role !== 'export') {
+        this.canEdit = false;
         this.form.disable();
       }
     });
@@ -52,10 +61,25 @@ export class OriginHandlingAgentSheetComponent implements OnInit {
     // pre-fill sheet
     if (this.originHandlingAgentSheet) {
       this.form.patchValue(this.originHandlingAgentSheet); // todo does this work?
+
+      this.form.patchValue({
+        date: '2023-11-26', // replace with the value you want to set
+        time: '09:00',
+      });
     }
   }
 
   public onSubmit() {
     console.log(this.form?.value);
+    this.isSubmitting = true;
+    this.form.disable();
+
+    const checkcheet: OriginHandlingAgentSheetDto = this.form?.value;
+    this.store
+      .dispatch(new ChecksheetActions.submitOriginHandlingSheet(checkcheet))
+      .subscribe(() => {
+        this.isSubmitting = false;
+        this.submitted.emit(true);
+      });
   }
 }
