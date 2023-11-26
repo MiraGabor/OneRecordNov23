@@ -1,24 +1,13 @@
-﻿using Neone.ServiceClient;
-using OneRecord.Api.SDK.Api;
+﻿using OneRecord.Api.SDK.Api;
 using OneRecord.Api.SDK.Client;
 using OneRecord.Api.SDK.Model;
 
-
-//var client = new Client();
-
-//var result = await client.GetShipment("ceac9455-1053-40fd-a357-19042ddd2356", CancellationToken.None);
-
-
-//return;
-
 var apiClient = await GetLogisticsObjectsApi();
 
-
-//var uld = GetUld("RKN61424PC");
-//var uld2 = GetUld("RKN61635PC");
+//var checks = GetChecks();
+var uld = GetUld();
 //var piece = GetPiece(uld);
-//var piece2 = GetPiece(uld2);
-//var shipment = GetShipment(piece, piece2);
+//var shipment = GetShipment(piece);
 //var shipmentId = await CreateShipment(apiClient, shipment);
 
 //Console.WriteLine(shipmentId);
@@ -28,33 +17,26 @@ var check = GetCheck();
 var checkCreateResponse = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(check);
 checkCreateResponse.HttpsHeaders.TryGetValue("Location", out var checkLocation);
 
-//var checkCreateResponse2 = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(check);
-//checkCreateResponse2.HttpsHeaders.TryGetValue("Location", out var checkLocation2);
-////var checkId = GetIdFromResponse(checkCreateResponse);
+var checkCreateResponse2 = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(check);
+checkCreateResponse2.HttpsHeaders.TryGetValue("Location", out var checkLocation2);
+//var checkId = GetIdFromResponse(checkCreateResponse);
 
 
-//var uldCreateResponse = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(uld);
-//var uldId = GetIdFromResponse(uldCreateResponse);
-////add remarks string
+var uldCreateResponse = await apiClient.CreateLogisticsObjectWithHttpInfoAsync(uld);
+var uldId = GetIdFromResponse(uldCreateResponse);
+//add remarks string
 
-//uldCreateResponse.HttpsHeaders.TryGetValue("Location", out var value);
-var change = GetAddChangeRequest("ea537005-6dff-4183-857a-183c635c5359", new List<string>{ checkLocation.First()});
-var updateResponse = apiClient.UpdateLogisticsObjectWithHttpInfo("ea537005-6dff-4183-857a-183c635c5359", change);
+uldCreateResponse.HttpsHeaders.TryGetValue("Location", out var value);
 
-
-//var temp = updateResponse.HttpsHeaders.First();
+var change = GetChangerRequest(value.First(), new List<string> { checkLocation.First(), checkLocation2.First() });
+var updateResponse = apiClient.UpdateLogisticsObjectWithHttpInfo(uldId, change);
 
 
-//var s = apiClient.GetLogisticsObjectWithHttpInfo(uldId);
-//string jsonString = s?.HttpsData?.ToString() ?? String.Empty;
-//Console.WriteLine(jsonString);
 
-//var delete = GetDeleteChangeRequest(value.First(), new List<string> { checkLocation.First(), checkLocation2.First() });
-//var deleteResponse = apiClient.UpdateLogisticsObjectWithHttpInfo(uldId, delete);
+var s = apiClient.GetLogisticsObjectWithHttpInfo(uldId);
+string jsonString = s?.HttpsData?.ToString() ?? String.Empty;
+Console.WriteLine(jsonString);
 
-//s = apiClient.GetLogisticsObjectWithHttpInfo(uldId);
-//jsonString = s?.HttpsData?.ToString() ?? String.Empty;
-//Console.WriteLine(jsonString);
 
 async Task<LogisticsObjectsApi> GetLogisticsObjectsApi()
 {
@@ -85,7 +67,7 @@ List<Check> GetChecks()
     };
 }
 
-ULD GetUld(string httpsUldSerialNumber)
+ULD GetUld()
 {
     var httpsUld = new ULD
     {
@@ -94,7 +76,7 @@ ULD GetUld(string httpsUldSerialNumber)
             "cargo:LoadingUnit",
             "cargo:LogisticsObject"
         },
-        UldSerialNumber = httpsUldSerialNumber,
+        UldSerialNumber = "RKN61424PC",
 
 
     };
@@ -122,7 +104,7 @@ Piece GetPiece(ULD httpsUld1)
     return httpsPiece;
 }
 
-Shipment GetShipment(Piece httpsPiece, Piece httpsPiece1)
+Shipment GetShipment(Piece httpsPiece1)
 {
     var httpsShipment = new Shipment
     {
@@ -133,8 +115,7 @@ Shipment GetShipment(Piece httpsPiece, Piece httpsPiece1)
         GoodsDescription = "a shipment with a single piece",
         ShipmentOfPieces = new List<Piece>
         {
-            httpsPiece1,
-            httpsPiece
+            httpsPiece1
         },
 
         Waybill = new Waybill
@@ -270,21 +251,37 @@ Check GetCheck()
                         },
                         Text = "Blaaaaaaaa"
                     },
-                }
+                },
+                new Question
+                {
+                    Type = new List<string>
+                    {
+                        "cargo:Question"
+                    },
+                    ShortText = "Random stuff",
+                    Answer = new Answer
+                    {
+                        Type = new List<string>
+                        {
+                            "cargo:Answer"
+                        },
+                        Text = "Something els"
+                    },
+                },
             }
         },
 
     };
 }
 
-Change GetAddChangeRequest(string listReference, IList<string> checkLocations)
+Change GetChangerRequest(string listReference, IList<string> checkLocations)
 {
 
     var operations = new List<Operation>();
 
     foreach (var checkLocation in checkLocations)
     {
-        operations.Add(GetAddOperation(listReference,checkLocation));
+        operations.Add(GetOperation(listReference, checkLocation));
     }
 
     var httpsChange = new Change
@@ -305,36 +302,8 @@ Change GetAddChangeRequest(string listReference, IList<string> checkLocations)
     return httpsChange;
 }
 
-Change GetDeleteChangeRequest(string listReference, IList<string> checkLocations)
-{
 
-    var operations = new List<Operation>();
-
-    foreach (var checkLocation in checkLocations)
-    {
-        operations.Add(GetDeleteOperation(listReference, checkLocation));
-    }
-
-    var httpsChange = new Change
-    {
-        Type = "api:Change",
-        HasLogisticsObject = new LogisticsObject
-        {
-            Id = listReference,
-        },
-        HasDescription = "Add checks",
-        HasOperation = operations,
-        HasRevision = new Revision
-        {
-            Type = "http://www.w3.org/2001/XMLSchema#positiveInteger",
-            Value = 2
-        }
-    };
-    return httpsChange;
-}
-
-
-Operation GetAddOperation(string listReference, string checkReference)
+Operation GetOperation(string listReference, string checkReference)
 {
     return new Operation
     {
@@ -342,29 +311,6 @@ Operation GetAddOperation(string listReference, string checkReference)
         PatchOperation = new PatchOperation
         {
             Id = "api:ADD"
-        },
-        Subject = listReference,
-        Predicate = "https://onerecord.iata.org/ns/cargo#checks",
-        Objects = new List<OperationObject>
-        {
-            new OperationObject
-            {
-                Type = "api:OperationObject",
-                HasDatatype = "https://onerecord.iata.org/ns/cargo#Check",
-                HasValue = checkReference
-            }
-        }
-    };
-}
-
-Operation GetDeleteOperation(string listReference, string checkReference)
-{
-    return new Operation
-    {
-        Type = "api:Operation",
-        PatchOperation = new PatchOperation
-        {
-            Id = "api:DELETE"
         },
         Subject = listReference,
         Predicate = "https://onerecord.iata.org/ns/cargo#checks",

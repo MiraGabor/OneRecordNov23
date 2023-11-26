@@ -1,30 +1,53 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
+using Neone.ServiceClient;
 using OneCheck.Application.Dtos.SheetsDtos;
 using OneCheck.Application.Requests.Queries;
 using OneRecord.Api.SDK.Model;
+using OneRecord.Api.SDK.Response;
 
 namespace OneCheck.Application.Handlers.Queries;
 
 public class GetCheckSheetRequestHandler : IRequestHandler<GetSheetRequest, SheetDto>
 {
+    private readonly IClient _client;
+    private readonly IMapper _mapper;
+
+    public GetCheckSheetRequestHandler(IClient client)
+    {
+        _client = client;
+        _mapper = new Mapper(new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<Check, CheckResponse>()
+                .ReverseMap();
+            cfg.CreateMap<CheckTemplate, CheckTemplateResponse>()
+                .ReverseMap();
+            cfg.CreateMap<LogisticsObject, LogisticsObjectReponse>()
+                .ReverseMap();
+        }
+        ));
+    }
+
     public async Task<SheetDto> Handle(GetSheetRequest request, CancellationToken cancellationToken)
     {
-        var checks = new List<Check>();
 
-        ConvertFromCheckToOriginPreparationSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToOriginPreparation"));
-
+        var checksResponses = await _client.GetChecks(request.Id);
+        
+        //map here checkresponse to check
+        var checks = _mapper.Map<List<Check>>(checksResponses);
+        
         return new SheetDto
         {
-            OriginHandlingAgentSheet = ConvertFromCheckToOriginHandlingAgentSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToOriginHandlingAgent")),
-            PreparationSheet = ConvertFromCheckToOriginPreparationSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToOriginPreparation")),
-            DestinationConsigneeSheet = ConvertFromCheckToDestinationConsigneeSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToDestinationConsignee")),
-            DestinationHandlingAgentSheet = ConvertFromCheckToDestinationHandlingAgentSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToDestinationHandlingAgent")),
+            OriginHandlingAgentSheet = ConvertFromCheckToOriginHandlingAgentSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "OriginHandlingAgentSheetDto")),
+            PreparationSheet = ConvertFromCheckToOriginPreparationSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "OriginPreparationSheetDto")),
+            DestinationConsigneeSheet = ConvertFromCheckToDestinationConsigneeSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "DestinationConsigneeSheetDto")),
+            DestinationHandlingAgentSheet = ConvertFromCheckToDestinationHandlingAgentSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "DestinationHandlingAgentSheetDto")),
             TransitSheets = new List<TransitSheetDto>
             {
                 new TransitSheetDto
                 {
-                    InboundTransitSheetModel = ConvertFromCheckToInboundTransitSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToInboundTransit")),
-                    OutboundTransitSheetModel = ConvertFromCheckToOutboundTransitSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "CheckToOutboundTransit"))
+                    InboundTransitSheetModel = ConvertFromCheckToInboundTransitSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "InboundTransitSheetDto")),
+                    OutboundTransitSheetModel = ConvertFromCheckToOutboundTransitSheetDto(checks.FirstOrDefault(x => x.UsedTemplate.Name == "OutboundTransitSheetDto"))
                 }
             }
         };

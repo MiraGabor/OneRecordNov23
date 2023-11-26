@@ -121,10 +121,38 @@ namespace Neone.ServiceClient
             return (Waybill)response.HttpsData;
         }
 
-        public async Task<List<Check>> GetChecks(string uldId)
+        public async Task<List<CheckResponse>> GetChecks(string uldId)
         {
+            var listOfChecks = new List<CheckResponse>();
             var uld = await GetULD(uldId);
-            return uld.Checks;
+            foreach (var check in uld.Checks)
+            {
+                var id = new Uri(check.Id).Segments.Last();
+
+                var c = _logisticsObjectsApi.GetLogisticsObjectWithHttpInfo(id);
+                var c1 = JsonConvert.DeserializeObject<CheckResponse>(c.HttpsRawContent);
+                var usedTemplateId = new Uri(c1.UsedTemplate.Id).Segments.Last();
+
+                var t = _logisticsObjectsApi.GetLogisticsObjectWithHttpInfo(usedTemplateId);
+                var t1 = JsonConvert.DeserializeObject<CheckTemplateResponse>(t.HttpsRawContent);
+                var questionIds = t1.Questions.Select(x => x.Id);
+                var questionList = new List<QuestionResponse>();
+                foreach (var qId in questionIds)
+                {
+                    var questionId = new Uri(qId).Segments.Last();
+                    var q = _logisticsObjectsApi.GetLogisticsObjectWithHttpInfo(id);
+                    var q1 = JsonConvert.DeserializeObject<QuestionResponse>(c.HttpsRawContent);
+                    questionList.Add(q1);
+                }
+
+                t1.Questions = questionList;
+                c1.UsedTemplate = t1;
+
+                listOfChecks.Add(c1);
+            }
+
+
+            return listOfChecks;
         }
 
         public async Task<bool> UpdateCheckList(string uldId, List<Check> checks)

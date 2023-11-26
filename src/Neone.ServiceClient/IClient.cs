@@ -10,5 +10,6 @@ namespace Neone.ServiceClient
         Task<bool> UpdateCheckList(string uldId, List<Check> checks);
 
         Task<UldReponse?> GetULD(string id);
+        Task<List<CheckResponse>> GetChecks(string uldId);
     }
 }
