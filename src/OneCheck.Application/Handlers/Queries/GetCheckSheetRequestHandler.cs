@@ -54,7 +54,7 @@ public class GetCheckSheetRequestHandler : IRequestHandler<GetSheetRequest, Shee
             DisplayedTemp = int.Parse(check.UsedTemplate.Questions.FirstOrDefault(x => x.AnswerOptionsText.Equals("DisplayedTemp")).Answer.Text),
             Is5AdaptersPresents = Boolean.Parse(check.UsedTemplate.Questions.FirstOrDefault(x => x.AnswerOptionsText.Equals("Is5AdaptersPresents")).Answer.Text),
             IsAlert = Boolean.Parse(check.UsedTemplate.Questions.FirstOrDefault(x => x.AnswerOptionsText.Equals("IsAlert")).Answer.Text),
-            IsBlueLightOn = Enum.Parse<BlueLightEnumDto>(check.UsedTemplate.Questions.FirstOrDefault(x => x.AnswerOptionsText.Equals("IsBlueLightOn")).Answer.Text),
+            BlueLight = Enum.Parse<BlueLightEnumDto>(check.UsedTemplate.Questions.FirstOrDefault(x => x.AnswerOptionsText.Equals("BlueLight")).Answer.Text),
             IsContainerOperating = Boolean.Parse(check.UsedTemplate.Questions.FirstOrDefault(x => x.AnswerOptionsText.Equals("IsContainerOperating")).Answer.Text),
             
         };

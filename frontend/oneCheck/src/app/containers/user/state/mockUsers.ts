@@ -1,41 +1,42 @@
 import { User } from '../models/user.model';
 
-// todo role
 export const mockUsers: User[] = [
   {
     id: '0',
     name: 'Nikolai Weidner',
-    stationName: 'ZRH',
+    stationCode: 'SIN',
     role: 'export',
   },
   {
     id: '1',
     name: 'Robbert Bobbert',
-    stationName: 'JFK',
+    stationCode: 'SIN',
     role: 'export',
   },
   {
     id: '2',
     name: 'Dj Shashank',
-    stationName: 'JFK',
-    role: 'export',
+    stationCode: 'ZRH',
+    role: 'transit',
   },
   {
     id: '3',
     name: 'Miroslav Gabbbbor',
-    stationName: 'DHL', // todo
-    role: 'export',
+    stationCode: 'GVA',
+    role: 'transit',
   },
   {
     id: '4',
     name: 'D. Ante',
-    stationName: 'DHL', // todo
-    role: 'export',
+    stationCode: 'JFK',
+    role: 'import',
   },
   {
     id: '5',
-    name: 'Nikolaiowitch',
-    stationName: 'DHL', // todo
-    role: 'export',
+    name: 'Leonardo',
+    stationCode: 'JFK',
+    role: 'import',
   },
 ];
+
+// SIN - ZRH -  GVA - JFK

@@ -20,7 +20,7 @@
       <ion-list lines="full">
         <ng-container *ngFor="let user of users">
           <ion-item (click)="login(user.id)">
-            {{ user.name }}
+            {{ user.name + " | " + user.role + " | " + user.stationCode }}
           </ion-item>
         </ng-container>
       </ion-list>

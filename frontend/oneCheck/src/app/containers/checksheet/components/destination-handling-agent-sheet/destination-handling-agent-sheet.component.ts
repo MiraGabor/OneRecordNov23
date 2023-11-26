@@ -43,7 +43,9 @@ export class DestinationHandlingAgentSheetComponent implements OnInit {
     this.userRole$ = this.store.select(UserStateSelectors.userRole);
 
     this.userRole$.subscribe((role) => {
-      this.canEdit = role === 'export'; // todo rename role
+      if (role !== 'import') {
+        this.form.disable();
+      }
     });
 
     // pre-fill sheet

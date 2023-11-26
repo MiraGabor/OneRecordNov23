@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { UserStateSelectors } from 'src/app/containers/user/state/user.selectors';
+import { InboundTransitSheetDto } from 'src/model/inboundTransitSheetDto';
 import { TransitCheckSheetDto } from 'src/model/transitCheckSheetDto';
 
 @Component({
@@ -12,25 +13,24 @@ import { TransitCheckSheetDto } from 'src/model/transitCheckSheetDto';
 })
 export class InboundTransitSheetComponent implements OnInit {
   public userRole$: Observable<string | undefined> | undefined;
-  public canEdit = false;
 
   public form: FormGroup = new FormGroup({
     checkSheetId: new FormControl(''),
     date: new FormControl('', Validators.required),
-    time: new FormControl('', Validators.required),
+    time: new FormControl(''),
     sealNumber: new FormControl(''),
-    //signature: new FormControl(''),
+    signature: new FormControl(''),
     name: new FormControl(''),
     batteryStatusInPercent: new FormControl(''),
-    inboundCheckAirport: new FormControl(''),
     isContainerOperating: new FormControl(''),
     isContainerDamaged: new FormControl(''),
     displayedTemp: new FormControl(''),
+    inboundCheckAirportCode: new FormControl(''),
     blueLight: new FormControl(''),
     isAlarmDisplayed: new FormControl(''),
   });
 
-  @Input() public inboundTransitCheckSheet: TransitCheckSheetDto | undefined;
+  @Input() public inboundTransitCheckSheet: InboundTransitSheetDto | undefined;
 
   constructor(private store: Store) {}
 
@@ -38,7 +38,10 @@ export class InboundTransitSheetComponent implements OnInit {
     this.userRole$ = this.store.select(UserStateSelectors.userRole);
 
     this.userRole$.subscribe((role) => {
-      this.canEdit = role === 'export'; // todo rename role
+      // todo check station Code
+      if (role !== 'transit') {
+        this.form.disable();
+      }
     });
 
     // pre-fill sheet

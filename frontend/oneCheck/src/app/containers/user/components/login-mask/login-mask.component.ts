@@ -25,7 +25,6 @@ export class LoginMaskComponent implements OnInit {
     // todo provide user ID
     this.store.dispatch(new UserActions.Login(userId)).subscribe(() => {
       this.isLoading = false;
-      console.log('login successful');
     });
   }
 

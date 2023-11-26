@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -18,6 +18,8 @@ export class SelectUldModalComponent {
     ChecksheetStateSelectors.shipment
   );
 
+  @Input() public testAWB = '';
+
   public constructor(
     private modalCtrl: ModalController,
     private store: Store
@@ -34,8 +36,6 @@ export class SelectUldModalComponent {
         const checksheet = this.store.selectSnapshot(
           ChecksheetStateSelectors.preparationChecksheetByUldNumber(uldId)
         );
-
-        console.log('checksheet', checksheet);
 
         const checksheetModal = await this.modalCtrl.create({
           component: CheckSheetModalComponent,

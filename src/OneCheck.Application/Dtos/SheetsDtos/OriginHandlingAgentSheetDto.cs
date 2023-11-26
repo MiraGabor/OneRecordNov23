@@ -5,7 +5,7 @@ public class OriginHandlingAgentSheetDto : CheckSheetDto
     public bool IsContainerOperating { get; set; }
     public int DisplayedTemp { get; set; }
     public bool IsAlert { get; set; }
-    public BlueLightEnumDto IsBlueLightOn { get; set; }
+    public BlueLightEnumDto BlueLight { get; set; }
     public string AlertDisplayed {  get; set; }
     public int SetTempOnDisplay {  get; set; }
     public bool Is5AdaptersPresents {  get; set; }

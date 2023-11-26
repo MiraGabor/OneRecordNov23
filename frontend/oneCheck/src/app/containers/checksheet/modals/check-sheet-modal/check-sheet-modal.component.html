@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Dummy Checksheet</ion-title>
+    <ion-title>ULD todo123</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">Close</ion-button>
     </ion-buttons>
@@ -26,7 +26,7 @@
     <!-- Origin Handling Agent Sheet-->
     <ion-accordion *ngIf="checksheet?.originHandlingAgentSheet" value="first">
       <ion-item slot="header" color="light">
-        <ion-label>Origin Handling Agent Sheet</ion-label>
+        <ion-label>Acceptance Check</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <app-origin-handling-agent-sheet
@@ -38,9 +38,7 @@
     <!-- Inbound Transit Sheets -->
     <ion-accordion *ngIf="checksheet?.preparationSheet" value="second">
       <ion-item slot="header" color="light">
-        <ion-label
-          >Loading and preparation by shipper / issuing agent</ion-label
-        >
+        <ion-label>Outbound Origin Check</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <app-preparation-sheet
@@ -54,24 +52,6 @@
   <ion-accordion-group *ngIf="activeSegment === 'transit'">
     <!-- Transit Sheets -->
     <ng-container *ngIf="checksheet?.transitSheets">
-      <!--ion-accordion
-        [value]="transitChecks.inboundTransitSheetModel?.checkSheetId"
-        *ngFor="let transitChecks of checksheet?.transitSheets"
-      >
-        <ion-item slot="header" color="light">
-          <ion-label>{{
-            "Inbound Transit " + transitChecks.inboundTransitSheetModel?.checkSheetId
-          }}</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">
-          <app-inbound-transit-sheet
-            [inboundTransitCheckSheet]="transitChecks[0].inboundTransitCheckSheet"
-          ></app-inbound-transit-sheet>
-        </div>
-      </ion-accordion-->
-
-      <!-- todo müde -> loop durch alle transits -> pro iteration gibt es in und out -> akkordion pro sheet  -->
-
       <ng-container *ngFor="let checks of checksheet?.transitSheets">
         <ion-accordion>
           <ion-item slot="header" color="light">
@@ -94,7 +74,11 @@
                 checks.outboundTransitSheetModel?.outboundCheckAirportCode
             }}</ion-label>
           </ion-item>
-          <div class="ion-padding" slot="content">todo outbounf</div>
+          <div class="ion-padding" slot="content">
+            <app-outbound-transit-sheet
+              [outboundTransitCheckSheet]="checks.outboundTransitSheetModel"
+            ></app-outbound-transit-sheet>
+          </div>
         </ion-accordion>
       </ng-container>
     </ng-container>
@@ -108,7 +92,7 @@
       value="first"
     >
       <ion-item slot="header" color="light">
-        <ion-label>Destination Handling Agent</ion-label>
+        <ion-label>Inbound Destination Check</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <app-destination-handling-agent-sheet
@@ -119,12 +103,10 @@
       </div>
     </ion-accordion>
 
-    <!-- todo Delivery COnsignee -->
+    <!-- todo Delivery COnsignee !!!!!! -->
     <ion-accordion *ngIf="checksheet?.preparationSheet" value="second">
       <ion-item slot="header" color="light">
-        <ion-label
-          >Loading and preparation by shipper / issuing agent</ion-label
-        >
+        <ion-label>Delivery Check</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <app-preparation-sheet

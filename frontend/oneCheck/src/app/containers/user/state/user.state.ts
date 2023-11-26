@@ -14,7 +14,7 @@ export interface UserStateModel {
   name: 'user',
   defaults: {
     user: undefined,
-    role: 'export', // todo undefgined
+    role: undefined, // todo undefgined
   },
 })
 @Injectable()
@@ -34,6 +34,7 @@ export class UserState {
         ctx.setState({
           ...state,
           user: user,
+          role: user.role as any, // todo murks
         });
 
         successful = true;
