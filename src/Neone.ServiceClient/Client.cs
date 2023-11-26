@@ -1,6 +1,9 @@
-﻿using OneRecord.Api.SDK.Api;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using OneRecord.Api.SDK.Api;
 using OneRecord.Api.SDK.Client;
 using OneRecord.Api.SDK.Model;
+using OneRecord.Api.SDK.Response;
 
 namespace Neone.ServiceClient
 {
@@ -19,29 +22,95 @@ namespace Neone.ServiceClient
                 HttpsBasePath = "http://localhost:8080",
                 HttpsDefaultHeaders = new Dictionary<string, string>
                 {
+                    { "Authorization", $"Bearer {token}" },
                     { "Authentication", $"Bearer {token}" }
                 },
+                HttpsAccessToken = Guid.NewGuid().ToString()
             };
 
             _logisticsObjectsApi = new LogisticsObjectsApi(config);
         }
 
-        public async Task<Shipment?> GetShipment(string id)
+        public async Task<ShipmentInformation?> GetShipment(string id, CancellationToken httpsCancellationToken)
         {
             var response = await _logisticsObjectsApi.GetLogisticsObjectWithHttpInfoAsync(id);
-            return (Shipment)response.HttpsData;
+            var result = JsonConvert.DeserializeObject<GraphResponse>(response.HttpsRawContent);
+
+            ShipmentResponse? shipment;
+            WaybillResponse? waybill;
+
+            var s = result.Objects[0];
+            var w = result.Objects[1];
+
+            var s1 = JsonConvert.SerializeObject(JToken.FromObject(s));
+
+            shipment = JsonConvert.DeserializeObject<ShipmentResponse>(s1);
+
+            List<string> pieceIdList = new List<string>();
+            List<string> uldIdList = new List<string>();
+            foreach (var piece in shipment.ShipmentOfPieces)
+            {
+                pieceIdList.Add(piece.Id);
+                var pieceId = new Uri(piece.Id).Segments.Last();
+                var pieceResponse = await _logisticsObjectsApi.GetLogisticsObjectWithHttpInfoAsync(pieceId);
+
+                var g = JsonConvert.DeserializeObject<GraphResponse>(pieceResponse.HttpsRawContent);
+                var p = JsonConvert.SerializeObject(JToken.FromObject(g.Objects[0]));
+                var p1 = JsonConvert.DeserializeObject<PieceResponse>(p);
+                uldIdList.Add(new Uri(p1.UldReference.Id).Segments.Last());
+            }
+
+            var uldSerialNumbers = new Dictionary<string, string>();
+
+            foreach (var uldId in uldIdList.Distinct())
+            {
+                var uld = await GetULD(uldId);
+                uldSerialNumbers.Add(uldId, uld.UldSerialNumber);
+            }
+
+            var res = new ShipmentInformation
+            {
+                UldDictionary = uldSerialNumbers,
+                DepartureCode = "SIN",
+                TransitCodes = new List<string>
+                {
+                    "ZRH"
+                },
+                ArrivalCode = "JFK",
+            };
+
+
+            var w1 = JsonConvert.SerializeObject(JToken.FromObject(w));
+            waybill = JsonConvert.DeserializeObject<WaybillResponse>(w1);
+
+            return res;
         }
 
-        public async Task<LoadingUnit?> GetLoadingUnit(string id)
+        public class ShipmentInformation
+        {
+            public Dictionary<string, string> UldDictionary { get; set; }
+            public string DepartureCode { get; set; }
+            public List<string>  TransitCodes { get; set; }
+            public string ArrivalCode { get; set; }
+        }
+
+
+        public Task<LoadingUnit?> GetLoadingUnit(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<UldReponse?> GetULD(string id)
         {
             var response = await _logisticsObjectsApi.GetLogisticsObjectWithHttpInfoAsync(id);
-            return (LoadingUnit)response.HttpsData;
+            var result = JsonConvert.DeserializeObject<UldReponse>(response.HttpsRawContent);
+            return result;
         }
 
         public async Task<Piece> GetPiece(string id)
         {
             var response = await _logisticsObjectsApi.GetLogisticsObjectWithHttpInfoAsync(id);
-            return (Piece) response.HttpsData;
+            return (Piece)response.HttpsData;
         }
 
         public async Task<Waybill> GetWayBill(string id)
@@ -62,20 +131,43 @@ namespace Neone.ServiceClient
                 checkReferences.Add(checkReference.First());
             }
 
-            var s = _logisticsObjectsApi.GetLogisticsObjectWithHttpInfo(uldId);
+            var uld = GetUld(uldId, out var revisionNumber);
 
-            var uld = (ULD)s.HttpsData;
-            //string jsonString = s?.HttpsData?.ToString() ?? String.Empty;
-            //get uld
             var uldReference = uld.Id;
-            
-            var changes = GetChangeRequestForUld(uldReference, checkReferences);
+
+            var existingChecks = uld.Checks;
+
+            var deleteCheckReferences = new List<string>();
+
+            foreach (var check in existingChecks)
+            {
+                deleteCheckReferences.Add(check.Id);
+            }
+
+            var deleteChanges = GetDeleteChangeRequest(uldReference, deleteCheckReferences, revisionNumber);
+            var deleteResponse = _logisticsObjectsApi.UpdateLogisticsObjectWithHttpInfoAsync(uldId, deleteChanges);
+
+            revisionNumber++;
+            var changes = GetAddChangeRequestForUld(uldReference, checkReferences, revisionNumber);
 
             var response = _logisticsObjectsApi.UpdateLogisticsObjectWithHttpInfoAsync(uldId, changes);
             return true;
         }
 
-        private Change GetChangeRequestForUld(string uldReference, IList<string> checkReferences)
+        private UldReponse GetUld(string uldId, out int revision)
+        {
+            var response = _logisticsObjectsApi.GetLogisticsObjectWithHttpInfo(uldId);
+            //var result = JsonSerializer.Deserialize<UldReponse>(response.HttpsRawContent);
+            var result = JsonConvert.DeserializeObject<UldReponse>(response.HttpsRawContent);
+
+
+            response.HttpsHeaders.TryGetValue("Latest-Revision", out var revisionHeader);
+            int.TryParse(revisionHeader.FirstOrDefault(), out revision);
+
+            return result;
+        }
+
+        private Change GetAddChangeRequestForUld(string uldReference, IList<string> checkReferences, int revision)
         {
             var operations = new List<Operation>();
 
@@ -96,7 +188,7 @@ namespace Neone.ServiceClient
                 HasRevision = new Revision
                 {
                     Type = "http://www.w3.org/2001/XMLSchema#positiveInteger",
-                    Value = 1
+                    Value = revision
                 }
             };
             return httpsChange;
@@ -123,6 +215,65 @@ namespace Neone.ServiceClient
                     }
                 }
             };
+        }
+
+        private string GetIdFromResponse(ApiResponse<object> httpsResult)
+        {
+            var location = httpsResult.HttpsHeaders.TryGetValue("Location", out var value);
+
+            var id = new Uri(value.First()).Segments.Last();
+
+            return id;
+        }
+        private Operation GetDeleteOperation(string listReference, string checkReference)
+        {
+            return new Operation
+            {
+                Type = "api:Operation",
+                PatchOperation = new PatchOperation
+                {
+                    Id = "api:DELETE"
+                },
+                Subject = listReference,
+                Predicate = "https://onerecord.iata.org/ns/cargo#checks",
+                Objects = new List<OperationObject>
+                {
+                    new OperationObject
+                    {
+                        Type = "api:OperationObject",
+                        HasDatatype = "https://onerecord.iata.org/ns/cargo#Check",
+                        HasValue = checkReference
+                    }
+                }
+            };
+        }
+
+        private Change GetDeleteChangeRequest(string listReference, IList<string> checkLocations, int revision)
+        {
+
+            var operations = new List<Operation>();
+
+            foreach (var checkLocation in checkLocations)
+            {
+                operations.Add(GetDeleteOperation(listReference, checkLocation));
+            }
+
+            var httpsChange = new Change
+            {
+                Type = "api:Change",
+                HasLogisticsObject = new LogisticsObject
+                {
+                    Id = listReference,
+                },
+                HasDescription = "Add checks",
+                HasOperation = operations,
+                HasRevision = new Revision
+                {
+                    Type = "http://www.w3.org/2001/XMLSchema#positiveInteger",
+                    Value = revision
+                }
+            };
+            return httpsChange;
         }
 
     }

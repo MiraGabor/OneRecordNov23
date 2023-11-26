@@ -1,11 +1,8 @@
-using Microsoft.AspNetCore.Hosting;
-using System.Reflection;
-using MediatR;
 using OneCheck.Application;
 using OneCheck.Domain.Contracts;
 using OneCheck.Repository;
 using Microsoft.EntityFrameworkCore;
-using OneRecord.Api.SDK.Client;
+using Neone.ServiceClient;
 using OneCheck.Repository.DBContext;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,12 +23,16 @@ builder.Services.AddTransient<IConfiguration>(sp =>
 
 //builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
+builder.Services.AddScoped<IClient, Client>();
+
 builder.Services.AddControllers();
 builder.Services.AddDbContext<CorrespondenceTableContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("myDb")));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 
 var app = builder.Build();
 

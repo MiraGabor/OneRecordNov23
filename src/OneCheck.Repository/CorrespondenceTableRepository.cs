@@ -1,11 +1,5 @@
 ﻿using OneCheck.Domain.Contracts;
 using OneCheck.Repository.DBContext;
-using System.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OneCheck.Repository.Model;
 
 namespace OneCheck.Repository;
@@ -27,6 +21,11 @@ public class CorrespondenceTableRepository : ICorrespondenceTableRepository
             db.correspondenceULDShipmentModel.Add(correspondenceULDShipmentModel);
             await db.SaveChangesAsync();
         }
+    }
+
+    public async Task<string> GetHardcodedShipmentGuid(string shipmentId)
+    {
+        return "a7ca138b-3e6c-436a-8a0d-ff66bb710a31";
     }
 
     public string GetShipmentIdFromULDId(string ULDId)

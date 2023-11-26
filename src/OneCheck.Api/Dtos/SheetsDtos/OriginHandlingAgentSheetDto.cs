@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OneCheck.Api.Dtos.SheetsDtos;
+﻿namespace OneCheck.Api.Dtos.SheetsDtos;
 public class OriginHandlingAgentSheetDto : CheckSheetDto
 {
     public bool IsContainerDamaged { get; set; }

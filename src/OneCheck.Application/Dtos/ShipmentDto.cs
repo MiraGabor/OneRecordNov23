@@ -2,5 +2,8 @@
 
 public class ShipmentDto
 {
-    public List<string> UldIdList { get; set; }
+    public Dictionary<string,string> UldDictionary { get; set; }
+    public string ArrivalCode { get; set; }
+    public string DepartureCode { get; set; }
+    public List<string> TransitCodes { get; set; }
 }

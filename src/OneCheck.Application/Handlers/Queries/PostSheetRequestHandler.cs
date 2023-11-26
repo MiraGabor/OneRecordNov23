@@ -2,15 +2,18 @@
 using OneCheck.Application.Dtos.SheetsDtos;
 using OneCheck.Application.Requests.Queries;
 using OneRecord.Api.SDK.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Neone.ServiceClient;
 
 namespace OneCheck.Application.Handlers.Queries;
 public class PostSheetRequestHandler : IRequestHandler<PostSheetRequest>
 {
+    private readonly IClient _client;
+
+    public PostSheetRequestHandler(IClient client)
+    {
+        _client = client;
+    }
+
     public Task<Unit> Handle(PostSheetRequest request, CancellationToken cancellationToken)
     {
         var check = new Check();
@@ -25,6 +28,9 @@ public class PostSheetRequestHandler : IRequestHandler<PostSheetRequest>
         }
         listOfCheck.Add(FillCheckWithDestinationHandlingAgentItem(request.Sheet.DestinationHandlingAgentSheet));
         listOfCheck.Add(FillCheckWithDestinationConsigneeItem(request.Sheet.DestinationConsigneeSheet));
+
+        _client.UpdateCheckList(request.Sheet.PreparationSheet.ULDNumber, listOfCheck);
+
         return null;
     }
 

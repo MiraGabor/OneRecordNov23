@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OneRecord.Api.SDK.Model;
+﻿using OneRecord.Api.SDK.Model;
+using OneRecord.Api.SDK.Response;
 
 namespace Neone.ServiceClient
 {
     public interface IClient
     {
-        Task<Shipment?> GetShipment(string id);
+        Task<Client.ShipmentInformation?> GetShipment(string id, CancellationToken httpsCancellationToken);
         Task<LoadingUnit?> GetLoadingUnit(string id);
+        Task<bool> UpdateCheckList(string uldId, List<Check> checks);
+
+        Task<UldReponse?> GetULD(string id);
     }
 }
