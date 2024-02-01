@@ -9,9 +9,10 @@
 
 <ion-content>
   <ion-list *ngIf="shipment$ | async as shipment">
+    <!-- todo: loop through object -->
     <ion-item
       (click)="getChecksheet(uld)"
-      *ngFor="let uld of shipment.uldIdList"
+      *ngFor="let uld; in: shipment.uldDictionary"
     >
       <ion-label>{{ "ULD " + uld }}</ion-label>
       <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
