@@ -440,6 +440,12 @@ export class ScanService {
     // return of({
     //   uldIdList: ['RKN61424PC', 'RKN61425PC', 'RKN61426PC'],
     // });
-    return of({}); // todo
+    return of({
+      uldDictionary: {
+        ['RKN61424PC']: 'RKN61424PC',
+        ['RKN61425PC']: 'RKN61425PC',
+        ['RKN61426PC']: 'RKN61426PC',
+      },
+    }); // todo
   }
 }
